@@ -1,0 +1,69 @@
+---
+import Button from './Button.astro';
+import Container from './Container.astro';
+import Eyebrow from './Eyebrow.astro';
+import Section from './Section.astro';
+
+interface CtaLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  surface?: 'light' | 'dark';
+  primary: CtaLink;
+  secondary?: CtaLink;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  heading,
+  surface = 'light',
+  primary,
+  secondary,
+  class: className,
+} = Astro.props;
+---
+
+<Section surface={surface} class={className}>
+  <Container width="narrow">
+    <div class="site-cta">
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      <h2 class="site-cta__heading">{heading}</h2>
+      <div class="site-cta__body">
+        <slot />
+      </div>
+      <div class="site-cta__actions">
+        <Button href={primary.href}>{primary.label}</Button>
+        {
+          secondary && (
+            <Button variant="secondary" href={secondary.href}>
+              {secondary.label}
+            </Button>
+          )
+        }
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .site-cta__heading {
+    margin-bottom: var(--space-md);
+  }
+
+  .site-cta__body {
+    margin-bottom: var(--space-lg);
+    color: var(--text-muted);
+  }
+
+  .site-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: center;
+  }
+</style>

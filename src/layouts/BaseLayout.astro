@@ -1,20 +1,36 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title?: string;
   description?: string;
   robots?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  showHeader?: boolean;
+  showFooter?: boolean;
 }
 
 const {
   title = 'She Who Remembers',
   description = 'Official website of She Who Remembers.',
   robots,
+  canonical,
+  ogImage,
+  ogType = 'website',
+  showHeader = true,
+  showFooter = true,
 } = Astro.props;
 
-const canonical = Astro.site
-  ? new URL(Astro.url.pathname, Astro.site).href
+const canonicalHref =
+  canonical ??
+  (Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined);
+
+const ogImageHref = ogImage
+  ? new URL(ogImage, Astro.site ?? Astro.url).href
   : undefined;
 ---
 
@@ -27,11 +43,16 @@ const canonical = Astro.site
     {robots && <meta name="robots" content={robots} />}
     <title>{title}</title>
     <meta name="description" content={description} />
-    {canonical && <link rel="canonical" href={canonical} />}
+    {canonicalHref && <link rel="canonical" href={canonicalHref} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:type" content={ogType} />
+    {canonicalHref && <meta property="og:url" content={canonicalHref} />}
+    {ogImageHref && <meta property="og:image" content={ogImageHref} />}
+    <meta name="twitter:card" content={ogImageHref ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageHref && <meta name="twitter:image" content={ogImageHref} />}
     <!--
       Webfonts from Google Fonts (https://fonts.google.com):
       Cinzel Display (headings), Lora (body), Montserrat (UI).
@@ -46,6 +67,10 @@ const canonical = Astro.site
   </head>
   <body data-surface="light">
     <a class="skip-link" href="#main">Skip to content</a>
-    <slot />
+    {showHeader && <Header />}
+    <main id="main">
+      <slot />
+    </main>
+    {showFooter && <Footer />}
   </body>
 </html>

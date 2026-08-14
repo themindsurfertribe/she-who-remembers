@@ -2,7 +2,7 @@
 
 Official production website for **She Who Remembers**. This repository is a static-first Astro project intended for GitHub Pages.
 
-Development proceeds gate-by-gate. Page development, copy, integrations, and full visual design belong to later gates.
+Development proceeds gate-by-gate. Marketing page content, copy, and service integrations belong to later gates.
 
 ## Architecture
 
@@ -28,6 +28,10 @@ PROJECT-SOURCE/      copy, outlines, and notes for development
 ```
 
 Astro only publishes files from `src/` (compiled) and `public/` (copied). `/reference` and `/PROJECT-SOURCE` stay in the repository for authors and are **not** included in the website build.
+
+## Project TODO
+
+REMOVE OR EXCLUDE `/style-guide` BEFORE PUBLIC LAUNCH.
 
 ## Local development
 
@@ -121,6 +125,8 @@ Webfonts are loaded from [Google Fonts](https://fonts.google.com) in `src/layout
 Font families are applied only through CSS tokens. Do not hard-code typefaces in components.
 
 An internal review page lives at `/style-guide`. It is not a public marketing page and is served with `noindex`.
+
+**TODO before public launch:** REMOVE OR EXCLUDE `/style-guide` BEFORE PUBLIC LAUNCH.
 
 Visual balance for later design work:
 

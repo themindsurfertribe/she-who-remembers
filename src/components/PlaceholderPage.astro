@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from './Container.astro';
+import Section from './Section.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  heading?: string;
+  note?: string;
+}
+
+const {
+  title,
+  description,
+  heading = title.replace(/\s+\|\s+She Who Remembers$/, ''),
+  note = 'This page is a structural placeholder. Content will be added in a later gate.',
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Section surface="light">
+    <Container>
+      <h1>{heading}</h1>
+      <p>{note}</p>
+    </Container>
+  </Section>
+</BaseLayout>

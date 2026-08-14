@@ -10,6 +10,8 @@ import Divider from '../components/Divider.astro';
 import PullQuote from '../components/PullQuote.astro';
 import Card from '../components/Card.astro';
 import EmblemPlaceholder from '../components/EmblemPlaceholder.astro';
+import SiteCta from '../components/SiteCta.astro';
+import { withBase } from '../data/site';
 
 const colors = [
   { name: 'Luminous Gold', token: '--color-gold', hex: '#D4AF37' },
@@ -37,8 +39,7 @@ const spaces = [
   description="Internal visual design system for She Who Remembers."
   robots="noindex, nofollow"
 >
-  <main id="main">
-    <Section surface="light" spacing="compact" atmosphere={true}>
+  <Section surface="light" spacing="compact" atmosphere={true}>
       <Container>
         <Eyebrow>Internal documentation</Eyebrow>
         <h1>Visual design system</h1>
@@ -261,7 +262,25 @@ const spaces = [
         </div>
       </Container>
     </Section>
-  </main>
+
+    <SiteCta
+      eyebrow="Layout sample"
+      heading="Call to action, light"
+      surface="light"
+      primary={{ label: 'Primary action', href: withBase('/book-a-conversation') }}
+      secondary={{ label: 'Secondary action', href: withBase('/contact') }}
+    >
+      <p>Copy is supplied per page. This block is a layout sample only.</p>
+    </SiteCta>
+
+    <SiteCta
+      eyebrow="Layout sample"
+      heading="Call to action, dark"
+      surface="dark"
+      primary={{ label: 'Primary action', href: withBase('/book-a-conversation') }}
+    >
+      <p>Dark mode uses celestial surface tokens without the large atmospheric motif.</p>
+    </SiteCta>
 </BaseLayout>
 
 <style>

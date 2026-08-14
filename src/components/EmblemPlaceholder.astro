@@ -1,20 +1,32 @@
 ---
 interface Props {
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   label?: string;
+  decorative?: boolean;
   class?: string;
 }
 
-const { size = 'md', label = 'Emblem placeholder', class: className } = Astro.props;
+const {
+  size = 'md',
+  label = 'Emblem placeholder',
+  decorative = false,
+  class: className,
+} = Astro.props;
 
 const dimensions = {
+  xs: 36,
   sm: 72,
   md: 120,
   lg: 168,
 }[size];
 ---
 
-<div class:list={['emblem', `emblem--${size}`, className]} role="img" aria-label={label}>
+<div
+  class:list={['emblem', `emblem--${size}`, className]}
+  role={decorative ? undefined : 'img'}
+  aria-label={decorative ? undefined : label}
+  aria-hidden={decorative ? 'true' : undefined}
+>
   <svg
     viewBox="0 0 120 120"
     width={dimensions}

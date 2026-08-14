@@ -1,0 +1,341 @@
+---
+import BrandLockup from './BrandLockup.astro';
+import Button from './Button.astro';
+import {
+  headerCta,
+  mobileNav,
+  pathIsActive,
+  primaryNav,
+  withBase,
+} from '../data/site';
+
+const currentPath = Astro.url.pathname;
+const menuId = 'site-menu';
+---
+
+<header class="site-header" data-site-header>
+  <div class="site-header__bar container container--wide">
+    <BrandLockup />
+
+    <nav class="site-header__desktop" aria-label="Primary">
+      <ul class="site-header__list">
+        {
+          primaryNav.map((item) => {
+            const active = pathIsActive(currentPath, item.href);
+            return (
+              <li>
+                <a
+                  class:list={['site-header__link', active && 'is-active']}
+                  href={withBase(item.href)}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__tools">
+      <Button class="site-header__cta" href={withBase(headerCta.href)}>
+        {headerCta.label}
+      </Button>
+      <button
+        class="site-header__toggle"
+        type="button"
+        data-menu-open
+        aria-expanded="false"
+        aria-controls={menuId}
+      >
+        <span class="site-header__toggle-icon" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+    </div>
+  </div>
+
+  <dialog class="site-menu" id={menuId} data-site-menu>
+    <div class="site-menu__panel">
+      <div class="site-menu__top">
+        <p class="site-menu__label">Menu</p>
+        <button class="site-menu__close" type="button" data-menu-close>
+          Close
+        </button>
+      </div>
+      <nav aria-label="Mobile primary">
+        <ul class="site-menu__list">
+          {
+            mobileNav.map((item) => {
+              const active = pathIsActive(currentPath, item.href);
+              return (
+                <li>
+                  <a
+                    class:list={['site-menu__link', active && 'is-active']}
+                    href={withBase(item.href)}
+                    aria-current={active ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+      <div class="site-menu__cta">
+        <Button href={withBase(headerCta.href)}>{headerCta.label}</Button>
+      </div>
+    </div>
+  </dialog>
+</header>
+
+<script>
+  const header = document.querySelector('[data-site-header]');
+  if (header instanceof HTMLElement) {
+    const dialog = header.querySelector('[data-site-menu]');
+    const openBtn = header.querySelector('[data-menu-open]');
+    const closeBtn = header.querySelector('[data-menu-close]');
+
+    const setExpanded = (open: boolean) => {
+      if (openBtn instanceof HTMLElement) {
+        openBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      document.body.classList.toggle('is-menu-open', open);
+    };
+
+    const openMenu = () => {
+      if (dialog instanceof HTMLDialogElement && !dialog.open) {
+        dialog.showModal();
+        setExpanded(true);
+      }
+    };
+
+    const closeMenu = () => {
+      if (dialog instanceof HTMLDialogElement && dialog.open) {
+        dialog.close();
+      }
+    };
+
+    openBtn?.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+
+    dialog?.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        closeMenu();
+      }
+    });
+
+    dialog?.addEventListener('close', () => {
+      setExpanded(false);
+      if (openBtn instanceof HTMLElement) {
+        openBtn.focus();
+      }
+    });
+
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    desktop.addEventListener('change', (event) => {
+      if (event.matches) {
+        closeMenu();
+      }
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--color-cream);
+    border-bottom: var(--border-width) solid var(--gold-border);
+  }
+
+  .site-header__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    min-height: 4.25rem;
+    padding-block: var(--space-2xs);
+  }
+
+  .site-header__desktop {
+    display: none;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .site-header__list {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-header__link,
+  .site-menu__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--color-charcoal);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .site-header__link:hover,
+  .site-menu__link:hover {
+    color: var(--color-indigo);
+  }
+
+  .site-header__link.is-active,
+  .site-menu__link.is-active {
+    color: var(--color-indigo);
+    box-shadow: inset 0 -1px 0 var(--color-gold);
+  }
+
+  .site-header__tools {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    flex: 0 0 auto;
+  }
+
+  .site-header__tools :global(.site-header__cta) {
+    display: none;
+  }
+
+  .site-header__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2xs);
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0 var(--space-sm);
+    border: var(--border-width) solid var(--gold-border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-charcoal);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    font-weight: 500;
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .site-header__toggle-icon {
+    width: 0.9rem;
+    height: 0.7rem;
+    background:
+      linear-gradient(var(--color-charcoal), var(--color-charcoal)) 0 0 / 100% 1px no-repeat,
+      linear-gradient(var(--color-charcoal), var(--color-charcoal)) 0 50% / 100% 1px no-repeat,
+      linear-gradient(var(--color-charcoal), var(--color-charcoal)) 0 100% / 100% 1px no-repeat;
+  }
+
+  .site-menu {
+    width: min(100%, 28rem);
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0 0 0 auto;
+    padding: 0;
+    border: 0;
+    background: var(--color-cream);
+    color: var(--color-charcoal);
+  }
+
+  .site-menu::backdrop {
+    background: rgb(14 26 45 / 0.42);
+  }
+
+  .site-menu__panel {
+    display: grid;
+    align-content: start;
+    gap: var(--space-md);
+    min-height: 100%;
+    padding: var(--space-md) var(--container-padding) var(--space-xl);
+  }
+
+  .site-menu__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .site-menu__label {
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .site-menu__close {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0 var(--space-sm);
+    border: 0;
+    background: transparent;
+    color: var(--color-charcoal);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .site-menu__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-menu__link {
+    width: 100%;
+    border-bottom: var(--border-width) solid var(--border);
+  }
+
+  .site-menu__cta {
+    padding-top: var(--space-sm);
+  }
+
+  @media (min-width: 700px) {
+    .site-header__tools :global(.site-header__cta) {
+      display: inline-flex;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .site-header__desktop {
+      display: block;
+    }
+
+    .site-header__toggle {
+      display: none;
+    }
+
+    .site-header__link {
+      min-height: 2.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-menu,
+    .site-menu::backdrop {
+      transition: none;
+    }
+  }
+</style>

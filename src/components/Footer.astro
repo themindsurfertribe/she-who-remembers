@@ -1,0 +1,139 @@
+---
+import {
+  footerAbout,
+  footerExplore,
+  footerLegal,
+  siteName,
+  withBase,
+} from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer" data-surface="dark">
+  <div class="container container--wide site-footer__inner">
+    <div class="site-footer__grid">
+      <section class="site-footer__group" aria-labelledby="footer-explore">
+        <h2 class="site-footer__heading" id="footer-explore">Explore</h2>
+        <ul>
+          {
+            footerExplore.map((item) => (
+              <li>
+                <a href={withBase(item.href)}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <section class="site-footer__group" aria-labelledby="footer-about">
+        <h2 class="site-footer__heading" id="footer-about">About / Support</h2>
+        <ul>
+          {
+            footerAbout.map((item) => (
+              <li>
+                <a href={withBase(item.href)}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <section class="site-footer__group" aria-labelledby="footer-legal">
+        <h2 class="site-footer__heading" id="footer-legal">Legal</h2>
+        <ul>
+          {
+            footerLegal.map((item) => (
+              <li>
+                <a href={withBase(item.href)}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+    <p class="site-footer__credit">
+      © {year} {siteName}. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-indigo);
+    color: var(--color-cream);
+    padding-block: var(--space-2xl) var(--space-lg);
+    border-top: var(--border-width) solid var(--gold-border);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__heading {
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-ui);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-gold-soft);
+  }
+
+  .site-footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer li + li {
+    margin-top: 0.15rem;
+  }
+
+  .site-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--color-cream);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .site-footer a:hover {
+    color: var(--color-gold-soft);
+  }
+
+  .site-footer__credit {
+    margin: 0;
+    max-width: none;
+    padding-top: var(--space-md);
+    border-top: var(--border-width) solid color-mix(in srgb, var(--color-gold) 22%, var(--color-indigo));
+    font-family: var(--font-body);
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+  }
+
+  @media (min-width: 700px) {
+    .site-footer__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-footer__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .site-footer a {
+      min-height: 2.25rem;
+    }
+  }
+</style>
