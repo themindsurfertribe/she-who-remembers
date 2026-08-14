@@ -34,6 +34,7 @@ const classes = ['button', `button--${variant}`, className];
     align-items: center;
     justify-content: center;
     min-height: 2.75rem;
+    max-width: 100%;
     padding: 0.7rem 1.35rem;
     border-radius: var(--radius-sm);
     font-family: var(--font-ui);
@@ -41,8 +42,10 @@ const classes = ['button', `button--${variant}`, className];
     font-weight: 500;
     letter-spacing: var(--tracking-ui);
     line-height: var(--leading-ui);
+    text-align: center;
     text-transform: uppercase;
     text-decoration: none;
+    white-space: normal;
     cursor: pointer;
     transition:
       background-color var(--duration-standard) var(--ease),

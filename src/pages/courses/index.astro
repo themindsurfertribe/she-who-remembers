@@ -1,9 +1,128 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import SectionIntro from '../../components/SectionIntro.astro';
+import PathwayCard from '../../components/PathwayCard.astro';
+import CourseComparison from '../../components/CourseComparison.astro';
+import SiteCta from '../../components/SiteCta.astro';
+import { withBase } from '../../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Courses & Experiences | She Who Remembers"
-  description="Placeholder page for Courses & Experiences on She Who Remembers."
-  heading="Courses & Experiences"
-/>
+  description="Three doorways into the work: boundaries and voice, self-trust and embodiment, purpose and living contribution. Choose the threshold you are standing at now."
+>
+  <Hero
+    heading="Courses & Experiences"
+    lede="You do not need every program. You need the doorway that meets the threshold you are standing at now."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      These are not levels to complete in order, and they are not a collection to own. Each
+      pathway is built for a different kind of pressure in a woman's life. Read for recognition,
+      not for coverage.
+    </p>
+  </Hero>
+
+  <Section surface="light">
+    <Container>
+      <SectionIntro eyebrow="Pathways" heading="Three primary doorways">
+        <p>
+          If more than one sounds familiar, start with the sentence that feels most true this
+          season. The rest can remain available without becoming homework.
+        </p>
+      </SectionIntro>
+      <div class="offer-grid">
+        <PathwayCard
+          kicker="The Sacred No"
+          heading="Reclaim Your Voice"
+          ctaLabel="Explore The Sacred No"
+          ctaHref={withBase('/courses/the-sacred-no')}
+        >
+          <p>
+            For people-pleasing, overexplaining, ignored limits, guilt after a no, and the habit
+            of agreeing before you have asked yourself. Toward cleaner boundaries, more accurate
+            communication, greater self-trust, and less emotional leakage.
+          </p>
+        </PathwayCard>
+        <PathwayCard
+          kicker="The Remembering"
+          heading="Reclaim Yourself"
+          ctaLabel="Explore The Remembering"
+          ctaHref={withBase('/courses/the-remembering')}
+        >
+          <p>
+            The flagship deeper journey. For identity in motion, sovereignty, shadow, embodiment,
+            intuition, voice, creativity, relational patterns, and presence. Toward greater
+            internal coherence, stronger self-contact, more embodied choice, and less dependence
+            on external permission.
+          </p>
+        </PathwayCard>
+        <PathwayCard
+          kicker="Legacy in Motion"
+          heading="Reclaim Your Purpose"
+          ctaLabel="Explore Legacy in Motion"
+          ctaHref={withBase('/courses/legacy-in-motion')}
+        >
+          <p>
+            For the woman asking <em>what now</em>: maturity, lived wisdom, contribution,
+            mentorship, creativity, lineage, and ordinary influence. Legacy here does not require
+            fame, public visibility, children, followers, or a formal title.
+          </p>
+        </PathwayCard>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container>
+      <SectionIntro eyebrow="Orientation" heading="How they differ">
+        <p>
+          A short map, not a ranking. None of these is more spiritually advanced than the others.
+          They simply attend to different work.
+        </p>
+      </SectionIntro>
+      <CourseComparison
+        items={[
+          { name: 'The Sacred No', line: 'Voice and boundaries' },
+          { name: 'The Remembering', line: 'Self and embodiment' },
+          { name: 'Legacy in Motion', line: 'Purpose and transmission' },
+        ]}
+      />
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="Not sure which door fits?"
+    primary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+    secondary={{ label: 'Book a Fit Conversation', href: withBase('/book-a-conversation') }}
+  >
+    <p>
+      Begin Here is for self-location. A fit conversation is for asking, without performing
+      certainty you do not have yet.
+    </p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .offer-grid {
+    display: grid;
+    gap: var(--space-xl);
+    margin: 0;
+  }
+
+  @media (min-width: 720px) {
+    .offer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .offer-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

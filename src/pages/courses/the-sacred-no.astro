@@ -1,9 +1,295 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import SectionIntro from '../../components/SectionIntro.astro';
+import Card from '../../components/Card.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import FaqList from '../../components/FaqList.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import SiteCta from '../../components/SiteCta.astro';
+import { withBase } from '../../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="The Sacred No | She Who Remembers"
-  description="Placeholder page for the course The Sacred No."
-  heading="The Sacred No"
-/>
+  description="A pathway for women learning cleaner boundaries, more accurate communication, and self-respect: saying no without becoming cruel, and protecting a true yes."
+>
+  <Hero
+    heading="The Sacred No"
+    lede="Reclaiming Your Energy and Voice"
+    surface="light"
+    spacing="compact"
+  >
+    <p>A boundary is not a punishment. It is information made visible.</p>
+    <p>
+      This doorway is for the woman whose yes has been doing too much work. Not because she is
+      weak. Because she became fluent at keeping rooms comfortable, and less fluent at telling
+      the truth in time.
+    </p>
+  </Hero>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="This may be for you if">
+        <p>Recognition is enough. You do not need a dramatic story to belong here.</p>
+      </SectionIntro>
+      <ul class="fit">
+        <li>You say yes and feel the cost later, often as irritability you then apologize for.</li>
+        <li>A boundary arrives as a paragraph, a justification, a small trial in your own defense.</li>
+        <li>Someone else's disappointment still registers in your body as evidence that you failed.</li>
+        <li>Anger shows up late, after a long season of being reasonable, and then you distrust it.</li>
+        <li>Keeping the peace has become a practice that quietly leaves you out of the arrangement.</li>
+        <li>You agree before you have consulted yourself, then spend days recovering from your own mouth.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What your anger may be protecting">
+        <p>Anger can carry information. That does not make every surge of it accurate, or kind, or ready to be spoken raw.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          Sometimes anger is the last messenger still willing to report a violated limit. A need
+          that was treated as optional. A truth you swallowed to remain easy to love. Years of
+          over-giving that were praised as character.
+        </p>
+        <p>
+          The work is not to crown anger as a personality, or to exile it as unspiritual. It is to
+          listen for what it has been trying to keep intact: time, dignity, energy, a private
+          inner vote. Then to decide, with more precision than heat, what to do with that news.
+        </p>
+      </div>
+      <PullQuote>
+        Information is not the same as instruction. Anger can tell the truth without getting to
+        drive.
+      </PullQuote>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container>
+      <SectionIntro heading="Boundary and retaliation">
+        <p>These are easy to confuse when you have been silent for a long time. They are not the same act.</p>
+      </SectionIntro>
+      <div class="split">
+        <Card variant="blush">
+          <h3>A boundary</h3>
+          <p>
+            Names what you will and will not participate in. It is about your side of the line:
+            your time, your body, your attention, your home, your work. It can be quiet. It can
+            be firm. It does not require the other person to suffer in order to be real.
+          </p>
+        </Card>
+        <Card>
+          <h3>Retaliation</h3>
+          <p>
+            Tries to make someone feel the cost they refused to see. It often looks like delayed
+            punishment, public exposure, or a no designed to wound. It can be understandable. It
+            still rearranges the mess instead of restoring you.
+          </p>
+        </Card>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What a Sacred No means">
+        <p>Not a brand of toughness. A return to proportion.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          A clean no uses fewer explanations. It can tolerate another person's disappointment
+          without immediately rushing in to manage it. It protects the yes that is actually
+          available, so your warmth stops being a leak.
+        </p>
+        <p>
+          Self-respect here is practical: you choose, you communicate, and where a relationship
+          still matters, you repair without erasing the limit you just named. The goal is not to
+          win. It is to stop abandoning yourself in the name of being good.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container>
+      <SectionIntro heading="What we explore">
+        <p>The curriculum follows the places a woman's no usually goes missing.</p>
+      </SectionIntro>
+      <ul class="themes">
+        <li>Energetic leaks and the small yeses that drain a week</li>
+        <li>People-pleasing as a survival skill that outlived its usefulness</li>
+        <li>Guilt, and how it impersonates morality</li>
+        <li>Resentment as a delayed conversation with yourself</li>
+        <li>Over-functioning dressed as love, leadership, or competence</li>
+        <li>The clean no, and the clean yes it makes possible</li>
+        <li>Self-trust after years of checking the room first</li>
+        <li>Communication that is accurate without becoming a speech</li>
+        <li>Boundaries after a long apprenticeship in accommodation</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What this work is not">
+        <p>Clarity about the edges keeps the work honest.</p>
+      </SectionIntro>
+      <ul class="not">
+        <li>It is not permission to become cruel, or to confuse sharpness with sovereignty.</li>
+        <li>It is not automatic estrangement, and it does not treat cutting people off as a spiritual credential.</li>
+        <li>It is not a method for manipulating someone into treating you better.</li>
+        <li>It is not therapy, diagnosis, or a substitute for mental health care.</li>
+        <li>It is not legal advice, safety planning, or counsel about leaving or staying.</li>
+        <li>It does not instruct you to end a relationship. That choice, if it comes, remains yours.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="How this work is offered">
+        <p>The form can change. The spine does not.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          The Sacred No may appear as a focused workshop, a short course, or private integration
+          support. Dates, duration, and enrollment details are shared when an offering is active.
+          If nothing is open right now, a fit conversation is the honest next step.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Questions">
+        <p>Direct answers. No performance of mystery.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="Will I have to confront someone?">
+          <p>
+            No. Confrontation is not a requirement. The work may help you notice a conversation
+            or limit that matters. Sometimes the first boundary is internal: knowing what you
+            actually want, delaying an automatic yes, or changing what you participate in.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if I feel guilty afterward?">
+          <p>
+            Guilt can appear when a familiar pattern changes. Feeling guilty does not
+            automatically mean the boundary was wrong. The work includes learning to distinguish
+            genuine responsibility from the discomfort of disappointing someone.
+          </p>
+        </FaqItem>
+        <FaqItem question="Is anger required?">
+          <p>
+            No. Some women arrive angry, others exhausted, numb, resentful, confused, or simply
+            done. Anger can be one source of information. It is not an entry requirement, and it
+            is not a goal.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if I am in a difficult relationship?">
+          <p>
+            The work can support clarity about your limits, communication, and choices. It does
+            not tell you whether to stay or leave. If there is coercion, violence, abuse, or
+            immediate safety risk, appropriate professional or local support is needed beyond
+            the scope of this work.
+          </p>
+        </FaqItem>
+        <FaqItem question="Is this therapy?">
+          <p>
+            No. The Sacred No is coaching and educational work focused on awareness, boundaries,
+            communication, and self-trust. It is not psychotherapy, diagnosis, crisis care, or a
+            substitute for mental health treatment.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="When you are ready for a cleaner no"
+    primary={{
+      label: 'Book a Fit Conversation',
+      href: withBase('/book-a-conversation'),
+    }}
+    secondary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+  >
+    <p>
+      There is no open Sacred No enrollment on this page. A fit conversation is how we locate
+      whether this doorway, another pathway, or a different kind of support is the honest next
+      step.
+    </p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: var(--measure);
+  }
+
+  .fit,
+  .themes,
+  .not {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: var(--measure);
+  }
+
+  .fit li,
+  .themes li,
+  .not li {
+    position: relative;
+    margin: 0 0 var(--space-sm);
+    padding-left: 1.15rem;
+  }
+
+  .fit li:last-child,
+  .themes li:last-child,
+  .not li:last-child {
+    margin-bottom: 0;
+  }
+
+  .fit li::before,
+  .themes li::before,
+  .not li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border: var(--border-width) solid var(--border-accent);
+    border-radius: 50%;
+  }
+
+  .split {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .split h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  @media (min-width: 768px) {
+    .split {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .themes {
+      columns: 2;
+      column-gap: var(--space-xl);
+    }
+
+    .themes li {
+      break-inside: avoid;
+    }
+  }
+</style>

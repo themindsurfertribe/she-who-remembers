@@ -1,0 +1,61 @@
+---
+interface CompareItem {
+  name: string;
+  line: string;
+}
+
+interface Props {
+  items: CompareItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<div class:list={['compare', className]}>
+  {
+    items.map((item) => (
+      <article class="compare__item">
+        <h3 class="compare__name">{item.name}</h3>
+        <p class="compare__line">{item.line}</p>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .compare {
+    display: grid;
+    gap: var(--space-lg);
+    margin: 0;
+    padding: 0;
+  }
+
+  .compare__item {
+    min-width: 0;
+    margin: 0;
+    padding: var(--space-md) 0 0;
+    border-top: var(--border-width) solid var(--gold-border);
+  }
+
+  .compare__name {
+    margin-bottom: var(--space-2xs);
+    overflow-wrap: break-word;
+    font-size: var(--text-h3);
+  }
+
+  .compare__line {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--text-quote);
+    font-style: italic;
+    line-height: var(--leading-heading);
+  }
+
+  @media (min-width: 768px) {
+    .compare {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-xl);
+    }
+  }
+</style>

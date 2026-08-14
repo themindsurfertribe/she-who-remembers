@@ -1,9 +1,351 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import SectionIntro from '../../components/SectionIntro.astro';
+import TopicCluster from '../../components/TopicCluster.astro';
+import FaqList from '../../components/FaqList.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import SiteCta from '../../components/SiteCta.astro';
+import TextLink from '../../components/TextLink.astro';
+import { withBase } from '../../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="The Remembering | She Who Remembers"
-  description="Placeholder page for the course The Remembering."
-  heading="The Remembering"
-/>
+  description="A deeper journey for women in identity transition: rebuilding self-trust, embodiment, and inner coherence without performing a new personality."
+>
+  <Hero
+    heading="The Remembering"
+    lede="A Deeper Return to Self"
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      This is the flagship journey of She Who Remembers. Not a makeover. A longer return to the
+      woman who is no longer willing to live as a well-managed edition of herself.
+    </p>
+  </Hero>
+
+  <Section surface="dark" atmosphere={true} spacing="compact">
+    <Container width="narrow">
+      <blockquote class="core-question">
+        Who are you when you stop organizing your life around the version of you that everyone
+        else already understands?
+      </blockquote>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="The threshold">
+        <p>
+          An old calendar can still fill. People can still be loved. Work can still get done.
+          And underneath the competence, the shape of the life no longer feels fully true.
+        </p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          This does not have to look like crisis. It can look like a quiet mismatch that has
+          become harder to talk yourself out of. The life is real. It is also no longer the
+          whole of you. The Remembering is for that in-between: not collapsed, not finished,
+          unwilling to keep performing a self that has already moved.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Who this is for">
+        <p>Women whose inner weather has changed, with or without a public plot twist.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          Some arrive in the middle of an obvious passage: a relationship ending or rearranging,
+          burnout that rest did not fix, a career that changed shape, caregiving that rewrote
+          the days, motherhood or the years after it, aging that will not stay cosmetic. Some
+          arrive through spiritual questions that outgrew the language they were given.
+        </p>
+        <p>
+          Others have no event to point to. Only a growing sense that the woman the world still
+          knows how to address is not the one doing the living. That is enough.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="What often brings women here">
+        <p>Not a diagnosis. A pattern of self-distance that has become expensive.</p>
+      </SectionIntro>
+      <ul class="fit">
+        <li>Self-trust thinned by too many second opinions, including your own overthinking.</li>
+        <li>Intuition noticed, then overridden, then treated as unreliable because it was ignored.</li>
+        <li>Relational roles that still run the room: the fixer, the translator, the one who can.</li>
+        <li>Heat in the body with no clean sentence attached to it yet.</li>
+        <li>Creativity that went dormant while everything else stayed impressive.</li>
+        <li>Over-functioning that looks like devotion from the outside and exile from the inside.</li>
+        <li>A body that is asked to carry the life, but is rarely asked before a decision is made.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container>
+      <SectionIntro heading="What the journey holds">
+        <p>
+          These are fields of practice, not badges. You will not be asked to master all of them
+          in order to belong.
+        </p>
+      </SectionIntro>
+      <div class="topics">
+        <TopicCluster title="Sovereignty">Identity, choice, and self-command: the return of an inner vote.</TopicCluster>
+        <TopicCluster title="Shadow">Anger, jealousy, fear, and the truths that were sent underground to keep you acceptable.</TopicCluster>
+        <TopicCluster title="Embodiment">Body, breath, and presence: becoming legible to yourself in real time.</TopicCluster>
+        <TopicCluster title="Voice">Expression, boundaries, and speech that does not rush to make itself palatable.</TopicCluster>
+        <TopicCluster title="Intuition">Discernment, evidence, timing, and self-trust that can tell anxiety from knowing.</TopicCluster>
+        <TopicCluster title="Relationship">Connection that does not require you to disappear in order to stay loved.</TopicCluster>
+        <TopicCluster title="Creation">Desire, making, and living expression that is not a performance of healing.</TopicCluster>
+        <TopicCluster title="Legacy">What becomes possible when repair is no longer the center of identity.</TopicCluster>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Five movements">
+        <p>
+          The Remembering sits inside a larger path. The movements are named here so you can
+          feel the weather, not so you can memorize a syllabus.
+        </p>
+      </SectionIntro>
+      <ol class="movements">
+        <li>
+          <span>Awakening.</span> Catching the places you stopped consulting yourself.
+        </li>
+        <li>
+          <span>Descent.</span> Meeting what was hidden to remain acceptable.
+        </li>
+        <li>
+          <span>Embodiment.</span> Letting insight arrive in breath, voice, and choice.
+        </li>
+        <li>
+          <span>Ascent.</span> Returning life to the center once more of you is available.
+        </li>
+        <li>
+          <span>Legacy.</span> Asking what continues because you became conscious.
+        </li>
+      </ol>
+      <p class="work-link">
+        The fuller philosophy lives on
+        <TextLink href={withBase('/the-work')}>The Work</TextLink>.
+        This page is the doorway, not a second map.
+      </p>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What participation feels like">
+        <p>Serious work can still leave room for a human nervous system.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          Expect reflection, embodied practice, and choices you can actually use on a Tuesday.
+          There is no forced disclosure, and no prize for performing vulnerability. Humor is
+          allowed. So is privacy. You do not need a spiritual belief system to take part. The
+          invitation is integration: bringing what you know into how you speak, rest, create,
+          and stay in relationship without abandoning yourself.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="What this work is not">
+        <p>The edges matter. They keep the journey from becoming a costume.</p>
+      </SectionIntro>
+      <ul class="not">
+        <li>It is not therapy, diagnosis, or a treatment plan.</li>
+        <li>It is not a school for performing femininity, softness, or desirability.</li>
+        <li>It is not training in polarity, seduction, or relationship manipulation.</li>
+        <li>It is not a claim of spiritual superiority, and it does not sell guaranteed awakening.</li>
+        <li>It does not require you to narrate trauma in order to be seen as doing the work.</li>
+        <li>It will not ask you to make the guide more important than your own discernment.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="How this work is offered">
+        <p>Same spine. Different rooms.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          The Remembering may take the form of a group journey, private mentorship, or an
+          immersive experience. Specific dates and structures are shared when an offering is
+          open. Until then, a fit conversation is how we discern whether group, private, or
+          another doorway is the right next step.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Questions">
+        <p>What people usually want to know before they step closer.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="Do I need to read the book first?">
+          <p>
+            No. The book can deepen the language and context. Participation does not depend on
+            completing assigned reading.
+          </p>
+        </FaqItem>
+        <FaqItem question="Do I need to identify as spiritual?">
+          <p>
+            No. Spiritual language may appear, but belief is not required. Curiosity,
+            discernment, and a willingness to examine your own experience are enough.
+          </p>
+        </FaqItem>
+        <FaqItem question="Will I have to talk about trauma?">
+          <p>
+            No. There is no requirement to disclose traumatic experience or prove vulnerability.
+            You choose what you share. Material that requires trauma treatment belongs with an
+            appropriately qualified professional.
+          </p>
+        </FaqItem>
+        <FaqItem question="Will I have to talk about sex?">
+          <p>
+            No. Embodiment, intimacy, sensuality, and body sovereignty may be discussed
+            conceptually. Personal sexual disclosure is never required.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if I do not believe in archetypes?">
+          <p>
+            That is fine. Archetypes can be treated as metaphors or lenses rather than literal
+            truths. Use what creates useful reflection and leave what does not.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if I am already in therapy?">
+          <p>
+            Therapy and this work may coexist when their roles stay clear. Therapy addresses
+            what belongs in clinical care. She Who Remembers focuses on reflection, embodiment,
+            self-trust, integration, and choice. It is not a substitute for treatment.
+          </p>
+        </FaqItem>
+        <FaqItem question="How do I choose group or private work?">
+          <p>
+            Group work can be useful when shared reflection and community matter. Private
+            guidance offers more individualized attention around a specific threshold. A fit
+            conversation can help determine which container makes more sense.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If this is the season of return"
+    primary={{ label: 'Book a Fit Conversation', href: withBase('/book-a-conversation') }}
+    secondary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+  >
+    <p>
+      You do not need a polished reason. Bring the mismatch you can already feel. We will
+      discern together whether The Remembering is the right room.
+    </p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .core-question {
+    margin: 0;
+    padding: 0;
+    max-width: var(--measure);
+    border: 0;
+    font-size: var(--text-quote);
+    font-style: italic;
+    line-height: var(--leading-heading);
+    text-wrap: pretty;
+  }
+
+  .prose {
+    max-width: var(--measure);
+  }
+
+  .fit,
+  .not {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: var(--measure);
+  }
+
+  .fit li,
+  .not li {
+    position: relative;
+    margin: 0 0 var(--space-sm);
+    padding-left: 1.15rem;
+  }
+
+  .fit li:last-child,
+  .not li:last-child {
+    margin-bottom: 0;
+  }
+
+  .fit li::before,
+  .not li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border: var(--border-width) solid var(--border-accent);
+    border-radius: 50%;
+  }
+
+  .topics {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .movements {
+    margin: 0 0 var(--space-lg);
+    padding: 0;
+    list-style: none;
+    max-width: var(--measure);
+  }
+
+  .movements li {
+    margin: 0 0 var(--space-sm);
+    color: var(--text-muted);
+  }
+
+  .movements li:last-child {
+    margin-bottom: 0;
+  }
+
+  .movements span {
+    color: var(--text);
+    font-family: var(--font-display);
+    letter-spacing: var(--tracking-heading);
+  }
+
+  .work-link {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .topics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-xl);
+    }
+  }
+</style>

@@ -1,9 +1,332 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import SectionIntro from '../../components/SectionIntro.astro';
+import Card from '../../components/Card.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import FaqList from '../../components/FaqList.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import SiteCta from '../../components/SiteCta.astro';
+import { withBase } from '../../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Legacy in Motion | She Who Remembers"
-  description="Placeholder page for the course Legacy in Motion."
-  heading="Legacy in Motion"
-/>
+  description="A pathway for women asking what now: lived wisdom, contribution, and purpose that does not require fame, a platform, or a new identity to prove."
+>
+  <Hero
+    heading="Legacy in Motion"
+    lede="Becoming the Ancestor You Needed"
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      At a certain point the central question changes. Not{' '}
+      <em>What happened to me?</em>
+      {' '}but{' '}
+      <em>What have I learned that is worth carrying forward?</em>
+    </p>
+    <p>
+      This doorway is for that turn: when inner work has already mattered, and life is asking
+      for a more honest form of continuation.
+    </p>
+  </Hero>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="When achievement is no longer the question">
+        <p>Success can complete a chapter and still leave a woman under-occupied at the soul level.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          You may have built the career, kept the family standing, survived the demanding years,
+          or become the person others still call when something needs handling. The résumé is
+          not empty. The restlessness is not ingratitude. It is often unused maturity looking
+          for a truer assignment than more proving.
+        </p>
+        <p>
+          Legacy in Motion is for the season after the climb, or beside it: identity after
+          caregiving, life after a long professional intensity, creative hunger that will not
+          accept another productivity lecture. Contribution here is not a new performance of
+          worth. It is what becomes possible when you no longer need the work to justify you.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What ends with you">
+        <p>
+          Some inheritances deserve a dignified ending. Naming them is not the same as
+          prosecuting the people who handed them over.
+        </p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          Families teach silence. Workplaces reward over-functioning. Cultures assign women the
+          unpaid emotional labor and then call it nature. You may recognize a role you were
+          given before you could consent: the peacemaker, the achiever, the one who does not
+          need much.
+        </p>
+        <p>
+          Ending a pattern with you can be as unglamorous as telling the truth sooner, resting
+          without apology, or refusing to pass along a belief that once kept you safe and now
+          keeps you small. This is not a hunt for villains. It is stewardship. Someone had to
+          be the place the repetition stopped.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="What continues through you">
+        <p>Legacy is not only interruption. It is also transmission.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          What you have learned about presence, about how to stay in a hard conversation, about
+          making something that did not exist yesterday, about values that can survive contact
+          with real life: these can move through mentorship, friendship, family culture, art,
+          and the way you occupy a room.
+        </p>
+        <p>
+          Help is not the same as a campaign to save anyone. What you carry forward can be
+          quieter than a platform and still change the weather for one person who needed a
+          different example.
+        </p>
+      </div>
+      <PullQuote>
+        The most honest continuation is often the one that never asked to be impressive.
+      </PullQuote>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container>
+      <SectionIntro heading="Living wisdom">
+        <p>Information can be borrowed. Wisdom has to be inhabited.</p>
+      </SectionIntro>
+      <div class="split">
+        <Card>
+          <h3>Information</h3>
+          <p>
+            What you can summarize, recommend, or repeat. Insight you have read, frameworks you
+            can name, advice that still sounds right in someone else's voice. Useful. Incomplete
+            until it has been walked.
+          </p>
+        </Card>
+        <Card variant="blush">
+          <h3>Lived wisdom</h3>
+          <p>
+            What remains after you have paid for the lesson in time, error, repair, and
+            unremarkable hours. It tends to be specific, humble, and strangely practical. It
+            does not need to announce itself as teaching in order to teach.
+          </p>
+        </Card>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Creation and mentorship">
+        <p>There is more than one honest shape for a life that has become conscious.</p>
+      </SectionIntro>
+      <ul class="themes">
+        <li>Art, writing, and making that is not a branding exercise</li>
+        <li>A business that carries values without turning you into a mascot</li>
+        <li>Family culture: what is spoken, what is no longer required</li>
+        <li>Mentorship that returns people to themselves</li>
+        <li>Friendship as a serious form of influence</li>
+        <li>Teaching, gathering, and community that does not demand devotion</li>
+        <li>Ordinary acts of courage that never become content</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Legacy without fame">
+        <p>Visibility is a tool some women use. It is not the proof of a life that mattered.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          You do not need followers, a public platform, children, awards, or a leadership title
+          in order to leave something true behind. A private life can still interrupt a pattern,
+          hand someone a better sentence, or make a piece of work that outlives the mood in
+          which it was made.
+        </p>
+        <p>
+          If you do want a more public form, this pathway will not confuse that desire with
+          destiny, or treat shyness as a spiritual failure. Scale is optional. Integrity is not.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Who it fits">
+        <p>Less a demographic than a posture toward what comes next.</p>
+      </SectionIntro>
+      <ul class="fit">
+        <li>You have already done meaningful inner work, and you can feel a next question forming.</li>
+        <li>You want contribution that does not require you to erase yourself in order to be useful.</li>
+        <li>You want lived experience to become something someone else can actually use.</li>
+        <li>You are willing to let purpose be specific, even if it never looks impressive from a distance.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What this work is not">
+        <p>No pressure campaign disguised as calling.</p>
+      </SectionIntro>
+      <ul class="not">
+        <li>It is not a requirement to build a personal brand, or to become public.</li>
+        <li>It is not a mandate to mentor, teach, or take responsibility for other women's lives.</li>
+        <li>It is not pressure to forgive a family, or to rewrite harm as a gift.</li>
+        <li>It is not a script to become a mother, a grandmother, or an archetypal elder on cue.</li>
+        <li>It will not treat your next chapter as a product launch.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="How this work is offered">
+        <p>Forms stay flexible until an offering is actually open.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          Legacy in Motion may appear as a seminar, an advanced group journey, or private legacy
+          work. There is no public calendar or fee listed here yet. When a container is ready,
+          the details will be named plainly. Until then, a fit conversation is the right door.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Questions">
+        <p>The practical doubts this doorway tends to raise.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="Do I need to be over 40?">
+          <p>
+            No. The work is organized around a stage of inquiry, not a birthday. It may
+            resonate especially in maturity, but the central question is whether your attention
+            is shifting toward contribution, continuation, and what comes next.
+          </p>
+        </FaqItem>
+        <FaqItem question="Does legacy mean children?">
+          <p>
+            No. Children are one possible form of continuation, not the definition of legacy.
+            Legacy can move through friendship, art, work, mentorship, community, values,
+            relationships, or private choices.
+          </p>
+        </FaqItem>
+        <FaqItem question="Do I need a public platform?">
+          <p>
+            No. Visibility is optional. A private life can still transmit wisdom, interrupt
+            patterns, influence people, and create something worth carrying forward.
+          </p>
+        </FaqItem>
+        <FaqItem question="Is this for business owners?">
+          <p>
+            It can be, but it is not a business program. A business may be one place lived
+            wisdom takes form. So can family culture, writing, art, mentorship, community,
+            friendship, or something entirely private.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if I still have healing work to do?">
+          <p>
+            That does not disqualify you. Legacy does not require perfect completion. The
+            question is whether contribution can begin without using it to avoid unfinished
+            personal work.
+          </p>
+        </FaqItem>
+        <FaqItem question="Can legacy be private?">
+          <p>
+            Yes. Some of the most consequential forms of legacy are never branded, monetized,
+            posted, or publicly recognized.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If the question has become what now"
+    primary={{ label: 'Book a Fit Conversation', href: withBase('/book-a-conversation') }}
+    secondary={{ label: 'Explore The Work', href: withBase('/the-work') }}
+  >
+    <p>
+      Bring the restlessness that is not a complaint. We will see whether Legacy in Motion is
+      the right room, or whether another part of the path still wants your attention.
+    </p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: var(--measure);
+  }
+
+  .fit,
+  .themes,
+  .not {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: var(--measure);
+  }
+
+  .fit li,
+  .themes li,
+  .not li {
+    position: relative;
+    margin: 0 0 var(--space-sm);
+    padding-left: 1.15rem;
+  }
+
+  .fit li:last-child,
+  .themes li:last-child,
+  .not li:last-child {
+    margin-bottom: 0;
+  }
+
+  .fit li::before,
+  .themes li::before,
+  .not li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border: var(--border-width) solid var(--border-accent);
+    border-radius: 50%;
+  }
+
+  .split {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .split h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  @media (min-width: 768px) {
+    .split {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

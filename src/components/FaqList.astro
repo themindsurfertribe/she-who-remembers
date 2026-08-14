@@ -1,0 +1,19 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['faq-list', className]}>
+  <slot />
+</div>
+
+<style>
+  .faq-list {
+    max-width: var(--measure);
+    margin: 0;
+    border-top: var(--border-width) solid var(--gold-border);
+  }
+</style>

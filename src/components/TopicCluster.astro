@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  class?: string;
+}
+
+const { title, class: className } = Astro.props;
+---
+
+<article class:list={['topic', className]}>
+  <h3 class="topic__title">{title}</h3>
+  <div class="topic__body">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .topic {
+    min-width: 0;
+    padding-top: var(--space-sm);
+    border-top: var(--border-width) solid var(--gold-border);
+  }
+
+  .topic__title {
+    margin-bottom: var(--space-2xs);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    font-weight: 500;
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+  }
+
+  .topic__body {
+    color: var(--text-muted);
+  }
+
+  .topic__body :global(p) {
+    margin: 0;
+    color: var(--text-muted);
+  }
+</style>
