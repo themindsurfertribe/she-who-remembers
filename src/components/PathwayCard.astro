@@ -1,0 +1,44 @@
+---
+import Button from './Button.astro';
+import Eyebrow from './Eyebrow.astro';
+
+interface Props {
+  kicker: string;
+  heading: string;
+  ctaLabel: string;
+  ctaHref: string;
+  class?: string;
+}
+
+const { kicker, heading, ctaLabel, ctaHref, class: className } = Astro.props;
+---
+
+<article class:list={['pathway', className]}>
+  <Eyebrow>{kicker}</Eyebrow>
+  <h3 class="pathway__heading">{heading}</h3>
+  <div class="pathway__body">
+    <slot />
+  </div>
+  <Button variant="ghost" href={ctaHref}>{ctaLabel}</Button>
+</article>
+
+<style>
+  .pathway {
+    height: 100%;
+    padding-top: var(--space-md);
+    border-top: var(--border-width) solid var(--gold-border);
+  }
+
+  .pathway__heading {
+    margin-bottom: var(--space-sm);
+  }
+
+  .pathway__body {
+    margin-bottom: var(--space-md);
+    color: var(--text-muted);
+  }
+
+  .pathway__body :global(p) {
+    color: var(--text-muted);
+  }
+</style>

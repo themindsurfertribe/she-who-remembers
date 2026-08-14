@@ -1,9 +1,148 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import ThresholdBlock from '../components/ThresholdBlock.astro';
+import Divider from '../components/Divider.astro';
+import SiteCta from '../components/SiteCta.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
-  title="Begin Here | She Who Remembers"
-  description="Placeholder page for the Begin Here section of She Who Remembers."
-  heading="Begin Here"
-/>
+<BaseLayout
+  title="Where Are You Standing Right Now? | She Who Remembers"
+  description="A quiet way to locate your current threshold: boundaries, self-trust, identity, restlessness. Then choose a course or private guidance."
+>
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Where are you standing right now?" headingLevel="h1">
+        <p>
+          You do not have to know which course you need. Start with what feels familiar. The name
+          of the work can come later. The texture of this season is enough.
+        </p>
+      </SectionIntro>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <ThresholdBlock
+        number="01"
+        quote="I am tired of being the strong one."
+        pathways={[
+          { label: 'The Remembering', href: withBase('/courses/the-remembering') },
+          { label: 'Private Guidance', href: withBase('/private-guidance') },
+        ]}
+      >
+        <p>
+          You carry. You manage. You anticipate the next need before anyone names it. Solving has
+          become so fluent it can look like personality. Competence is a real gift. It can also
+          become a room with no windows.
+        </p>
+        <p>
+          Receiving may feel unfamiliar. Self-contact may feel like a luxury you cannot justify.
+          The question is not whether you are capable. It is whether capability has replaced
+          consultation with yourself.
+        </p>
+      </ThresholdBlock>
+
+      <Divider variant="ornament" />
+
+      <ThresholdBlock
+        number="02"
+        quote="I am tired of everyone's shit."
+        pathways={[{ label: 'The Sacred No', href: withBase('/courses/the-sacred-no') }]}
+      >
+        <p>
+          There is a moment when patience stops being virtue and starts being self-erasure. You
+          can love people and still be done with the unpaid emotional labor, the ignored nos, the
+          way your time is treated as public property.
+        </p>
+        <p>
+          Resentment is often a delayed boundary. Anger can be information. The work is not to
+          become cruel. It is to tell the truth before the truth has to shout. A clean no is
+          different from retaliation. One restores you. The other just rearranges the mess.
+        </p>
+      </ThresholdBlock>
+
+      <Divider variant="ornament" />
+
+      <ThresholdBlock
+        number="03"
+        quote="I don't recognize myself anymore."
+        pathways={[{ label: 'The Remembering', href: withBase('/courses/the-remembering') }]}
+      >
+        <p>
+          Divorce. Motherhood. Caregiving. Burnout. A career that changed shape. Aging. Grief. An
+          identity that no longer answers to the old name. Or no dramatic event at all: only a
+          slow, honest mismatch between the woman you are becoming and the one the world still
+          expects.
+        </p>
+        <p>
+          Not recognizing yourself is not always collapse. Sometimes it is the first accurate
+          sighting in years.
+        </p>
+      </ThresholdBlock>
+
+      <Divider variant="ornament" />
+
+      <ThresholdBlock
+        number="04"
+        quote="I know what I should do. I just don't trust myself."
+        pathways={[
+          { label: 'The Remembering', href: withBase('/courses/the-remembering') },
+          { label: 'Private Guidance', href: withBase('/private-guidance') },
+        ]}
+      >
+        <p>
+          You can be intelligent and still outsource your knowing. Advice becomes a habit. Another
+          podcast, another opinion, another round of overthinking dressed as diligence. Intuition
+          and anxiety can feel similar in the body until discernment learns the difference.
+        </p>
+        <p>
+          Self-trust is not stubbornness. It is the capacity to hear yourself without immediately
+          putting the decision up for committee.
+        </p>
+      </ThresholdBlock>
+
+      <Divider variant="ornament" />
+
+      <ThresholdBlock
+        number="05"
+        quote="My life is fine. So why am I restless?"
+        pathways={[{ label: 'Legacy in Motion', href: withBase('/courses/legacy-in-motion') }]}
+      >
+        <p>
+          Gratitude and expansion are not enemies. You can love what you have and still feel the
+          next true thing knocking. Restlessness is not always a character flaw. Sometimes it is
+          unused life, asking for a more honest assignment.
+        </p>
+      </ThresholdBlock>
+
+      <Divider variant="ornament" />
+
+      <ThresholdBlock
+        number="06"
+        quote="I want support, but I don't want another guru."
+        pathways={[{ label: 'Private Guidance', href: withBase('/private-guidance') }]}
+      >
+        <p>
+          The purpose of guidance is not to make the guide more important. It is to make your own
+          discernment increasingly available to you. Support should return you to yourself, not
+          replace the inner authority you came here to recover.
+        </p>
+      </ThresholdBlock>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="You do not need to know exactly what you need before beginning."
+    primary={{ label: 'Book a Fit Conversation', href: withBase('/book-a-conversation') }}
+    secondary={{ label: 'Explore the Work', href: withBase('/the-work') }}
+  >
+    <p>
+      If more than one threshold sounds like you, that is ordinary. Choose the sentence that
+      feels most true today. The rest can wait.
+    </p>
+  </SiteCta>
+</BaseLayout>

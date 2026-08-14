@@ -1,10 +1,309 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import PathwayCard from '../components/PathwayCard.astro';
+import PullQuote from '../components/PullQuote.astro';
+import SiteCta from '../components/SiteCta.astro';
+import Button from '../components/Button.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="She Who Remembers"
-  description="Placeholder homepage for the She Who Remembers website."
-  heading="She Who Remembers"
-  note="This is a placeholder homepage. The global site shell is in place; page content will be added in a later gate."
-/>
+  description="A body of work for women in transition: remembering sovereignty, self-trust, and the life that still belongs to you."
+>
+  <Hero
+    heading="She Who Remembers"
+    lede="You are not here to become someone else. You are here to remember the woman you stopped consulting."
+    surface="dark"
+    atmosphere={true}
+    spacing="compact"
+    primary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+    secondary={{ label: 'Explore the Work', href: withBase('/the-work') }}
+  >
+    <p>
+      There comes a point when the life that once made sense begins to feel strangely small.
+    </p>
+    <p>
+      Nothing may be catastrophically wrong. You may still be functioning. Still loving people.
+      Still getting things done. Still being the one everyone counts on.
+    </p>
+    <p><em>Where did I go?</em></p>
+    <p>
+      She Who Remembers is a body of work for women standing at that threshold. Not because you
+      need fixing. Because something true is asking to be heard again.
+    </p>
+  </Hero>
+
+  <Section surface="light">
+    <Container>
+      <SectionIntro eyebrow="Recognition" heading="Maybe you recognize her">
+        <p>She is not in crisis. She is in contact with a quieter dissatisfaction.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          She is the strong one. The reliable one. The woman who keeps the peace because she can,
+          and because no one has asked whether it costs her.
+        </p>
+        <p>
+          Competence has become a kind of camouflage. She knows how to anticipate, how to manage,
+          how to make the room easier. What she has less practice with is pausing long enough to
+          consult herself.
+        </p>
+        <p>
+          There is a particular loneliness in being capable. An old identity can still function
+          after it has stopped fitting.
+        </p>
+        <p>
+          Beneath the roles and everything she has learned to carry, she may override a private no
+          with a public yes and call it maturity. She may sense that the life she built is real,
+          and also that it is no longer the whole of her.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="You are not starting over">
+        <p>
+          This is not a return to an earlier, more innocent version of you. The years already lived
+          are not a detour from the work. They are the work.
+        </p>
+      </SectionIntro>
+      <ul class="rhythm">
+        <li>You have loved.</li>
+        <li>Lost.</li>
+        <li>Chosen badly.</li>
+        <li>Chosen beautifully.</li>
+        <li>Stayed too long.</li>
+        <li>Left.</li>
+        <li>Held people together.</li>
+        <li>Fallen apart.</li>
+        <li>Built things.</li>
+        <li>Ended things.</li>
+        <li>Forgiven.</li>
+        <li>Changed.</li>
+      </ul>
+      <PullQuote>
+        The woman emerging now does not need innocence back. She needs authorship.
+      </PullQuote>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container>
+      <SectionIntro eyebrow="Pathways" heading="Three doors into the work">
+        <p>
+          You do not have to know the whole map. These are places to enter, not products to collect.
+        </p>
+      </SectionIntro>
+      <div class="pathway-grid">
+        <PathwayCard
+          kicker="The Sacred No"
+          heading="Reclaim Your Voice"
+          ctaLabel="Explore The Sacred No"
+          ctaHref={withBase('/courses/the-sacred-no')}
+        >
+          <p>
+            For the woman who has overexplained, kept the peace, and felt resentment gather in the
+            places a clean yes should live. A boundary is not a performance. It is a return to
+            accuracy.
+          </p>
+        </PathwayCard>
+        <PathwayCard
+          kicker="The Remembering"
+          heading="Reclaim Yourself"
+          ctaLabel="Explore The Remembering"
+          ctaHref={withBase('/courses/the-remembering')}
+        >
+          <p>
+            For identity in motion: sovereignty, shadow, embodiment, intuition, voice, creativity,
+            and the slow rebuilding of self-trust. Not a new personality. A reunion with the one
+            who was never gone.
+          </p>
+        </PathwayCard>
+        <PathwayCard
+          kicker="Legacy in Motion"
+          heading="Reclaim Your Purpose"
+          ctaLabel="Explore Legacy in Motion"
+          ctaHref={withBase('/courses/legacy-in-motion')}
+        >
+          <p>
+            For the deeper <em>what now</em>: living wisdom, contribution, mentorship, and the
+            ordinary influence of a life that has become conscious. Purpose here is not a brand.
+            It is a way of continuing.
+          </p>
+        </PathwayCard>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What Divine Feminine means here">
+        <p>This is not femininity as performance.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>You do not need to become softer, prettier, more mysterious, more sexually magnetic, more agreeable, more passive, or more desirable in order to belong to yourself.</p>
+        <p>
+          Divine Feminine, in this work, names capacities that have often been dismissed as
+          impractical: intuition, receptivity, emotional awareness, creativity, embodiment,
+          relationship, and flow. They are not costumes. They are ways of knowing.
+        </p>
+        <p>
+          They exist alongside discernment, structure, protection, direction, and grounded action.
+          The point is not to exile one set in order to prove the other.
+        </p>
+      </div>
+      <PullQuote>
+        Wholeness does not ask you to choose between your softness and your strength.
+      </PullQuote>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="You already know more than you think">
+        <p>Wisdom is not waiting in a future version of you. It has been accruing in the life you have already lived.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>You know the relationship you would never enter again. The silence you no longer confuse with peace. The exhaustion you stopped calling strength.</p>
+        <p>You know the body signal you once ignored, and what it cost. You know the no that protected something tender. You know the life you built before realizing another life was possible, and that knowledge is not a failure of gratitude. It is information.</p>
+      </div>
+      <ol class="four">
+        <li>Listen.</li>
+        <li>Discern.</li>
+        <li>Choose.</li>
+        <li>Live.</li>
+      </ol>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container>
+      <SectionIntro eyebrow="Orientation" heading="Ways to work together">
+        <p>There is more than one way to begin. None of them require you to become a devotee.</p>
+      </SectionIntro>
+      <ul class="ways">
+        <li>
+          <h3>Read</h3>
+          <p>Begin privately with <em>She Who Remembers</em>.</p>
+        </li>
+        <li>
+          <h3>Experience</h3>
+          <p>Join a workshop, course, circle, or immersive journey.</p>
+        </li>
+        <li>
+          <h3>Be guided</h3>
+          <p>Work privately with Lala through individualized guidance.</p>
+        </li>
+        <li>
+          <h3>Continue</h3>
+          <p>Return through advanced work, integration, or legacy experiences.</p>
+        </li>
+      </ul>
+      <div class="ways__cta">
+        <Button href={withBase('/begin-here')}>Find Your Door</Button>
+      </div>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="A quieter place"
+    primary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+  >
+    <p>Perhaps you do not need another answer. Perhaps you need a place quiet enough to hear your own.</p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: var(--measure);
+  }
+
+  .rhythm {
+    margin: 0 0 var(--space-lg);
+    padding: 0;
+    list-style: none;
+    font-size: var(--text-quote);
+    font-style: italic;
+    line-height: var(--leading-heading);
+  }
+
+  .rhythm li + li {
+    margin-top: 0.15rem;
+  }
+
+  .pathway-grid {
+    display: grid;
+    gap: var(--space-xl);
+    margin: 0;
+  }
+
+  .ways {
+    display: grid;
+    gap: var(--space-xl);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ways li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ways h3 {
+    margin-bottom: var(--space-2xs);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+  }
+
+  .ways p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .ways__cta {
+    margin-top: var(--space-xl);
+  }
+
+  .four {
+    display: grid;
+    gap: var(--space-sm);
+    margin: var(--space-lg) 0 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    letter-spacing: var(--tracking-heading);
+  }
+
+  @media (min-width: 720px) {
+    .pathway-grid,
+    .ways {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .four {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pathway-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

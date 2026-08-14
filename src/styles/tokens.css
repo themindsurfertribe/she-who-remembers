@@ -10,7 +10,7 @@
   --color-blue: #1e3a6d;
   --color-charcoal: #1a1a1a;
 
-  /* Supporting tints and shades — replaceable without touching components */
+  /* Supporting tints and shades: replaceable without touching components */
   --color-ivory: #f7f4ee;
   --color-sand: #e9dfc6;
   --color-gold-deep: #b8942b;
@@ -26,7 +26,7 @@
   --color-mist: #c5bdb0;
 
   /* --------------------------------------------------
-     Semantic color — Light Editorial (default)
+     Semantic color: Light Editorial (default)
      -------------------------------------------------- */
   --surface: var(--color-cream);
   --surface-raised: var(--color-ivory);

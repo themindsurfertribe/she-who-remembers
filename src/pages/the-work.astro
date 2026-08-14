@@ -1,9 +1,147 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import MovementSection from '../components/MovementSection.astro';
+import Divider from '../components/Divider.astro';
+import SiteCta from '../components/SiteCta.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
-  title="The Work | She Who Remembers"
-  description="Placeholder page for The Work section of She Who Remembers."
-  heading="The Work"
-/>
+<BaseLayout
+  title="The She Who Remembers Path | She Who Remembers"
+  description="The philosophy behind the work: sovereignty, shadow, embodiment, living expression, and legacy. A path for women returning to self-trust."
+>
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="The She Who Remembers path" headingLevel="h1">
+        <p>
+          This is not a curriculum to complete. It is a sequence of inner movements many women
+          recognize once they have language for them. You may enter at any point. The path is
+          described here so the work has a spine, not so your life has to match a syllabus.
+        </p>
+      </SectionIntro>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <MovementSection
+        roman="I"
+        title="The Awakening"
+        subtitle="Reclaiming Sovereignty"
+        question="Where have I stopped consulting myself?"
+      >
+        <p>
+          Awakening, here, is rarely cinematic. It looks like catching yourself mid-sentence and
+          noticing that the yes you just offered did not come from you. It looks like identity
+          that has been organized around usefulness, around being the one who can, around a
+          version of power that never required your inner vote.
+        </p>
+        <p>
+          Sovereignty is not isolation. It is the return of authorship: in how you use intuition,
+          how you stand in sisterhood without disappearing, how creativity and resilience stop
+          being performances and become sources. In real life this can be as ordinary as pausing
+          before you agree, or as large as realizing the story you have been living was written
+          in someone else's hand.
+        </p>
+      </MovementSection>
+
+      <Divider />
+
+      <MovementSection
+        roman="II"
+        title="The Descent"
+        subtitle="Meeting What You Were Told to Hide"
+        question="What have I exiled in order to remain acceptable?"
+      >
+        <p>
+          What gets sent underground does not vanish. Jealousy, anger, desire, shame, the body's
+          unread signals, the boundary you swallowed: they wait. They run the schedule from
+          beneath the floorboards: sudden heat, sudden collapse, a no that arrives too late and
+          too sharp.
+        </p>
+        <p>
+          These experiences are not explored so they can control your life. They are explored so
+          they no longer have to control it from underground. The descent is not an invitation to
+          live inside the wound. It is a refusal to pretend the exiled parts are gone.
+        </p>
+      </MovementSection>
+
+      <Divider />
+
+      <MovementSection
+        roman="III"
+        title="The Embodiment"
+        subtitle="Becoming Legible to Yourself"
+      >
+        <p>
+          Insight is not embodiment. A person can intellectually understand every pattern and
+          still repeat it Tuesday afternoon. It shows up in the tone of a reply, in the way the
+          shoulders lift before a hard conversation, in the yes that leaks out before the body
+          has been asked.
+        </p>
+        <p>
+          Embodiment is slower and more specific: breath that is allowed to finish, voice that
+          does not rush to make itself palatable, presence that can stay when it would be easier
+          to manage the room. It shows up in choices and in relational behavior, not in a
+          vocabulary of awakening. You become legible to yourself when the inner signal and the
+          outer life stop arguing.
+        </p>
+      </MovementSection>
+
+      <Divider />
+
+      <MovementSection
+        roman="IV"
+        title="The Ascent"
+        subtitle="From Personal Work to Living Expression"
+      >
+        <p>
+          Eventually healing stops being the center of identity. Life returns. Not because the
+          work was a phase you outgrew, but because the work did its job: it made more of you
+          available for living.
+        </p>
+        <p>
+          Ascent looks like creating again. Leading without abandoning your own nervous system.
+          Relationships that can bear honesty. Contribution that is not a rescue mission.
+          Self-correction without self-contempt. Community that does not require you to stay
+          small. Inherited patterns noticed in time to choose differently: not perfectly,
+          differently.
+        </p>
+      </MovementSection>
+
+      <Divider />
+
+      <MovementSection
+        roman="V"
+        title="The Legacy"
+        subtitle="What Will Live Because You Lived?"
+      >
+        <p>
+          Legacy does not necessarily mean fame, followers, motherhood, or public visibility. It
+          can be quieter than that and still be exact: lived wisdom handed to one person who
+          needed it, a family pattern interrupted, a body of work made, a way of being in a room
+          that gives other people permission to tell the truth.
+        </p>
+        <p>
+          Mentorship, creation, contribution, ordinary influence: these are forms of
+          continuation. The question is not how large the life looks from a distance. The
+          question is what continues because someone became conscious.
+        </p>
+      </MovementSection>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If the path is the map, the courses are doors."
+    primary={{ label: 'Explore Courses & Experiences', href: withBase('/courses') }}
+    secondary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+  >
+    <p>
+      You do not have to walk every movement in order. If you already know the threshold you are
+      standing on, start there.
+    </p>
+  </SiteCta>
+</BaseLayout>

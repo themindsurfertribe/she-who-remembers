@@ -1,0 +1,61 @@
+---
+interface Props {
+  roman: string;
+  title: string;
+  subtitle: string;
+  question?: string;
+  class?: string;
+}
+
+const { roman, title, subtitle, question, class: className } = Astro.props;
+---
+
+<article class:list={['movement', className]}>
+  <p class="movement__roman">{roman}</p>
+  <h2 class="movement__title">{title}</h2>
+  <p class="movement__subtitle">{subtitle}</p>
+  {question && <p class="movement__question">{question}</p>}
+  <div class="movement__body">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .movement {
+    max-width: var(--measure);
+  }
+
+  .movement__roman {
+    margin: 0 0 var(--space-xs);
+    font-family: var(--font-ui);
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--border-accent);
+  }
+
+  .movement__title {
+    margin-bottom: var(--space-2xs);
+  }
+
+  .movement__subtitle {
+    margin-bottom: var(--space-md);
+    max-width: none;
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .movement__question {
+    margin-bottom: var(--space-md);
+    font-size: var(--text-quote);
+    font-style: italic;
+    line-height: var(--leading-heading);
+  }
+
+  .movement__body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

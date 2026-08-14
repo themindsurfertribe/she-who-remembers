@@ -1,4 +1,4 @@
-# She Who Remembers — Website
+# She Who Remembers website
 
 Official production website for **She Who Remembers**. This repository is a static-first Astro project intended for GitHub Pages.
 
@@ -23,7 +23,7 @@ public/              files copied as-is to the build
   images/misc/
   favicon/
 
-reference/           source material — not public website assets
+reference/           source material; not public website assets
 PROJECT-SOURCE/      copy, outlines, and notes for development
 ```
 
@@ -118,9 +118,9 @@ Temporary brand values live in `src/styles/tokens.css` so colors, type, spacing,
 
 Webfonts are loaded from [Google Fonts](https://fonts.google.com) in `src/layouts/BaseLayout.astro`:
 
-- Cinzel Display — display / headings
-- Lora — editorial body
-- Montserrat — UI, labels, and controls
+- Cinzel Display: display / headings
+- Lora: editorial body
+- Montserrat: UI, labels, and controls
 
 Font families are applied only through CSS tokens. Do not hard-code typefaces in components.
 

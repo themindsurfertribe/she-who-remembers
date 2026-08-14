@@ -1,0 +1,120 @@
+---
+import Button from './Button.astro';
+import Container from './Container.astro';
+import Section from './Section.astro';
+
+interface CtaLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  heading: string;
+  lede?: string;
+  surface?: 'light' | 'dark';
+  atmosphere?: boolean;
+  primary?: CtaLink;
+  secondary?: CtaLink;
+  spacing?: 'default' | 'compact';
+  headingLevel?: 'h1' | 'h2';
+  class?: string;
+}
+
+const {
+  heading,
+  lede,
+  surface = 'dark',
+  atmosphere = false,
+  primary,
+  secondary,
+  spacing = 'default',
+  headingLevel = 'h1',
+  class: className,
+} = Astro.props;
+
+const HeadingTag = headingLevel;
+---
+
+<Section surface={surface} atmosphere={atmosphere} spacing={spacing} class={className}>
+  <Container>
+    <div class="hero">
+      <HeadingTag class="hero__heading">{heading}</HeadingTag>
+      {lede && <p class="hero__lede">{lede}</p>}
+      <div class="hero__body">
+        <slot />
+      </div>
+      {
+        (primary || secondary) && (
+          <div class="hero__actions">
+            {primary && <Button href={primary.href}>{primary.label}</Button>}
+            {secondary && (
+              <Button variant="secondary" href={secondary.href}>
+                {secondary.label}
+              </Button>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .hero {
+    max-width: var(--measure);
+    overflow-wrap: break-word;
+  }
+
+  .hero__heading {
+    margin-bottom: var(--space-md);
+    font-size: var(--text-display);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    text-wrap: balance;
+  }
+
+  .hero__lede {
+    margin-bottom: var(--space-md);
+    max-width: var(--measure);
+    font-size: var(--text-quote);
+    font-style: italic;
+    line-height: var(--leading-heading);
+    text-wrap: pretty;
+  }
+
+  .hero__body {
+    color: var(--text-muted);
+  }
+
+  .hero__body :global(p) {
+    margin-bottom: var(--space-sm);
+    color: var(--text-muted);
+  }
+
+  .hero__body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: center;
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 479px) {
+    .hero__heading {
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero__lede {
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero__actions {
+      width: 100%;
+      margin-top: var(--space-md);
+    }
+  }
+</style>
