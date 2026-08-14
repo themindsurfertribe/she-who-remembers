@@ -1,9 +1,252 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import Card from '../components/Card.astro';
+import PullQuote from '../components/PullQuote.astro';
+import SiteCta from '../components/SiteCta.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="About Lala | She Who Remembers"
-  description="Placeholder page for About Lala on She Who Remembers."
-  heading="About Lala"
-/>
+  description="The woman holding She Who Remembers: a coaching philosophy of inner authority, embodiment, and discernment, without guru culture or borrowed certainty."
+>
+  <Hero
+    heading="About Lala"
+    lede="I hold this work for women who are ready to hear themselves more clearly, not become someone else."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      This is not an identity you are meant to copy. It is a practice of returning women to
+      their own inner vote, so inner authority does not have to be outsourced in order to feel
+      supported.
+    </p>
+  </Hero>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Why I do this work">
+        <p>Not as a rescue. As a place where lived experience can become usable wisdom.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          I work with women who are remembering how to consult themselves: body, intuition,
+          discernment, and action in the same room, instead of in separate compartments that
+          never speak.
+        </p>
+        <p>
+          The aim is not to make my voice the one that stays. It is to make a space honest
+          enough that a woman can hear her own, including the parts she learned to keep quiet
+          in order to remain easy to love.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="A little more human">
+        <p>Temperament, not a résumé.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>I do not expect people to arrive polished. I do not arrive that way either.</p>
+        <p>
+          I care about truth, but not the performance of it. Depth, but not heaviness for its
+          own sake. Spirituality, but not at the expense of common sense.
+        </p>
+        <p>
+          Serious inner work can include laughter, contradiction, bad timing, a useful insight,
+          and the occasional realization that something has become much harder than it needed
+          to be. The room can be sacred without becoming solemn.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container>
+      <SectionIntro heading="My role">
+        <p>Four stances. None of them require you to make me larger than your own knowing.</p>
+      </SectionIntro>
+      <div class="role-grid">
+        <Card>
+          <h3>Mirror</h3>
+          <p>
+            To reflect what is present, including contradiction, delay, and the pattern that has
+            become so fluent it looks like personality.
+          </p>
+        </Card>
+        <Card>
+          <h3>Midwife</h3>
+          <p>
+            To support what is already trying to emerge. Not to implant a new self, and not to
+            drag a woman into a version of her life she has not chosen.
+          </p>
+        </Card>
+        <Card variant="blush">
+          <h3>Sanctuary</h3>
+          <p>
+            A place where you do not have to perform insight, softness, or healing in order to
+            be taken seriously.
+          </p>
+        </Card>
+        <Card variant="blush">
+          <h3>Forge</h3>
+          <p>
+            A place where truth is not endlessly protected from discomfort. Kindness without
+            challenge is not the same as care.
+          </p>
+        </Card>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="What I pay attention to">
+        <p>Not omniscience. Attention. The difference matters.</p>
+      </SectionIntro>
+      <ul class="fit">
+        <li>What is being said, and what is being said instead of the thing underneath it.</li>
+        <li>What is repeatedly avoided, including by intelligence and humor.</li>
+        <li>Where language and behavior disagree.</li>
+        <li>What the body is signaling before the sentence arrives.</li>
+        <li>What belongs to conditioning, loyalty, or an old job in the family.</li>
+        <li>What the woman already knows and has not yet been willing to keep.</li>
+        <li>Where responsibility actually sits, and where it has been borrowed or dumped.</li>
+        <li>What is no longer true, even if it still functions.</li>
+        <li>What is asking to be chosen now, in a scale the life can hold.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What I believe">
+        <p>Wholeness is not a costume change.</p>
+      </SectionIntro>
+      <ul class="beliefs">
+        <li>You can be powerful without becoming hard.</li>
+        <li>Soft without becoming passive.</li>
+        <li>Intuitive without becoming irrational.</li>
+        <li>Spiritual without abandoning discernment.</li>
+        <li>Loving without abandoning yourself.</li>
+        <li>Supported without surrendering authority.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="What I do not believe">
+        <p>A short list, because the work is easier to trust when the refusals are named.</p>
+      </SectionIntro>
+      <ul class="not">
+        <li>That a guide should become the center of a woman's spiritual life.</li>
+        <li>That dependency is devotion, or that endless access is care.</li>
+        <li>That vulnerability has to be performed in order to count.</li>
+        <li>That spiritual language can be used to skip the ordinary work of choice.</li>
+        <li>That femininity is a performance of softness, desirability, or submission.</li>
+        <li>That family is a permanent defendant, or that blame is the same as understanding.</li>
+        <li>That every emotion is an instruction. Feeling is information. It still needs discernment.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Professional scope">
+        <p>Coaching and educational work have a job. They do not have every job.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          This work does not replace psychotherapy, psychiatric care, medical care, legal
+          advice, or crisis services. When those are needed, they are needed. Naming the limit
+          is part of respect, not a disclaimer pasted on afterward.
+        </p>
+      </div>
+      <PullQuote>
+        Support should return you to yourself. If it slowly replaces you, it is not support.
+      </PullQuote>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If you want to see how the work is held"
+    primary={{ label: 'Explore the Work', href: withBase('/the-work') }}
+    secondary={{ label: 'Book a Conversation', href: withBase('/book-a-conversation') }}
+  >
+    <p>
+      The path is the map. A conversation is for the season you are actually in.
+    </p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: var(--measure);
+  }
+
+  .fit,
+  .not,
+  .beliefs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: var(--measure);
+  }
+
+  .fit li,
+  .not li {
+    position: relative;
+    margin: 0 0 var(--space-sm);
+    padding-left: 1.15rem;
+  }
+
+  .fit li:last-child,
+  .not li:last-child {
+    margin-bottom: 0;
+  }
+
+  .fit li::before,
+  .not li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border: var(--border-width) solid var(--border-accent);
+    border-radius: 50%;
+  }
+
+  .beliefs {
+    font-size: var(--text-quote);
+    font-style: italic;
+    line-height: var(--leading-heading);
+  }
+
+  .beliefs li + li {
+    margin-top: var(--space-xs);
+  }
+
+  .role-grid {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .role-grid h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  @media (min-width: 768px) {
+    .role-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-xl);
+    }
+  }
+</style>

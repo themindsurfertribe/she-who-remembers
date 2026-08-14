@@ -1,9 +1,357 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import TopicCluster from '../components/TopicCluster.astro';
+import Card from '../components/Card.astro';
+import PullQuote from '../components/PullQuote.astro';
+import FaqList from '../components/FaqList.astro';
+import FaqItem from '../components/FaqItem.astro';
+import SiteCta from '../components/SiteCta.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Private Guidance | She Who Remembers"
-  description="Placeholder page for Private Guidance on She Who Remembers."
-  heading="Private Guidance"
-/>
+  description="Individualized coaching for women in transition: self-trust, boundaries, and discernment, without handing your inner authority to a guide."
+>
+  <Hero
+    heading="Private Guidance"
+    lede="A place for the threshold that needs more room."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      Private work is individualized support for a specific season: a decision, a transition, a
+      boundary, or an integration that will not fit neatly inside a group container.
+    </p>
+    <p>
+      It does not replace inner authority. Its purpose is to make your own discernment more
+      available.
+    </p>
+  </Hero>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Why private work">
+        <p>
+          Not every hard season needs a coach. Some need rest, friendship, clinical care, or
+          simply time. Private guidance is for the threshold that wants a thinking partner and
+          more room than a course can give.
+        </p>
+      </SectionIntro>
+      <ul class="fit">
+        <li>A relationship threshold that keeps repeating in the same conversation.</li>
+        <li>Identity in motion: the self that still functions, and the one arriving underneath it.</li>
+        <li>Boundary work that has become tangled, delayed, or expensive.</li>
+        <li>Decision fatigue, and the habit of outsourcing the last inch of knowing.</li>
+        <li>Self-trust that went quiet after too many second opinions.</li>
+        <li>A creative or vocational turn that insight alone has not moved.</li>
+        <li>Aging, changing roles, and a name that no longer fits the life.</li>
+        <li>Family-pattern work that needs precision, not a courtroom.</li>
+        <li>Purpose and legacy questions that are specific, not generic.</li>
+        <li>Integration after a major chapter, when the event is over and the living is not.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container>
+      <SectionIntro heading="What we may explore">
+        <p>The work follows what is actually in the room, not a syllabus you have to complete.</p>
+      </SectionIntro>
+      <div class="topics">
+        <TopicCluster title="Self and identity">
+          Self-trust, identity change, sovereignty, decision-making, and the over-functioning that
+          can impersonate a personality.
+        </TopicCluster>
+        <TopicCluster title="Boundaries and relationships">
+          People-pleasing, resentment, communication, family roles, relational patterns, and
+          cleaner limits.
+        </TopicCluster>
+        <TopicCluster title="Body and discernment">
+          Embodiment, intuition, body signals, the difference between anxiety and knowing, and
+          presence that can stay.
+        </TopicCluster>
+        <TopicCluster title="Voice and creation">
+          Expression, creativity, purpose, visibility, and work or life transitions that ask for
+          a truer sentence.
+        </TopicCluster>
+        <TopicCluster title="Integration and legacy">
+          Aging, lived wisdom, contribution, lineage, and what comes next once healing is no
+          longer the only subject.
+        </TopicCluster>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="What a session feels like">
+        <p>Serious, human, and uninterested in performance.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          The work is conversational. Reflective. Direct when a pattern is hiding in plain sight,
+          spacious when rushing would only recreate the old speed. It is embodied and practical:
+          what you will actually do with Tuesday, not only what you understand about yourself.
+        </p>
+        <p>
+          You are not required to perform vulnerability, or to disclose on cue. Humor is allowed.
+          So is silence. Attention stays with what is happening beneath the story you already
+          know how to tell: the contradiction, the delayed no, the place language and behavior
+          part ways.
+        </p>
+        <p>
+          At its best the guide can function as mirror and midwife, sanctuary and forge. That is
+          a description of stance, not a claim of magic. You remain the one living the life.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="The role of the guide">
+        <p>Lala is not there to become your authority.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          She may reflect a pattern, ask a question you have been circling, notice a
+          contradiction, slow the pace, challenge an assumption, help distinguish signal from
+          story, and support integration into choices you can keep.
+        </p>
+        <p>
+          She does not make life decisions for you. She does not tell you whether to stay or
+          leave a relationship. She does not diagnose, prescribe treatment, or claim to know your
+          intuition better than you do. Dependency is not the product.
+        </p>
+      </div>
+      <PullQuote>
+        Good guidance should make you more available to yourself, not more dependent on the guide.
+      </PullQuote>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container>
+      <SectionIntro heading="Ways to work privately">
+        <p>
+          Three containers. No prices or session lengths are listed here yet. A fit conversation
+          is how we choose among them, or choose something else.
+        </p>
+      </SectionIntro>
+      <div class="offer-grid">
+        <Card>
+          <h3>Single session</h3>
+          <p>
+            For a specific question, decision, boundary, or threshold that needs a clear room
+            and a thinking partner, not a long arc.
+          </p>
+        </Card>
+        <Card>
+          <h3>Six-session mentorship</h3>
+          <p>
+            For a focused stretch of change and integration: enough repetition to practice, not
+            so much structure that the work becomes a lifestyle.
+          </p>
+        </Card>
+        <Card>
+          <h3>Twelve-session mentorship</h3>
+          <p>
+            For deeper work across identity, embodiment, relationships, voice, and legacy, when
+            the season is larger than a single knot.
+          </p>
+        </Card>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="What private guidance can support">
+        <p>Grounded shifts, not a rewritten fate.</p>
+      </SectionIntro>
+      <ul class="fit">
+        <li>Clearer self-contact, including when the answer is inconvenient.</li>
+        <li>More accurate boundaries, with less theater around them.</li>
+        <li>Better discernment between signal, fear, and old loyalty.</li>
+        <li>Less over-explaining as a way to earn the right to exist.</li>
+        <li>Stronger ownership of decisions that were previously put up for committee.</li>
+        <li>More honest communication, including the sentences you have been postponing.</li>
+        <li>Greater integration between what you know and how you actually behave.</li>
+      </ul>
+      <p class="note">
+        This work does not promise healed relationships, trauma resolution, mental health
+        treatment, spiritual awakening, financial outcomes, or guaranteed transformation.
+      </p>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="What this is not">
+        <p>The edges keep the work honest, and they keep you safer.</p>
+      </SectionIntro>
+      <ul class="not">
+        <li>Not psychotherapy, diagnosis, or psychiatric care.</li>
+        <li>Not medical advice, legal advice, or crisis support.</li>
+        <li>Not prophecy, and not a reading of your future.</li>
+        <li>Not a command about whether a relationship should continue.</li>
+        <li>Not a transfer of spiritual authority from you to the guide.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Fit matters">
+        <p>Wanting support is not the same as this being the right room.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          A fit conversation can help determine whether private guidance is appropriate, whether
+          a group course would serve you better, or whether another kind of support is the more
+          honest next step. There is no prize for forcing a match.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Questions">
+        <p>What people usually want to know before they sit down.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="How do I know if private guidance is right for me?">
+          <p>
+            If the threshold is specific and needs more room than a group container, private
+            work may fit. If you want shared pacing and a named pathway, a course may be better.
+            A fit conversation is where we sort that without requiring you to already know.
+          </p>
+        </FaqItem>
+        <FaqItem question="Do I need to be in crisis?">
+          <p>
+            No. Crisis needs care built for crisis. Private guidance is for a season, decision,
+            or integration that wants more room, not for emergency, danger, or acute mental
+            health need.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if I am already in therapy?">
+          <p>
+            The two may coexist when their roles stay clear. Therapy addresses what belongs in
+            clinical care. This is coaching and educational work: reflection, discernment,
+            boundaries, and choice. It does not replace treatment.
+          </p>
+        </FaqItem>
+        <FaqItem question="Will you tell me what to do?">
+          <p>
+            No. You may be asked harder questions than you arrived with. The decisions remain
+            yours. A guide who needs to be followed is not doing this job.
+          </p>
+        </FaqItem>
+        <FaqItem question="Can we work on relationships?">
+          <p>
+            Yes: your patterns, communication, limits, and the places you disappear. This is not
+            couples therapy, and it will not instruct you to stay or leave. Those choices, if
+            they come, belong to you.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if I am not spiritual?">
+          <p>
+            Then you are still welcome. Belief is not an entrance requirement. The work is
+            spiritually open and practically grounded. Plain language is always available.
+          </p>
+        </FaqItem>
+        <FaqItem question="What happens if this is not the right fit?">
+          <p>
+            We name it. Another doorway in this body of work, or an entirely different kind of
+            support, may be more honest. Fit is a discernment, not a sales obstacle.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If the threshold needs more room"
+    primary={{ label: 'Book a Fit Conversation', href: withBase('/book-a-conversation') }}
+    secondary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+  >
+    <p>
+      Bring the actual question, even if it is still inelegant. We will see whether private
+      guidance is the right container.
+    </p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: var(--measure);
+  }
+
+  .note {
+    margin: var(--space-lg) 0 0;
+    max-width: var(--measure);
+    color: var(--text-muted);
+  }
+
+  .fit,
+  .not {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: var(--measure);
+  }
+
+  .fit li,
+  .not li {
+    position: relative;
+    margin: 0 0 var(--space-sm);
+    padding-left: 1.15rem;
+  }
+
+  .fit li:last-child,
+  .not li:last-child {
+    margin-bottom: 0;
+  }
+
+  .fit li::before,
+  .not li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border: var(--border-width) solid var(--border-accent);
+    border-radius: 50%;
+  }
+
+  .topics,
+  .offer-grid {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .offer-grid h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  @media (min-width: 768px) {
+    .topics,
+    .offer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .offer-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -1,10 +1,367 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import TopicCluster from '../components/TopicCluster.astro';
+import Card from '../components/Card.astro';
+import PathwayCard from '../components/PathwayCard.astro';
+import SiteCta from '../components/SiteCta.astro';
+import TextLink from '../components/TextLink.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
-  title="She Who Remembers | Book"
-  description="Placeholder page for the book She Who Remembers."
-  heading="She Who Remembers"
-  note="This is a placeholder for the book page. Content will be added in a later gate."
-/>
+<BaseLayout
+  title="She Who Remembers | The Book"
+  description="She Who Remembers is a book of personal wisdom on sovereignty, embodiment, self-trust, boundaries, and feminine wisdom that does not abandon discernment."
+>
+  <Hero
+    heading="She Who Remembers"
+    lede="Lessons in Power, Presence, and Remembering Who You Are"
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      A work of nonfiction and personal wisdom: language for the woman who is done living as a
+      well-managed edition of herself, and is not interested in replacing one performance with
+      another.
+    </p>
+  </Hero>
+
+  <Section surface="dark" atmosphere={true} spacing="compact">
+    <Container width="narrow">
+      <p class="source-line">
+        The book can stand alone. It is also the well the rest of this work drinks from.
+      </p>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="What the book is">
+        <p>Not a manifesto to join. A companion for remembering.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          <em>She Who Remembers</em> explores sovereignty, shadow, embodiment, intuition,
+          boundaries, voice, sisterhood, lineage, transmission, and legacy. It is written for
+          reading, not for collecting a personality.
+        </p>
+        <p>
+          Publication details, retailers, and price are not listed here yet. When a way to
+          obtain the book is ready, it will be named plainly. Until then, the ideas are already
+          at work in the path, the courses, and private guidance.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Who it is for">
+        <p>Recognition, not crisis, is enough.</p>
+      </SectionIntro>
+      <ul class="fit">
+        <li>An old identity still functions, and no longer fits.</li>
+        <li>Self-trust has gone quiet under competence, caretaking, or too much advice.</li>
+        <li>Performing strength has become exhausting, and you want a different kind of power.</li>
+        <li>You want spiritual depth without abandoning discernment, evidence, or your own mind.</li>
+        <li>A new chapter is already underway, named or not.</li>
+        <li>You want language for what you already sense, not a personality transplant.</li>
+      </ul>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="The five parts">
+        <p>
+          A spine for the book, not a demand that your life match the sequence. Fuller
+          philosophy of the path lives on{' '}
+          <TextLink href={withBase('/the-work')}>The Work</TextLink>. These notes are for the
+          book itself.
+        </p>
+      </SectionIntro>
+      <ol class="parts">
+        <li>
+          <p class="parts__roman">Part I</p>
+          <h3>The Awakening</h3>
+          <p class="parts__sub">Reclaiming Inner Sovereignty</p>
+          <p>
+            The return of an inner vote: noticing where identity has been organized around
+            usefulness, and where a quieter authorship is trying to speak.
+          </p>
+        </li>
+        <li>
+          <p class="parts__roman">Part II</p>
+          <h3>The Descent</h3>
+          <p class="parts__sub">Meeting the Shadow</p>
+          <p>
+            What was sent underground to remain acceptable. Anger, jealousy, fear, and hidden
+            truths are met so they no longer have to run the schedule from below.
+          </p>
+        </li>
+        <li>
+          <p class="parts__roman">Part III</p>
+          <h3>The Embodiment</h3>
+          <p class="parts__sub">Walking as the Divine</p>
+          <p>
+            Insight leaving the page and entering breath, speech, and choice. Divinity here is
+            not costume. It is presence that can inhabit an ordinary life.
+          </p>
+        </li>
+        <li>
+          <p class="parts__roman">Part IV</p>
+          <h3>The Ascent</h3>
+          <p class="parts__sub">Integration & Multiplication</p>
+          <p>
+            Life returning to the center. What has been integrated does not stay private as a
+            secret. It begins to move through how you create, relate, and take up space.
+          </p>
+        </li>
+        <li>
+          <p class="parts__roman">Part V</p>
+          <h3>The Legacy</h3>
+          <p class="parts__sub">The Future Is Hers</p>
+          <p>
+            Continuation: what is handed on, interrupted, or made because a woman became
+            conscious. The future named here is authorship, not a guaranteed plot.
+          </p>
+        </li>
+      </ol>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container>
+      <SectionIntro heading="Selected themes">
+        <p>Threads that run through the book, without requiring you to collect them all.</p>
+      </SectionIntro>
+      <div class="topics">
+        <TopicCluster title="Sovereignty">Self-trust, power, and identity that no longer outsources the last decision.</TopicCluster>
+        <TopicCluster title="Shadow">Anger, jealousy, fear, and the truths that were hidden to keep the peace.</TopicCluster>
+        <TopicCluster title="Boundaries">The Sacred No, and the energetic sovereignty of a cleaner yes.</TopicCluster>
+        <TopicCluster title="Embodiment">Body, breath, sensuality, and presence that can stay in the room.</TopicCluster>
+        <TopicCluster title="Intuition">The Oracle and the Architect: listening, then evaluating, without a civil war.</TopicCluster>
+        <TopicCluster title="Sisterhood">Connection without idealizing women, or disappearing to keep them close.</TopicCluster>
+        <TopicCluster title="Voice">Expression, truth, and speech that does not rush to make itself palatable.</TopicCluster>
+        <TopicCluster title="Legacy">Transmission, lineage, and contribution that does not require a stage.</TopicCluster>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container>
+      <SectionIntro heading="Oracle and Architect">
+        <p>The work does not ask you to choose intuition over logic, or logic over knowing.</p>
+      </SectionIntro>
+      <div class="split">
+        <Card variant="blush">
+          <h3>The Oracle</h3>
+          <p>
+            Listens. Receives the inner signal, the body cue, the image, the unease that arrives
+            before a tidy argument. It is not treated as infallible. It is treated as data that
+            deserves a hearing.
+          </p>
+        </Card>
+        <Card>
+          <h3>The Architect</h3>
+          <p>
+            Evaluates. Tests timing, consequence, evidence, and the life that has to carry the
+            choice. Strategy without listening becomes a cage. Listening without evaluation
+            becomes a mood.
+          </p>
+        </Card>
+      </div>
+      <div class="council">
+        <p>
+          Together they support discernment. In practice this can look like a Double Council: a
+          pause in which both voices are consulted before the mouth agrees. Not a ritual you
+          must adopt. A way of refusing to exile either half of your intelligence.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container>
+      <SectionIntro heading="From book to experience">
+        <p>
+          Reading can be enough. For those who want the ideas in a lived container, these are
+          doors, not upgrades you are failing if you skip.
+        </p>
+      </SectionIntro>
+      <div class="offer-grid">
+        <PathwayCard
+          kicker="Voice"
+          heading="The Sacred No"
+          ctaLabel="Explore The Sacred No"
+          ctaHref={withBase('/courses/the-sacred-no')}
+        >
+          <p>Boundaries, communication, and a cleaner relationship to yes and no.</p>
+        </PathwayCard>
+        <PathwayCard
+          kicker="Self"
+          heading="The Remembering"
+          ctaLabel="Explore The Remembering"
+          ctaHref={withBase('/courses/the-remembering')}
+        >
+          <p>The deeper journey of identity, embodiment, and self-trust.</p>
+        </PathwayCard>
+        <PathwayCard
+          kicker="Purpose"
+          heading="Legacy in Motion"
+          ctaLabel="Explore Legacy in Motion"
+          ctaHref={withBase('/courses/legacy-in-motion')}
+        >
+          <p>Contribution, lived wisdom, and what continues because you became conscious.</p>
+        </PathwayCard>
+        <PathwayCard
+          kicker="Room"
+          heading="Private Guidance"
+          ctaLabel="Explore Private Guidance"
+          ctaHref={withBase('/private-guidance')}
+        >
+          <p>Individualized support when the threshold needs more space than a group path.</p>
+        </PathwayCard>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="A note on scope">
+        <p>Wisdom is not a license to replace care.</p>
+      </SectionIntro>
+      <div class="prose">
+        <p>
+          The book offers personal wisdom and educational material. It is not a substitute for
+          psychological care, medical advice, or legal advice. If those are needed, they remain
+          needed.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If the book is the well, the path is how some women drink"
+    primary={{ label: 'Explore the Work', href: withBase('/the-work') }}
+    secondary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+  >
+    <p>
+      There is no purchase link on this page yet. The work is still available to walk, whether
+      or not the book is in your hands.
+    </p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .source-line {
+    margin: 0;
+    max-width: var(--measure);
+    padding: 0;
+    border: 0;
+    font-size: var(--text-quote);
+    font-style: italic;
+    line-height: var(--leading-heading);
+    text-wrap: pretty;
+  }
+
+  .prose,
+  .council {
+    max-width: var(--measure);
+  }
+
+  .council {
+    margin-top: var(--space-lg);
+    color: var(--text-muted);
+  }
+
+  .fit {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: var(--measure);
+  }
+
+  .fit li {
+    position: relative;
+    margin: 0 0 var(--space-sm);
+    padding-left: 1.15rem;
+  }
+
+  .fit li:last-child {
+    margin-bottom: 0;
+  }
+
+  .fit li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border: var(--border-width) solid var(--border-accent);
+    border-radius: 50%;
+  }
+
+  .parts {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: var(--measure);
+  }
+
+  .parts li + li {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: var(--border-width) solid var(--gold-border);
+  }
+
+  .parts__roman {
+    margin: 0 0 var(--space-2xs);
+    font-family: var(--font-ui);
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-accent);
+  }
+
+  .parts h3 {
+    margin-bottom: var(--space-2xs);
+  }
+
+  .parts__sub {
+    margin: 0 0 var(--space-sm);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .topics,
+  .offer-grid,
+  .split {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .split h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  @media (min-width: 768px) {
+    .topics,
+    .split {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-xl);
+    }
+
+    .offer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-xl);
+    }
+  }
+</style>
