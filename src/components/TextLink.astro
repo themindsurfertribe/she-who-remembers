@@ -1,0 +1,28 @@
+---
+interface Props {
+  href: string;
+  class?: string;
+}
+
+const { href, class: className } = Astro.props;
+---
+
+<a class:list={['text-link', className]} href={href}>
+  <slot />
+</a>
+
+<style>
+  .text-link {
+    color: var(--link);
+    font-family: var(--font-body);
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    transition:
+      color var(--duration-fast) var(--ease),
+      text-decoration-color var(--duration-fast) var(--ease);
+  }
+
+  .text-link:hover {
+    color: var(--link-hover);
+  }
+</style>

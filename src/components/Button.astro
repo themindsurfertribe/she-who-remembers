@@ -1,0 +1,93 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  href,
+  type = 'button',
+  class: className,
+} = Astro.props;
+
+const classes = ['button', `button--${variant}`, className];
+---
+
+{
+  href ? (
+    <a class:list={classes} href={href}>
+      <slot />
+    </a>
+  ) : (
+    <button class:list={classes} type={type}>
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.35rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    font-weight: 500;
+    letter-spacing: var(--tracking-ui);
+    line-height: var(--leading-ui);
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color var(--duration-standard) var(--ease),
+      color var(--duration-standard) var(--ease),
+      border-color var(--duration-standard) var(--ease),
+      transform var(--duration-fast) var(--ease);
+  }
+
+  .button:active {
+    transform: translateY(1px);
+  }
+
+  .button--primary {
+    border: var(--border-width) solid transparent;
+    background: var(--button-primary-bg);
+    color: var(--button-primary-text);
+  }
+
+  .button--primary:hover {
+    background: var(--button-primary-hover);
+    color: var(--button-primary-text);
+  }
+
+  .button--secondary {
+    border: var(--border-width) solid var(--button-secondary-border);
+    background: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+  }
+
+  .button--secondary:hover {
+    background: var(--button-secondary-hover);
+    color: var(--button-secondary-text);
+  }
+
+  .button--ghost {
+    min-height: auto;
+    padding: 0.35rem 0.15rem;
+    border: 0;
+    background: transparent;
+    color: var(--button-ghost-text);
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+  }
+
+  .button--ghost:hover {
+    color: var(--button-ghost-hover);
+  }
+</style>

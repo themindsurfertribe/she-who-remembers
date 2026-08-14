@@ -1,0 +1,406 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import Section from '../components/Section.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import Button from '../components/Button.astro';
+import TextLink from '../components/TextLink.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Divider from '../components/Divider.astro';
+import PullQuote from '../components/PullQuote.astro';
+import Card from '../components/Card.astro';
+import EmblemPlaceholder from '../components/EmblemPlaceholder.astro';
+
+const colors = [
+  { name: 'Luminous Gold', token: '--color-gold', hex: '#D4AF37' },
+  { name: 'Warm Cream', token: '--color-cream', hex: '#F6F1E6' },
+  { name: 'Soft Blush', token: '--color-blush', hex: '#E9C5BE' },
+  { name: 'Deep Indigo', token: '--color-indigo', hex: '#0E1A2D' },
+  { name: 'Cosmic Blue', token: '--color-blue', hex: '#1E3A6D' },
+  { name: 'Rich Charcoal', token: '--color-charcoal', hex: '#1A1A1A' },
+];
+
+const spaces = [
+  { name: '3xs', token: '--space-3xs' },
+  { name: '2xs', token: '--space-2xs' },
+  { name: 'xs', token: '--space-xs' },
+  { name: 'sm', token: '--space-sm' },
+  { name: 'md', token: '--space-md' },
+  { name: 'lg', token: '--space-lg' },
+  { name: 'xl', token: '--space-xl' },
+  { name: '2xl', token: '--space-2xl' },
+];
+---
+
+<BaseLayout
+  title="Style Guide | She Who Remembers"
+  description="Internal visual design system for She Who Remembers."
+  robots="noindex, nofollow"
+>
+  <main id="main">
+    <Section surface="light" spacing="compact" atmosphere={true}>
+      <Container>
+        <Eyebrow>Internal documentation</Eyebrow>
+        <h1>Visual design system</h1>
+        <p>
+          Temporary brand tokens, type, and foundational components. This page is for
+          development review. It is not a public website page.
+        </p>
+        <p>
+          Mysticism provides atmosphere. Editorial restraint provides credibility.
+          Target balance: 70% editorial, 20% atmosphere, 10% drama.
+        </p>
+      </Container>
+    </Section>
+
+    <Section surface="light" spacing="compact">
+      <Container>
+        <SectionIntro eyebrow="Color" heading="Brand palette">
+          <p>
+            Core six colors remain centralized. Supporting tints live beside them and can
+            be replaced without rewriting components.
+          </p>
+        </SectionIntro>
+        <div class="swatch-grid">
+          {
+            colors.map((color) => (
+              <div class="swatch">
+                <div class="swatch__chip" style={`background: var(${color.token})`}></div>
+                <p class="swatch__name">{color.name}</p>
+                <p class="swatch__meta">
+                  {color.hex}
+                  <br />
+                  {color.token}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section surface="light" spacing="compact">
+      <Container width="narrow">
+        <SectionIntro eyebrow="Typography" heading="Hierarchy">
+          <p>
+            Cinzel Display for headings, Lora for reading, Montserrat for labels and
+            controls. Sizes are fluid and assigned only through tokens.
+          </p>
+        </SectionIntro>
+        <div class="type-stack">
+          <p class="type-label">Display</p>
+          <p class="specimen-display">She Who Remembers</p>
+          <p class="type-label">Heading 1</p>
+          <h1>Presence before performance</h1>
+          <p class="type-label">Heading 2</p>
+          <h2>Quiet authority on the page</h2>
+          <p class="type-label">Heading 3</p>
+          <h3>Editorial section title</h3>
+          <p class="type-label">Body</p>
+          <p>
+            Body text is set for reading, not decoration. Line length is constrained,
+            contrast stays high, and gold is reserved for emphasis rather than paragraphs.
+          </p>
+          <p class="type-label">UI / label</p>
+          <p class="specimen-ui">About · Offerings · Letters</p>
+        </div>
+      </Container>
+    </Section>
+
+    <Section surface="light" spacing="compact">
+      <Container>
+        <SectionIntro eyebrow="Actions" heading="Buttons and links">
+          <p>Primary, secondary, and ghost styles inherit light or dark surface tokens.</p>
+        </SectionIntro>
+        <div class="row">
+          <Button>Primary action</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="ghost" href="#forms">Ghost / text</Button>
+        </div>
+        <p class="row-note">
+          Inline reading link:
+          <TextLink href="#composition">view the composition sample</TextLink>
+        </p>
+      </Container>
+    </Section>
+
+    <Section surface="light" spacing="compact">
+      <Container>
+        <SectionIntro eyebrow="Surfaces" heading="Cards, quotes, and dividers">
+          <p>Use cards for grouping, not for filling the page with boxes.</p>
+        </SectionIntro>
+        <div class="card-grid">
+          <Card>
+            <Eyebrow>Card</Eyebrow>
+            <h3>Raised editorial surface</h3>
+            <p>Ivory on cream, a thin border, and a restrained shadow. No glow.</p>
+          </Card>
+          <Card variant="blush">
+            <Eyebrow>Blush</Eyebrow>
+            <h3>Soft editorial tint</h3>
+            <p>Blush is a supporting wash, not a primary UI color. Use it for quotes, hover, and quiet emphasis.</p>
+          </Card>
+        </div>
+        <Divider />
+        <PullQuote attribution="Design principle">
+          Mysticism provides atmosphere. Editorial restraint provides credibility.
+        </PullQuote>
+        <Divider variant="ornament" />
+      </Container>
+    </Section>
+
+    <Section surface="light" spacing="compact" id="forms">
+      <Container width="narrow">
+        <SectionIntro eyebrow="Forms" heading="Field styling samples">
+          <p>
+            Visual treatment only. These fields are not connected to submission, email,
+            or any service.
+          </p>
+        </SectionIntro>
+        <div class="field">
+          <label for="sample-name">Name</label>
+          <input id="sample-name" name="sample-name" placeholder="Jane Doe" />
+        </div>
+        <div class="field">
+          <label for="sample-note">Note</label>
+          <textarea id="sample-note" name="sample-note" placeholder="A short message"></textarea>
+        </div>
+      </Container>
+    </Section>
+
+    <Section surface="light" spacing="compact">
+      <Container>
+        <SectionIntro eyebrow="Rhythm" heading="Spacing scale">
+          <p>Micro, component, and section spacing share one token scale.</p>
+        </SectionIntro>
+        <div class="space-list">
+          {
+            spaces.map((space) => (
+              <div class="space-row">
+                <span class="space-row__label">{space.name}</span>
+                <span class="space-row__bar" style={`width: var(${space.token})`}></span>
+              </div>
+            ))
+          }
+        </div>
+      </Container>
+    </Section>
+
+    <Section surface="light" spacing="compact">
+      <Container>
+        <SectionIntro eyebrow="Mark" heading="Emblem placeholder">
+          <p>
+            A temporary geometric stand-in. It is not a copy of the reference artwork and
+            should be replaced when a final mark is approved.
+          </p>
+        </SectionIntro>
+        <EmblemPlaceholder size="lg" />
+      </Container>
+    </Section>
+
+    <Section surface="light" spacing="compact" atmosphere={true} id="composition">
+      <Container>
+        <SectionIntro
+          eyebrow="Light editorial"
+          heading="Quiet page composition"
+          headingLevel="h2"
+        >
+          <p>
+            Cream ground, charcoal type, restrained gold, and blush only as a whisper.
+            This is the default website register.
+          </p>
+        </SectionIntro>
+        <div class="card-grid">
+          <Card>
+            <h3>Reading</h3>
+            <p>
+              Longer passages should feel like a letter, not a campaign. Generous
+              margins keep the eye calm.
+            </p>
+            <Button variant="ghost" href="#celestial">Continue</Button>
+          </Card>
+          <Card variant="blush">
+            <h3>Structure</h3>
+            <p>
+              One idea per block. Motifs appear once, then recede. Gold is an accent,
+              not a theme applied to every edge.
+            </p>
+          </Card>
+        </div>
+      </Container>
+    </Section>
+
+    <Divider variant="threshold" />
+
+    <Section surface="dark" atmosphere={true} id="celestial">
+      <Container>
+        <SectionIntro
+          eyebrow="Dark celestial"
+          heading="Dramatic register"
+          headingLevel="h2"
+        >
+          <p>
+            Deep indigo, cosmic blue, gold, and cream text. Use this treatment sparingly
+            for heroes, transitions, and campaign moments.
+          </p>
+        </SectionIntro>
+        <div class="dark-cluster">
+          <EmblemPlaceholder size="md" />
+          <div class="row">
+            <Button>Primary on dark</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="ghost" href="#main">Ghost</Button>
+          </div>
+        </div>
+        <PullQuote>
+          Atmosphere belongs in the background. The words remain clear.
+        </PullQuote>
+        <div class="field field--on-dark">
+          <label for="sample-dark">Sample field on dark</label>
+          <input id="sample-dark" name="sample-dark" placeholder="Still readable" />
+        </div>
+      </Container>
+    </Section>
+  </main>
+</BaseLayout>
+
+<style>
+  .swatch-grid,
+  .card-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: 1fr;
+  }
+
+  .swatch {
+    min-width: 0;
+  }
+
+  .swatch__chip {
+    height: 5.5rem;
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .swatch__name,
+  .swatch__meta,
+  .type-label,
+  .row-note,
+  .space-row__label,
+  .specimen-ui {
+    max-width: none;
+  }
+
+  .swatch__name {
+    margin: var(--space-xs) 0 var(--space-3xs);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+  }
+
+  .swatch__meta {
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+    line-height: var(--leading-ui);
+  }
+
+  .type-stack h1,
+  .type-stack h2,
+  .type-stack h3 {
+    margin-bottom: var(--space-md);
+  }
+
+  .type-label {
+    margin: var(--space-md) 0 var(--space-2xs);
+    font-family: var(--font-ui);
+    font-size: var(--text-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .specimen-display {
+    margin: 0;
+    max-width: none;
+    font-family: var(--font-display);
+    font-size: var(--text-display);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .specimen-ui {
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: center;
+  }
+
+  .row-note {
+    margin-top: var(--space-md);
+  }
+
+  .field + .field {
+    margin-top: var(--space-md);
+  }
+
+  .space-list {
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .space-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .space-row__label {
+    flex: 0 0 3rem;
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: var(--text-caption);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .space-row__bar {
+    display: block;
+    height: 0.65rem;
+    background: var(--color-gold);
+    opacity: 0.7;
+  }
+
+  .dark-cluster {
+    display: grid;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  @media (min-width: 720px) {
+    .swatch-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .swatch-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -1,13 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import Section from '../components/Section.astro';
+import TextLink from '../components/TextLink.astro';
 ---
 
 <BaseLayout title="Page not found | She Who Remembers" description="This page could not be found.">
-  <main id="main" class="container">
-    <h1>Page not found</h1>
-    <p>
-      The page you requested does not exist.
-      <a href={import.meta.env.BASE_URL}>Return home</a>
-    </p>
+  <main id="main">
+    <Section surface="light">
+      <Container>
+        <h1>Page not found</h1>
+        <p>
+          The page you requested does not exist.
+          <TextLink href={import.meta.env.BASE_URL}>Return home</TextLink>
+        </p>
+      </Container>
+    </Section>
   </main>
 </BaseLayout>

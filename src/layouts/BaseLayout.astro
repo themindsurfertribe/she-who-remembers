@@ -4,11 +4,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  robots?: string;
 }
 
 const {
   title = 'She Who Remembers',
   description = 'Official website of She Who Remembers.',
+  robots,
 } = Astro.props;
 
 const canonical = Astro.site
@@ -22,6 +24,7 @@ const canonical = Astro.site
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    {robots && <meta name="robots" content={robots} />}
     <title>{title}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
@@ -29,8 +32,19 @@ const canonical = Astro.site
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     {canonical && <meta property="og:url" content={canonical} />}
+    <!--
+      Webfonts from Google Fonts (https://fonts.google.com):
+      Cinzel Display (headings), Lora (body), Montserrat (UI).
+      Families are applied only through CSS tokens in src/styles/tokens.css.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Display:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
+  <body data-surface="light">
     <a class="skip-link" href="#main">Skip to content</a>
     <slot />
   </body>

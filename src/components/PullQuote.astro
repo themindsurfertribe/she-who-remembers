@@ -1,0 +1,61 @@
+---
+interface Props {
+  attribution?: string;
+  class?: string;
+}
+
+const { attribution, class: className } = Astro.props;
+---
+
+<figure class:list={['pullquote', className]}>
+  <blockquote>
+    <p>
+      <slot />
+    </p>
+  </blockquote>
+  {attribution && <figcaption>{attribution}</figcaption>}
+</figure>
+
+<style>
+  .pullquote {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    max-width: var(--measure);
+    background: var(--surface-blush);
+    border-left: 2px solid var(--gold-border);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  blockquote p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-quote);
+    font-style: italic;
+    font-weight: 400;
+    line-height: var(--leading-heading);
+    color: var(--text);
+  }
+
+  blockquote p::before {
+    content: "“";
+    color: var(--border-accent);
+    font-style: normal;
+    margin-right: 0.12em;
+  }
+
+  figcaption {
+    margin-top: var(--space-sm);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    font-style: normal;
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+</style>

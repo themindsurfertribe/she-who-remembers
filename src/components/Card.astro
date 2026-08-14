@@ -1,0 +1,32 @@
+---
+interface Props {
+  variant?: 'default' | 'blush';
+  class?: string;
+}
+
+const { variant = 'default', class: className } = Astro.props;
+---
+
+<article class:list={['card', variant === 'blush' && 'card--blush', className]}>
+  <slot />
+</article>
+
+<style>
+  .card {
+    height: 100%;
+    padding: var(--space-lg);
+    background: var(--surface-raised);
+    border: var(--border-width) solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .card--blush {
+    background: var(--surface-blush);
+    border-color: color-mix(in srgb, var(--color-blush) 45%, var(--border));
+  }
+
+  .card :global(> *:last-child) {
+    margin-bottom: 0;
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+interface Props {
+  surface?: 'light' | 'dark';
+  atmosphere?: boolean;
+  spacing?: 'default' | 'compact';
+  class?: string;
+  id?: string;
+}
+
+const {
+  surface = 'light',
+  atmosphere = false,
+  spacing = 'default',
+  class: className,
+  id,
+} = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[
+    'section',
+    spacing === 'compact' && 'section--compact',
+    atmosphere && 'section--atmosphere',
+    className,
+  ]}
+  data-surface={surface}
+>
+  <slot />
+</section>
+
+<style>
+  .section {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--surface);
+    color: var(--text);
+    padding-block: var(--space-section);
+    scroll-margin-top: var(--space-md);
+  }
+
+  .section--compact {
+    padding-block: var(--space-section-sm);
+  }
+
+  .section--atmosphere::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 55% at 12% 18%, var(--atmosphere-warm), transparent 58%),
+      radial-gradient(ellipse 65% 50% at 88% 28%, rgb(30 58 109 / 0.42), transparent 62%),
+      radial-gradient(circle at 50% 100%, var(--atmosphere-blush), transparent 46%);
+  }
+
+  .section--atmosphere::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.7;
+    background-image:
+      radial-gradient(circle at 18% 32%, rgb(246 241 230 / 0.45) 0 1px, transparent 1.6px),
+      radial-gradient(circle at 72% 22%, var(--gold-glow) 0 1.1px, transparent 1.8px),
+      radial-gradient(circle at 84% 68%, rgb(246 241 230 / 0.28) 0 1px, transparent 1.6px),
+      radial-gradient(circle at 28% 78%, rgb(212 175 55 / 0.35) 0 1px, transparent 1.7px);
+    background-size: 100% 100%;
+  }
+
+  [data-surface="light"].section--atmosphere::before {
+    background:
+      radial-gradient(ellipse 55% 45% at 94% 8%, var(--atmosphere-warm), transparent 62%),
+      radial-gradient(ellipse 50% 40% at 6% 92%, var(--atmosphere-blush), transparent 58%);
+  }
+
+  [data-surface="light"].section--atmosphere::after {
+    opacity: 1;
+    background-image:
+      radial-gradient(circle at 92% 14%, var(--color-gold) 0 1.1px, transparent 1.8px),
+      radial-gradient(circle at 88% -30%, transparent 42%, var(--gold-border) 42.6%, transparent 43.2%);
+    background-repeat: no-repeat;
+  }
+
+  [data-surface="dark"].section--atmosphere {
+    background-image:
+      radial-gradient(ellipse 80% 70% at 50% 120%, rgb(30 58 109 / 0.55), transparent 58%),
+      linear-gradient(180deg, rgb(212 175 55 / 0.08), transparent 18%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section--atmosphere::before,
+    .section--atmosphere::after {
+      opacity: 0.7;
+    }
+  }
+</style>

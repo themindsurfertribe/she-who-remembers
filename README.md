@@ -112,6 +112,16 @@ See `.env.example` for placeholder variable names only.
 
 Temporary brand values live in `src/styles/tokens.css` so colors, type, spacing, and related tokens can be changed in one place. They follow `/reference/branding/BRAND-DIRECTION.md` and are not the final identity.
 
+Webfonts are loaded from [Google Fonts](https://fonts.google.com) in `src/layouts/BaseLayout.astro`:
+
+- Cinzel Display — display / headings
+- Lora — editorial body
+- Montserrat — UI, labels, and controls
+
+Font families are applied only through CSS tokens. Do not hard-code typefaces in components.
+
+An internal review page lives at `/style-guide`. It is not a public marketing page and is served with `noindex`.
+
 Visual balance for later design work:
 
 - 70% clean editorial elegance

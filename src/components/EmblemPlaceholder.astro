@@ -1,0 +1,58 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  label?: string;
+  class?: string;
+}
+
+const { size = 'md', label = 'Emblem placeholder', class: className } = Astro.props;
+
+const dimensions = {
+  sm: 72,
+  md: 120,
+  lg: 168,
+}[size];
+---
+
+<div class:list={['emblem', `emblem--${size}`, className]} role="img" aria-label={label}>
+  <svg
+    viewBox="0 0 120 120"
+    width={dimensions}
+    height={dimensions}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <circle cx="60" cy="60" r="46" stroke="currentColor" stroke-width="0.75" opacity="0.55"></circle>
+    <circle cx="60" cy="60" r="32" stroke="currentColor" stroke-width="0.75"></circle>
+    <polygon
+      points="60,28 86,76 34,76"
+      stroke="currentColor"
+      stroke-width="0.8"
+      opacity="0.9"></polygon>
+    <polygon
+      points="60,92 34,44 86,44"
+      stroke="currentColor"
+      stroke-width="0.8"
+      opacity="0.9"></polygon>
+    <path
+      d="M52 58a12 12 0 0 0 16 0"
+      stroke="currentColor"
+      stroke-width="0.9"
+      stroke-linecap="round"></path>
+    <circle cx="60" cy="54" r="2.2" fill="currentColor"></circle>
+    <path
+      d="M60 86c-6-6-10-11-10-16 0-5.5 4.5-10 10-10s10 4.5 10 10c0 5-4 10-10 16Z"
+      stroke="currentColor"
+      stroke-width="0.8"
+      opacity="0.85"></path>
+  </svg>
+</div>
+
+<style>
+  .emblem {
+    display: grid;
+    place-items: center;
+    color: var(--border-accent);
+  }
+</style>

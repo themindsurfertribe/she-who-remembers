@@ -1,0 +1,82 @@
+---
+interface Props {
+  variant?: 'line' | 'ornament' | 'threshold';
+  class?: string;
+}
+
+const { variant = 'line', class: className } = Astro.props;
+---
+
+{
+  variant === 'ornament' ? (
+    <div class:list={['divider', 'divider--ornament', className]} role="separator">
+      <span class="divider__rule"></span>
+      <span class="divider__mark" aria-hidden="true"></span>
+      <span class="divider__rule"></span>
+    </div>
+  ) : variant === 'threshold' ? (
+    <div class:list={['divider', 'divider--threshold', className]} role="separator" aria-label="Light to dark transition">
+      <span class="divider__star" aria-hidden="true"></span>
+    </div>
+  ) : (
+    <hr class:list={['divider', 'divider--line', className]} />
+  )
+}
+
+<style>
+  .divider {
+    margin: var(--space-lg) 0;
+    border: 0;
+  }
+
+  .divider--line {
+    height: 0;
+    border-top: var(--border-width) solid var(--gold-border);
+  }
+
+  .divider--ornament {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .divider__rule {
+    flex: 1;
+    height: 0;
+    border-top: var(--border-width) solid var(--gold-border);
+  }
+
+  .divider__mark {
+    width: 0.45rem;
+    height: 0.45rem;
+    rotate: 45deg;
+    border: var(--border-width) solid var(--border-accent);
+    background: transparent;
+  }
+
+  .divider--threshold {
+    position: relative;
+    margin: 0;
+    height: 4.5rem;
+    background:
+      linear-gradient(
+        180deg,
+        var(--color-cream) 0%,
+        color-mix(in srgb, var(--color-blush) 22%, var(--color-cream)) 28%,
+        color-mix(in srgb, var(--color-gold) 18%, var(--color-indigo)) 62%,
+        var(--color-indigo) 100%
+      );
+  }
+
+  .divider__star {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 5px;
+    height: 5px;
+    translate: -50% -50%;
+    background: var(--color-gold-soft);
+    clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+    box-shadow: 0 0 16px var(--gold-glow);
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  headingLevel?: 'h1' | 'h2' | 'h3';
+  class?: string;
+}
+
+const {
+  eyebrow,
+  heading,
+  headingLevel = 'h2',
+  class: className,
+} = Astro.props;
+
+const HeadingTag = headingLevel;
+---
+
+<header class:list={['section-intro', className]}>
+  {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+  <HeadingTag class="section-intro__heading">{heading}</HeadingTag>
+  <div class="section-intro__body">
+    <slot />
+  </div>
+</header>
+
+<style>
+  .section-intro {
+    max-width: var(--measure);
+    margin-bottom: var(--space-lg);
+  }
+
+  .section-intro__heading {
+    margin-bottom: var(--space-md);
+  }
+
+  .section-intro__body {
+    color: var(--text-muted);
+  }
+
+  .section-intro__body :global(p) {
+    color: var(--text-muted);
+  }
+</style>

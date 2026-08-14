@@ -1,5 +1,8 @@
 :root {
-  /* Color — temporary brand tokens from /reference/branding/BRAND-DIRECTION.md */
+  /* --------------------------------------------------
+     Primitive brand colors
+     Temporary system from /reference/branding/BRAND-DIRECTION.md
+     -------------------------------------------------- */
   --color-gold: #d4af37;
   --color-cream: #f6f1e6;
   --color-blush: #e9c5be;
@@ -7,50 +10,192 @@
   --color-blue: #1e3a6d;
   --color-charcoal: #1a1a1a;
 
-  --color-bg: var(--color-cream);
-  --color-bg-dark: var(--color-indigo);
-  --color-text: var(--color-charcoal);
-  --color-text-inverse: var(--color-cream);
-  --color-accent: var(--color-gold);
-  --color-border: #ddd4c6;
+  /* Supporting tints and shades — replaceable without touching components */
+  --color-ivory: #f7f4ee;
+  --color-sand: #e9dfc6;
+  --color-gold-deep: #b8942b;
+  --color-gold-soft: #e4c96a;
+  --color-gold-muted: color-mix(in srgb, var(--color-gold) 36%, var(--color-cream));
+  --color-gold-border: color-mix(in srgb, var(--color-gold) 48%, var(--color-mist));
+  --color-gold-glow: rgb(212 175 55 / 0.16);
+  --color-blush-soft: #f3ddd8;
+  --color-blush-muted: color-mix(in srgb, var(--color-blush) 26%, var(--color-cream));
+  --color-indigo-deep: #09111d;
+  --color-blue-mid: #2a4d86;
+  --color-slate: #4f4a44;
+  --color-mist: #c5bdb0;
 
-  /* Typography — families only; webfont loading belongs to a later gate */
-  --font-display: "Cinzel", "Cinzel Display", "Palatino Linotype", Palatino, serif;
+  /* --------------------------------------------------
+     Semantic color — Light Editorial (default)
+     -------------------------------------------------- */
+  --surface: var(--color-cream);
+  --surface-raised: var(--color-ivory);
+  --surface-muted: var(--color-sand);
+  --surface-blush: var(--color-blush-muted);
+  --surface-inverse: var(--color-indigo);
+  --surface-highlight: color-mix(in srgb, var(--color-blush) 18%, var(--color-ivory));
+
+  --text: var(--color-charcoal);
+  --text-muted: var(--color-slate);
+  --text-inverse: var(--color-cream);
+  --text-accent: var(--color-blue);
+
+  --border: var(--color-mist);
+  --border-strong: color-mix(in srgb, var(--color-charcoal) 22%, var(--color-cream));
+  --border-accent: var(--color-gold);
+  --gold-muted: var(--color-gold-muted);
+  --gold-soft: var(--color-gold-soft);
+  --gold-border: var(--color-gold-border);
+  --gold-glow: var(--color-gold-glow);
+
+  --atmosphere-warm: rgb(212 175 55 / 0.07);
+  --atmosphere-blush: rgb(233 197 190 / 0.12);
+
+  --link: var(--color-blue);
+  --link-hover: var(--color-indigo);
+  --focus-ring: var(--color-gold);
+
+  --button-primary-bg: var(--color-indigo);
+  --button-primary-text: var(--color-cream);
+  --button-primary-hover: var(--color-blue);
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--color-charcoal);
+  --button-secondary-border: var(--color-gold);
+  --button-secondary-hover: var(--color-blush-muted);
+  --button-ghost-text: var(--color-blue);
+  --button-ghost-hover: var(--color-indigo);
+
+  --shadow-color: 14 26 45;
+
+  /* --------------------------------------------------
+     Typography
+     Families loaded from Google Fonts in BaseLayout.
+     -------------------------------------------------- */
+  --font-display: "Cinzel Display", "Cinzel", "Palatino Linotype", Palatino, serif;
   --font-body: "Lora", Georgia, "Times New Roman", serif;
   --font-ui: "Montserrat", "Segoe UI", system-ui, sans-serif;
 
-  --text-step-0: 1rem;
-  --text-step-1: 1.25rem;
-  --text-step-2: 1.75rem;
-  --text-step-3: 2.5rem;
+  --text-eyebrow: 0.75rem;
+  --text-ui: 0.8125rem;
+  --text-caption: 0.875rem;
+  --text-body-sm: 0.9375rem;
+  --text-body: 1.0625rem;
+  --text-h4: clamp(1.125rem, 0.4vw + 1.05rem, 1.35rem);
+  --text-h3: clamp(1.35rem, 1vw + 1.1rem, 1.75rem);
+  --text-h2: clamp(1.75rem, 2.2vw + 1.2rem, 2.5rem);
+  --text-h1: clamp(2.15rem, 4vw + 1rem, 3.5rem);
+  --text-display: clamp(2.5rem, 5.5vw + 0.8rem, 4.25rem);
+  --text-quote: clamp(1.25rem, 1.6vw + 1rem, 1.7rem);
 
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4rem;
+  --leading-display: 1.12;
+  --leading-heading: 1.22;
+  --leading-body: 1.7;
+  --leading-ui: 1.4;
+  --leading-tight: 1.3;
 
-  /* Containers */
+  --tracking-display: 0.08em;
+  --tracking-heading: 0.06em;
+  --tracking-eyebrow: 0.18em;
+  --tracking-body: 0.01em;
+  --tracking-ui: 0.08em;
+
+  --measure: 38rem;
+
+  /* --------------------------------------------------
+     Spacing
+     -------------------------------------------------- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-section: clamp(3.5rem, 6vw, 6.5rem);
+  --space-section-sm: clamp(2.5rem, 4vw, 4rem);
+
+  /* --------------------------------------------------
+     Layout
+     -------------------------------------------------- */
   --container-narrow: 40rem;
-  --container-default: 64rem;
-  --container-wide: 80rem;
-  --container-padding: var(--space-5);
+  --container-default: 68rem;
+  --container-wide: 82rem;
+  --container-padding: clamp(1.25rem, 4vw, 2.5rem);
 
-  /* Radius */
+  /* --------------------------------------------------
+     Borders, radii, shadows
+     -------------------------------------------------- */
+  --border-width: 1px;
+  --border-width-accent: 1px;
+
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+  --radius-lg: 0.9rem;
+  --radius-pill: 999px;
 
-  /* Shadows — restrained */
-  --shadow-sm: 0 1px 2px rgba(14, 26, 45, 0.08);
-  --shadow-md: 0 8px 24px rgba(14, 26, 45, 0.12);
+  --shadow-subtle: 0 1px 2px rgb(var(--shadow-color) / 0.06);
+  --shadow-lifted: 0 10px 30px rgb(var(--shadow-color) / 0.08);
+  --shadow-dramatic: 0 18px 50px rgb(var(--shadow-color) / 0.28);
 
-  /* Transitions */
-  --ease: ease;
+  /* --------------------------------------------------
+     Motion
+     -------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-fast: 150ms;
-  --duration-base: 250ms;
+  --duration-standard: 250ms;
+  --duration-slow: 450ms;
+}
+
+[data-surface="dark"] {
+  --surface: var(--color-indigo);
+  --surface-raised: color-mix(in srgb, var(--color-blue) 42%, var(--color-indigo));
+  --surface-muted: var(--color-blue);
+  --surface-blush: color-mix(in srgb, var(--color-blush) 14%, var(--color-indigo));
+  --surface-inverse: var(--color-cream);
+  --surface-highlight: color-mix(in srgb, var(--color-gold) 10%, var(--color-indigo));
+
+  --text: var(--color-cream);
+  --text-muted: color-mix(in srgb, var(--color-cream) 78%, var(--color-blue));
+  --text-inverse: var(--color-indigo);
+  --text-accent: var(--color-gold-soft);
+
+  --border: color-mix(in srgb, var(--color-gold) 28%, var(--color-indigo));
+  --border-strong: color-mix(in srgb, var(--color-cream) 22%, var(--color-indigo));
+  --border-accent: var(--color-gold);
+  --gold-muted: color-mix(in srgb, var(--color-gold) 42%, var(--color-indigo));
+  --gold-soft: var(--color-gold-soft);
+  --gold-border: color-mix(in srgb, var(--color-gold) 55%, var(--color-indigo));
+  --gold-glow: rgb(212 175 55 / 0.22);
+
+  --atmosphere-warm: rgb(212 175 55 / 0.14);
+  --atmosphere-blush: rgb(233 197 190 / 0.06);
+
+  --link: var(--color-gold-soft);
+  --link-hover: var(--color-cream);
+  --focus-ring: var(--color-gold);
+
+  --button-primary-bg: var(--color-gold);
+  --button-primary-text: var(--color-indigo);
+  --button-primary-hover: var(--color-gold-soft);
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--color-cream);
+  --button-secondary-border: var(--color-gold);
+  --button-secondary-hover: rgb(212 175 55 / 0.12);
+  --button-ghost-text: var(--color-cream);
+  --button-ghost-hover: var(--color-gold-soft);
+
+  --shadow-color: 0 0 0;
+  --shadow-subtle: 0 1px 0 rgb(212 175 55 / 0.16);
+  --shadow-lifted: 0 16px 40px rgb(0 0 0 / 0.28);
+  --shadow-dramatic: 0 24px 60px rgb(0 0 0 / 0.4), 0 0 48px var(--gold-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0.01ms;
+    --duration-standard: 0.01ms;
+    --duration-slow: 0.01ms;
+  }
 }
