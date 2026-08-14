@@ -1,9 +1,149 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import PolicyArticle from '../components/PolicyArticle.astro';
+import SiteCta from '../components/SiteCta.astro';
+import TextLink from '../components/TextLink.astro';
+import { withBase } from '../data/site';
+import { policyLastUpdated } from '../data/policies';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Coaching Disclaimer | She Who Remembers"
-  description="Placeholder coaching disclaimer page."
-  heading="Coaching Disclaimer"
-/>
+  description="She Who Remembers offers coaching and educational work, not psychotherapy, medical care, legal advice, crisis support, or guaranteed outcomes."
+>
+  <Hero
+    heading="Coaching Disclaimer"
+    lede="Coaching and education. Not a substitute for care."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      This page states the scope of the work in plain language. It aligns with Private Guidance,
+      the courses, the FAQ, Contact, and the book. It is a policy statement, not legal advice.
+    </p>
+  </Hero>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <PolicyArticle lastUpdated={policyLastUpdated}>
+        <h2>What this work is</h2>
+        <p>
+          She Who Remembers offers coaching, educational material, reflection, and
+          personal-development work. The aim is clearer self-contact, cleaner boundaries, and more
+          honest choice. It is support for discernment. It is not a transfer of inner authority.
+        </p>
+
+        <h2>What this work is not</h2>
+        <p>This work is not:</p>
+        <ul>
+          <li>psychotherapy</li>
+          <li>psychiatric care</li>
+          <li>diagnosis</li>
+          <li>treatment</li>
+          <li>medical care</li>
+          <li>legal advice</li>
+          <li>crisis support</li>
+          <li>emergency services</li>
+          <li>prophecy</li>
+          <li>spiritual authority transferred from you to a guide</li>
+        </ul>
+        <p>
+          Coaching cannot treat trauma, depression, anxiety disorders, abuse, addiction, or medical
+          conditions. When those need clinical, medical, legal, or crisis care, they still need
+          that care.
+        </p>
+
+        <h2>Mental health and clinical care</h2>
+        <p>
+          Therapy and coaching may coexist when their jobs stay distinct. Therapy addresses what
+          belongs in clinical care. This work addresses awareness, embodiment, boundaries,
+          self-trust, and choice. It does not replace treatment, and it does not diagnose.
+        </p>
+
+        <h2>Medical care</h2>
+        <p>
+          Nothing on this website, in a course, or in a private session is medical advice,
+          diagnosis, or medication guidance. Body-based language in this work is about attention
+          and self-contact, not about treating a medical condition.
+        </p>
+
+        <h2>Legal advice</h2>
+        <p>
+          This work does not provide legal advice, legal strategy, or interpretation of your
+          rights. Legal questions belong with a qualified professional in the place where you live.
+        </p>
+
+        <h2>Crisis and emergency support</h2>
+        <p>
+          This website, the contact form, a fit conversation, a course, and private guidance are
+          not crisis services. They are not monitored as emergency support.
+        </p>
+        <p>
+          If you are in immediate danger, contact local emergency services or a trusted local
+          resource. If you need urgent medical, psychiatric, or safety support, use the services
+          built for that. This site does not publish a phone number in place of local help.
+        </p>
+
+        <h2>Relationship decisions</h2>
+        <p>
+          The work may support your patterns, communication, and limits. It will not tell you
+          whether to stay in or leave a relationship. Those choices, if they come, belong to you.
+        </p>
+        <p>
+          If there is coercion, violence, abuse, or an immediate safety risk, appropriate local
+          emergency, professional, legal, medical, or trusted support is needed beyond the scope
+          of this work.
+        </p>
+
+        <h2>Intuition and spiritual language</h2>
+        <p>
+          Intuition is treated as information to be discerned, not as infallible certainty.
+          Spiritual language is optional. No belief system is required. The guide does not claim
+          to know someone&apos;s inner truth better than they do.
+        </p>
+
+        <h2>Personal responsibility</h2>
+        <p>
+          You remain the one living the life. A guide may reflect a pattern, ask a harder
+          question, or slow the pace. The decisions stay yours. Dependency is not the product.
+        </p>
+
+        <h2>Results and outcomes</h2>
+        <p>
+          This work does not promise healed relationships, trauma resolution, mental-health
+          treatment, spiritual awakening, financial outcomes, or guaranteed transformation. Some
+          people leave with more clarity. Some leave knowing this is not the right room. Both can
+          be honest.
+        </p>
+
+        <h2>Referral and fit</h2>
+        <p>
+          Wanting support is not the same as this being the right container. A{' '}
+          <TextLink href={withBase('/book-a-conversation')}>fit conversation</TextLink> can help
+          determine whether a course, private guidance, or another kind of support is the more
+          honest next step. There is no prize for forcing a match.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Practical questions about the site can be sent through{' '}
+          <TextLink href={withBase('/contact')}>Contact</TextLink>. For coaching fit, use Book a
+          Conversation when scheduling is active. For a fuller map of the work, see{' '}
+          <TextLink href={withBase('/private-guidance')}>Private Guidance</TextLink> and the{' '}
+          <TextLink href={withBase('/faq')}>FAQ</TextLink>.
+        </p>
+      </PolicyArticle>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If you want the map, not the exception list"
+    primary={{ label: 'Private Guidance', href: withBase('/private-guidance') }}
+    secondary={{ label: 'FAQ', href: withBase('/faq') }}
+  >
+    <p>The disclaimer names the edges. The work itself lives in the rooms those edges protect.</p>
+  </SiteCta>
+</BaseLayout>

@@ -140,6 +140,12 @@ Set `PUBLIC_SITE_URL` to the canonical production URL, including protocol. Conta
 - Used by Astro `site` and by absolute redirects such as `/thank-you`.
 - Leave empty in local preview if needed. The build still succeeds.
 
+## Legal and policy pages
+
+Public policy routes live at `/privacy`, `/terms`, `/coaching-disclaimer`, `/cancellation-refund-policy`, and `/accessibility`.
+
+These pages are visitor-facing website policy, not legal advice, and they are not presented as counsel-reviewed. Shared facts such as the last-updated date (`August 14, 2026`), whether public checkout is active, and future refund wording live in `src/data/policies.ts`. Leave unknown fields empty. Do not invent jurisdictions, refund windows, company registration, or compliance certifications.
+
 ## Design tokens
 
 Temporary brand values live in `src/styles/tokens.css` so colors, type, spacing, and related tokens can be changed in one place. They follow `/reference/branding/BRAND-DIRECTION.md` and are not the final identity.

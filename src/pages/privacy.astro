@@ -1,9 +1,222 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import PolicyArticle from '../components/PolicyArticle.astro';
+import SiteCta from '../components/SiteCta.astro';
+import TextLink from '../components/TextLink.astro';
+import { withBase } from '../data/site';
+import { policyLastUpdated, sitePayments, siteTracking } from '../data/policies';
+import { hasContactFormEndpoint, hasPublicCalUrl } from '../data/integrations';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Privacy | She Who Remembers"
-  description="Placeholder privacy page for She Who Remembers."
-  heading="Privacy"
-/>
+  description="How this website handles information you choose to share, what is not collected here, and how booking or contact tools work when they are connected."
+>
+  <Hero
+    heading="Privacy"
+    lede="What this site may collect, and what it is not built to collect."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      This page describes the website as it actually works. It is a visitor-facing policy, not
+      legal advice, and it is not presented as a lawyer-reviewed document.
+    </p>
+  </Hero>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <PolicyArticle lastUpdated={policyLastUpdated}>
+        <h2>Overview</h2>
+        <p>
+          She Who Remembers is a static website. It does not currently run a client database, a
+          payment checkout, or its own analytics. Information reaches this project only when you
+          choose to send it through a connected contact form, or when you leave the site to use
+          an external booking calendar.
+        </p>
+        <p>
+          If a tool is not connected yet, this page will not pretend that collection is happening.
+        </p>
+
+        <h2>Information you choose to provide</h2>
+        <p>
+          You are not required to create an account to read this site. The information this
+          project may receive is limited to what you voluntarily submit through a connected
+          contact form, and what you share with an external booking provider if you schedule a
+          conversation.
+        </p>
+
+        <h2>Booking information</h2>
+        {
+          hasPublicCalUrl ? (
+            <p>
+              Scheduling currently happens through an external booking provider. When you open
+              that calendar, you leave this website. The provider may collect information such as
+              your name, email, and appointment details according to its own practices. She Who
+              Remembers does not store that provider&apos;s booking records on this website.
+            </p>
+          ) : (
+            <p>
+              No live booking calendar is connected on this site yet. When scheduling is
+              connected, it will happen through an external booking provider. This website is not
+              built to store that provider&apos;s appointment records.
+            </p>
+          )
+        }
+        <p>
+          Any confirmation email about a booked time would come from the calendar you used, not
+          from this website.
+        </p>
+
+        <h2>Contact-form information</h2>
+        {
+          hasContactFormEndpoint ? (
+            <>
+              <p>When you send a message through the contact form, the fields are:</p>
+              <ul>
+                <li>Name</li>
+                <li>Email</li>
+                <li>Reason for writing</li>
+                <li>Message</li>
+              </ul>
+              <p>
+                Those fields are posted to an external static-form provider so the message can be
+                delivered. This website does not keep its own inbox or message archive.
+              </p>
+            </>
+          ) : (
+            <p>
+              Message submission is not active on this site yet. When the contact form is
+              connected, it may collect name, email, reason for writing, and message, and post
+              those fields to an external static-form provider. This website is not built to keep
+              its own inbox.
+            </p>
+          )
+        }
+
+        <h2>Technical information</h2>
+        <p>
+          Ordinary web delivery can include technical details such as IP address, browser type,
+          requested page, and approximate time of the request. Those details may be processed by
+          the hosting environment as part of serving static files. This project does not currently
+          run its own analytics on that information.
+        </p>
+        {
+          siteTracking.firstPartyAnalytics ? (
+            <p>First-party analytics are enabled on this site.</p>
+          ) : (
+            <p>No first-party analytics tool is integrated on this website at this time.</p>
+          )
+        }
+
+        <h2>Third-party services</h2>
+        <p>This site currently loads webfonts from Google Fonts. That service may receive technical information such as IP address when a page is viewed.</p>
+        <p>
+          Depending on what is connected, visitors may also encounter:
+        </p>
+        <ul>
+          <li>an external booking provider, when scheduling is active</li>
+          <li>an external static-form provider, when contact delivery is active</li>
+          <li>a future payment processor, if paid offerings are later configured</li>
+        </ul>
+        <p>
+          Those services have their own practices. This page does not control them and does not
+          name a live provider until one is actually configured.
+        </p>
+        {
+          siteTracking.firstPartyTrackingCookies ? (
+            <p>This site sets first-party tracking cookies.</p>
+          ) : (
+            <p>
+              This website does not currently set first-party tracking cookies. Third-party
+              services you visit (including a booking calendar, a form provider, or Google Fonts)
+              may use their own cookies or similar technologies.
+            </p>
+          )
+        }
+
+        <h2>Data minimization</h2>
+        <p>
+          Ask only for what a reply or a booking actually needs. Do not send records this site is
+          not built to hold. The contact form is for practical messages, not for coaching intake
+          files or confidential case material.
+        </p>
+
+        <h2>Sensitive information</h2>
+        <p>Please do not submit confidential material through the general contact form, including:</p>
+        <ul>
+          <li>medical records</li>
+          <li>psychiatric records</li>
+          <li>diagnosis details</li>
+          <li>legal case materials</li>
+          <li>crisis disclosures</li>
+          <li>payment card information</li>
+        </ul>
+        <p>
+          The form is not monitored as emergency support. If you are in immediate danger, contact
+          local emergency services or a trusted local resource.
+        </p>
+
+        <h2>Retention</h2>
+        <p>
+          This website does not currently keep its own archive of contact messages or booking
+          records. If a form or booking provider is connected, that provider&apos;s retention
+          practices apply. Specific retention periods are not listed here because they depend on
+          a provider that has not been named on this site.
+        </p>
+
+        <h2>Security</h2>
+        <p>
+          A static site has a smaller surface than an application that stores accounts or card
+          data. That is not a promise that information can never be misused, intercepted, or
+          mishandled by a third party you choose to use. Do not send payment card numbers or
+          confidential records through this website.
+        </p>
+        {
+          sitePayments.publicCheckoutActive ? (
+            <p>A public payment checkout is active. Card data would be handled by the payment processor, not stored as ordinary website content.</p>
+          ) : (
+            <p>No public payment checkout is currently active on this site, and this website is not built to store payment card data.</p>
+          )
+        }
+
+        <h2>External links</h2>
+        <p>
+          Links to other sites, including a future booking calendar or purchase page, lead to
+          places this project does not operate. Their privacy practices are their own.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          This website is intended for adults. It is not directed at children, and it is not
+          designed to collect information from children.
+        </p>
+
+        <h2>Policy updates</h2>
+        <p>
+          This page may change as the site changes. The date at the top of the article is the
+          last time this wording was intentionally updated. It does not change automatically
+          with every build.
+        </p>
+
+        <h2>Contact about privacy</h2>
+        <p>
+          Questions about this policy can be sent through the{' '}
+          <TextLink href={withBase('/contact')}>Contact</TextLink> page. There is no separate
+          public privacy email published on this site.
+        </p>
+      </PolicyArticle>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If you need the practical door"
+    primary={{ label: 'Contact', href: withBase('/contact') }}
+    secondary={{ label: 'Coaching Disclaimer', href: withBase('/coaching-disclaimer') }}
+  >
+    <p>Scope lives beside privacy. Both are part of using this work honestly.</p>
+  </SiteCta>
+</BaseLayout>

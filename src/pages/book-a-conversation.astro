@@ -73,7 +73,14 @@ const provider = hasPublicCalUrl ? bookingProviderName(publicCalUrl) : '';
         <li>Choose a time you can actually protect.</li>
         <li>Arrive with the real question, even if it is not polished.</li>
         <li>You do not need a perfect story, a résumé of suffering, or a prepared pitch.</li>
-        <li>If you need to reschedule, do so through the booking calendar. A fuller policy will be published when it is ready.</li>
+        <li>
+          If you need to reschedule, do so through the booking calendar. Concrete cancellation
+          windows will be named when paid sessions exist. The current framework is on the{' '}
+          <TextLink href={withBase('/cancellation-refund-policy')}>
+            Cancellation & Refund Policy
+          </TextLink>
+          .
+        </li>
       </ul>
     </Container>
   </Section>

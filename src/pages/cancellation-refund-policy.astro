@@ -1,9 +1,169 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import PolicyArticle from '../components/PolicyArticle.astro';
+import SiteCta from '../components/SiteCta.astro';
+import TextLink from '../components/TextLink.astro';
+import { withBase } from '../data/site';
+import {
+  hasPolicyText,
+  policyLastUpdated,
+  refundPolicy,
+  sitePayments,
+} from '../data/policies';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Cancellation & Refund Policy | She Who Remembers"
-  description="Placeholder cancellation and refund policy page."
-  heading="Cancellation & Refund Policy"
-/>
+  description="How cancellation and refunds will be handled once paid offerings exist. No invented windows or checkout rules are listed while payment is not active."
+>
+  <Hero
+    heading="Cancellation & Refund Policy"
+    lede="Specific terms depend on the offering. They will be shown before purchase or booking."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      This page is a framework, not a finished set of windows and penalties. It will be completed
+      when paid offerings are actually configured. It is website policy, not legal advice.
+    </p>
+  </Hero>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <PolicyArticle lastUpdated={policyLastUpdated}>
+        <h2>Current status</h2>
+        {
+          sitePayments.publicCheckoutActive ? (
+            <p>
+              A public payment checkout is active. The terms shown at purchase apply to that
+              offering, together with any specific wording below that has been filled in.
+            </p>
+          ) : (
+            <p>
+              No public payment checkout is currently active on this site. There is no live
+              enrollment purchase, deposit, or refund clock running through these pages.
+            </p>
+          )
+        }
+
+        <h2>Private sessions</h2>
+        {
+          hasPolicyText(refundPolicy.privateSessionCancelNotice) ||
+          hasPolicyText(refundPolicy.privateSessionRefundWindow) ? (
+            <>
+              {hasPolicyText(refundPolicy.privateSessionCancelNotice) && (
+                <p>{refundPolicy.privateSessionCancelNotice}</p>
+              )}
+              {hasPolicyText(refundPolicy.privateSessionRefundWindow) && (
+                <p>{refundPolicy.privateSessionRefundWindow}</p>
+              )}
+            </>
+          ) : (
+            <p>
+              Terms for rescheduling, cancellation, missed sessions, and refunds will be stated at
+              booking or purchase before a paid session becomes available.
+            </p>
+          )
+        }
+
+        <h2>Multi-session mentorship</h2>
+        {
+          hasPolicyText(refundPolicy.mentorshipPackageTerms) ? (
+            <p>{refundPolicy.mentorshipPackageTerms}</p>
+          ) : (
+            <p>
+              Any package-specific terms for six-session or twelve-session mentorship will be
+              presented before payment. This page does not invent a deposit rule or a midway
+              refund formula in advance.
+            </p>
+          )
+        }
+
+        <h2>Courses and group experiences</h2>
+        {
+          hasPolicyText(refundPolicy.courseCancelWindow) ||
+          hasPolicyText(refundPolicy.courseRefundWindow) ? (
+            <>
+              {hasPolicyText(refundPolicy.courseCancelWindow) && (
+                <p>{refundPolicy.courseCancelWindow}</p>
+              )}
+              {hasPolicyText(refundPolicy.courseRefundWindow) && (
+                <p>{refundPolicy.courseRefundWindow}</p>
+              )}
+            </>
+          ) : (
+            <p>
+              Dates, transfer rules, cancellation terms, and refund eligibility will be named
+              before enrollment. Until an offering is open, there is no course refund deadline to
+              publish.
+            </p>
+          )
+        }
+
+        <h2>Events or retreats</h2>
+        {
+          hasPolicyText(refundPolicy.eventOrRetreatTerms) ? (
+            <p>{refundPolicy.eventOrRetreatTerms}</p>
+          ) : (
+            <p>
+              Public events or retreats are not currently offered through this website. If they
+              are offered later, their cancellation and refund terms will be published before
+              purchase. No event terms are invented here.
+            </p>
+          )
+        }
+
+        <h2>Provider fees</h2>
+        {
+          hasPolicyText(refundPolicy.processorFeeHandling) ? (
+            <p>{refundPolicy.processorFeeHandling}</p>
+          ) : (
+            <p>
+              Processor or booking-provider fees are not described as refundable or
+              non-refundable here. That depends on the payment or booking provider and on the
+              terms shown at purchase, once those exist.
+            </p>
+          )
+        }
+
+        <h2>Exceptional circumstances</h2>
+        <p>
+          If something unusual happens, you may write through{' '}
+          <TextLink href={withBase('/contact')}>Contact</TextLink>. That invitation is a way to
+          reach the work. It is not a promise of a refund, credit, exception, or particular
+          outcome.
+        </p>
+
+        <h2>Changes to policy</h2>
+        <p>
+          This framework may be updated as offerings are configured. Future changes apply going
+          forward. Where a purchase has already been made, the terms shown at that purchase remain
+          the relevant terms for that purchase, unless a later notice says otherwise in a way you
+          can actually see.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about cancellation or refunds can be sent through the{' '}
+          <TextLink href={withBase('/contact')}>Contact</TextLink> page. A street address and a
+          public billing email are not published here because they have not been provided for
+          this site.
+        </p>
+      </PolicyArticle>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If you are locating the work, not a receipt"
+    primary={{ label: 'Book a Conversation', href: withBase('/book-a-conversation') }}
+    secondary={{ label: 'Contact', href: withBase('/contact') }}
+  >
+    <p>
+      A fit conversation is still the honest next step while checkout is not active. Scheduling
+      and message submission follow the pages themselves.
+    </p>
+  </SiteCta>
+</BaseLayout>

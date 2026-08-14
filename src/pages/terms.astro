@@ -1,9 +1,181 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import PolicyArticle from '../components/PolicyArticle.astro';
+import SiteCta from '../components/SiteCta.astro';
+import TextLink from '../components/TextLink.astro';
+import { withBase } from '../data/site';
+import { policyLastUpdated, sitePayments } from '../data/policies';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Terms | She Who Remembers"
-  description="Placeholder terms page for She Who Remembers."
-  heading="Terms"
-/>
+  description="Plain-language terms for using the She Who Remembers website, educational content, coaching pages, and related materials."
+>
+  <Hero
+    heading="Terms"
+    lede="Plain expectations for using this website and its educational content."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      These terms describe how this site is offered. They are website policy, not legal advice,
+      and they are not presented as a lawyer-reviewed contract.
+    </p>
+  </Hero>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <PolicyArticle lastUpdated={policyLastUpdated}>
+        <h2>Acceptance of these terms</h2>
+        <p>
+          By using this website, you agree to read these terms alongside the{' '}
+          <TextLink href={withBase('/privacy')}>Privacy</TextLink> page, the{' '}
+          <TextLink href={withBase('/coaching-disclaimer')}>Coaching Disclaimer</TextLink>, and
+          the{' '}
+          <TextLink href={withBase('/cancellation-refund-policy')}>
+            Cancellation & Refund Policy
+          </TextLink>
+          . If you do not want to use the site on that basis, you can leave.
+        </p>
+
+        <h2>Educational purpose</h2>
+        <p>
+          This website offers coaching, educational material, reflection, and personal-development
+          work connected to She Who Remembers. It is here to help you locate a threshold, understand
+          the work, and choose a next step. It is not a clinic, a court, or an emergency service.
+        </p>
+
+        <h2>Coaching and courses</h2>
+        <p>
+          Course pages, private guidance, and related materials describe educational and coaching
+          containers. Dates, fees, and enrollment details appear only when an offering is actually
+          open. Browsing a description is not enrollment.
+        </p>
+        <p>
+          A fit conversation is a conversation about fit. It is not pressure to buy, and it is not
+          a guarantee that a container will be offered or that it will be right for you.
+        </p>
+
+        <h2>No professional-client relationship from browsing</h2>
+        <p>
+          Reading this website does not create a coaching, counseling, medical, legal, or other
+          professional-client relationship. That kind of working relationship, if it happens,
+          begins only through a clearly offered container and your agreement to take part in it.
+        </p>
+
+        <h2>No guarantees</h2>
+        <p>
+          Nothing on this site promises a particular result: not healed relationships, not trauma
+          resolution, not mental-health treatment, not spiritual awakening, not financial outcomes,
+          and not guaranteed transformation. Insight is not the same as a changed life. You remain
+          the one living the life.
+        </p>
+
+        <h2>Personal responsibility</h2>
+        <p>
+          You are responsible for the choices you make after reading this material or taking part
+          in the work. Support can clarify. It cannot take over authorship of your decisions.
+        </p>
+
+        <h2>Intellectual property</h2>
+        <p>
+          Unless otherwise noted, original website copy, course materials, original exercises,
+          educational materials, book content presented here, and branding on this site belong to
+          She Who Remembers or to the people who hold those rights. You may read the public pages
+          for your own use. You may not copy, republish, or sell those materials as if they were
+          yours.
+        </p>
+        <p>
+          Third-party materials remain with their owners. Messages you send through the contact
+          form are not claimed as original She Who Remembers creative work simply because you sent
+          them. They may be read in order to understand and, where appropriate, reply.
+        </p>
+
+        <h2>Acceptable use</h2>
+        <p>Use this site in a way that does not harm the work, other visitors, or the people who hold it. Do not:</p>
+        <ul>
+          <li>attempt to break, overload, or misuse the site or its forms</li>
+          <li>submit confidential medical, psychiatric, legal, or crisis material through the general contact form</li>
+          <li>impersonate another person</li>
+          <li>use the content to harass, defame, or exploit anyone</li>
+        </ul>
+
+        <h2>External services and links</h2>
+        <p>
+          This site may link to an external booking calendar, a form provider, or other pages this
+          project does not operate. Those services have their own terms. She Who Remembers is not
+          responsible for their content or their availability.
+        </p>
+
+        <h2>Purchases and paid offerings</h2>
+        {
+          sitePayments.publicCheckoutActive ? (
+            <p>
+              Paid offerings, when purchased through this site or a linked checkout, are subject
+              to the terms shown before payment and to the Cancellation & Refund Policy.
+            </p>
+          ) : (
+            <p>
+              No public payment checkout is currently active on this site. When a paid offering
+              is configured, the price, what is included, and the terms that apply will be shown
+              before purchase. Until then, course and guidance pages do not complete a sale.
+            </p>
+          )
+        }
+
+        <h2>Cancellation and refund policy</h2>
+        <p>
+          Specific cancellation and refund terms depend on the offering. They will be shown before
+          purchase or booking when a paid container exists. The current framework lives on the{' '}
+          <TextLink href={withBase('/cancellation-refund-policy')}>
+            Cancellation & Refund Policy
+          </TextLink>{' '}
+          page. This site does not invent windows, deposits, or &quot;all sales final&quot;
+          language before those facts are known.
+        </p>
+
+        <h2>Availability and changes</h2>
+        <p>
+          Pages, offerings, and scheduling availability can change. A description on this site is
+          not a promise that a particular course, date, or private container will remain open.
+        </p>
+
+        <h2>Limitation language</h2>
+        <p>
+          To the extent the law allows, She Who Remembers is not responsible for decisions you
+          make after using this website or taking part in coaching or educational work. Nothing
+          here is a promise of a particular result.
+        </p>
+        <p>
+          This language is meant to be proportionate to a coaching, education, book, and course
+          website. It does not ask you to waive rights that the law does not allow you to waive.
+          It does not set a governing-law or arbitration rule, because those facts are not
+          established on this site.
+        </p>
+
+        <h2>Updates to terms</h2>
+        <p>
+          These terms may be updated as the site changes. The date at the top of the article is
+          the last time this wording was intentionally revised.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about these terms can be sent through the{' '}
+          <TextLink href={withBase('/contact')}>Contact</TextLink> page.
+        </p>
+      </PolicyArticle>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If the question is the work itself"
+    primary={{ label: 'Coaching Disclaimer', href: withBase('/coaching-disclaimer') }}
+    secondary={{ label: 'Contact', href: withBase('/contact') }}
+  >
+    <p>Terms describe use of the site. The disclaimer describes the limits of the work.</p>
+  </SiteCta>
+</BaseLayout>

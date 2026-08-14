@@ -1,9 +1,170 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import PolicyArticle from '../components/PolicyArticle.astro';
+import SiteCta from '../components/SiteCta.astro';
+import TextLink from '../components/TextLink.astro';
+import { withBase } from '../data/site';
+import { policyLastUpdated } from '../data/policies';
+import { hasContactFormEndpoint, hasPublicCalUrl } from '../data/integrations';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Accessibility | She Who Remembers"
-  description="Placeholder accessibility statement page."
-  heading="Accessibility"
-/>
+  description="Accessibility intent for the She Who Remembers website, current practices, known limits, and how to report an access problem."
+>
+  <Hero
+    heading="Accessibility"
+    lede="The site should be usable. If it is not, there is a way to say so."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      This statement describes intent and current practice. It is not a certification, an audit
+      report, or a claim of perfect access.
+    </p>
+  </Hero>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <PolicyArticle lastUpdated={policyLastUpdated}>
+        <h2>Commitment</h2>
+        <p>
+          She Who Remembers aims to follow recognized accessibility practices so visitors can read,
+          move, and take the next step without being locked out by the interface. The work is
+          ongoing. This page will be updated as the site changes.
+        </p>
+
+        <h2>Current accessibility practices</h2>
+        <p>The public site currently includes:</p>
+        <ul>
+          <li>semantic page landmarks, including a main content region</li>
+          <li>a skip link to the main content</li>
+          <li>keyboard-accessible site navigation</li>
+          <li>visible focus states</li>
+          <li>native form controls with labels, when the contact form is shown</li>
+          <li>native details and summary elements for FAQ answers</li>
+          <li>reduced-motion support for visitors who request it</li>
+          <li>responsive layouts across common screen sizes</li>
+          <li>a contrast-conscious palette</li>
+        </ul>
+        <p>
+          Photography is not yet used as public content. When images are added, they will include
+          text alternatives. Decorative marks are hidden from assistive technology where they do
+          not add meaning.
+        </p>
+
+        <h2>Keyboard access</h2>
+        <p>
+          Primary navigation, text links, buttons, and FAQ summaries are meant to be reachable
+          from the keyboard. FAQ items use native details elements, so more than one answer can
+          remain open. Focus is indicated with a visible ring, not by color change alone.
+        </p>
+
+        <h2>Color and contrast</h2>
+        <p>
+          The palette is chosen to keep body text readable on the cream and indigo surfaces used
+          throughout the site. Color is not the only way status is communicated. This is not a
+          claim of a formal contrast audit or a WCAG certificate.
+        </p>
+
+        <h2>Responsive design</h2>
+        <p>
+          Layouts are built to wrap on small screens. Long headings, lists, and calls to action
+          are allowed to break rather than force horizontal scrolling. Line length for reading is
+          held to a readable measure.
+        </p>
+
+        <h2>Motion</h2>
+        <p>
+          If your system requests reduced motion, the site shortens or removes non-essential
+          animation and smooth scrolling. Atmospheric decoration is kept quieter in that case.
+        </p>
+
+        <h2>Forms</h2>
+        {
+          hasContactFormEndpoint ? (
+            <p>
+              The contact form uses native inputs, a native select, and a native textarea, each
+              with a visible label. Required fields are named in the label text. Validation uses
+              the browser&apos;s native required and email checks.
+            </p>
+          ) : (
+            <p>
+              The contact form is visible as a preview while message submission is not active. In
+              that state the fields are disabled, the status is explained in text, and nothing
+              can be submitted. When the form is connected, it will use native labeled controls.
+            </p>
+          )
+        }
+
+        <h2>Known limitations</h2>
+        <p>
+          Some parts of a visit are not fully controlled here. Webfonts are loaded from Google
+          Fonts. If that service is slow, blocked, or incompatible with a particular setup, system
+          fallback fonts are specified.
+        </p>
+        <p>
+          An internal style-guide route exists for design review. It is not a public marketing
+          page.
+        </p>
+
+        <h2>Third-party services</h2>
+        <p>
+          Accessibility of external platforms is partly controlled by those providers. This site
+          does not claim to control:
+        </p>
+        <ul>
+          {
+            hasPublicCalUrl ? (
+              <li>the external booking calendar used for scheduling</li>
+            ) : (
+              <li>a future external booking calendar, once scheduling is connected</li>
+            )
+          }
+          {
+            hasContactFormEndpoint ? (
+              <li>the external form provider that receives contact messages</li>
+            ) : (
+              <li>a future static-form provider, once contact delivery is connected</li>
+            )
+          }
+          <li>a future payment processor, if paid offerings are later configured</li>
+        </ul>
+        <p>
+          When you leave this site to use one of those tools, their interface, keyboard behavior,
+          and alternatives are theirs.
+        </p>
+
+        <h2>Accessibility feedback</h2>
+        <p>
+          If you find a barrier, write through the{' '}
+          <TextLink href={withBase('/contact')}>Contact</TextLink> page. Describe the page, what
+          you were trying to do, and what got in the way, if you can. You do not need to use
+          technical language.
+        </p>
+        <p>
+          There is no separate accessibility email published on this site. A street address is
+          not listed because one has not been provided for publication.
+        </p>
+
+        <h2>Ongoing improvement</h2>
+        <p>
+          This statement will be revised when the site adds imagery, live booking, live contact
+          delivery, or payment. The date at the top of the article is the last intentional update,
+          not a stamp generated by every build.
+        </p>
+      </PolicyArticle>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If something on the site is in the way"
+    primary={{ label: 'Contact', href: withBase('/contact') }}
+    secondary={{ label: 'Home', href: withBase('/') }}
+  >
+    <p>Name the page and the barrier. That is enough to start.</p>
+  </SiteCta>
+</BaseLayout>

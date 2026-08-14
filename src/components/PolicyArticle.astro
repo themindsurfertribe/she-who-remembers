@@ -1,0 +1,55 @@
+---
+interface Props {
+  lastUpdated?: string;
+  class?: string;
+}
+
+const { lastUpdated, class: className } = Astro.props;
+---
+
+<article class:list={['policy', className]}>
+  {lastUpdated && <p class="policy__updated">Last updated: {lastUpdated}</p>}
+  <slot />
+</article>
+
+<style>
+  .policy {
+    max-width: var(--measure);
+    overflow-wrap: break-word;
+  }
+
+  .policy__updated {
+    margin: 0 0 var(--space-lg);
+    color: var(--text-muted);
+    font-size: var(--text-body-sm);
+  }
+
+  .policy :global(h2) {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    overflow-wrap: break-word;
+  }
+
+  .policy :global(h2:first-of-type) {
+    margin-top: 0;
+  }
+
+  .policy :global(p) {
+    max-width: none;
+  }
+
+  .policy :global(ul) {
+    margin: 0 0 var(--space-md);
+    padding-left: 1.25rem;
+    max-width: none;
+  }
+
+  .policy :global(li) {
+    margin: 0 0 var(--space-2xs);
+    overflow-wrap: break-word;
+  }
+
+  .policy :global(li:last-child) {
+    margin-bottom: 0;
+  }
+</style>
