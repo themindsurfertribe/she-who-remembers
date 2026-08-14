@@ -1,0 +1,39 @@
+# Intentionally tracked: reference/, PROJECT-SOURCE/, src/, public/,
+# README.md, package.json, package-lock.json, astro.config.mjs, tsconfig.json
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Astro generated types and cache
+.astro/
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,56 @@
+:root {
+  /* Color — temporary brand tokens from /reference/branding/BRAND-DIRECTION.md */
+  --color-gold: #d4af37;
+  --color-cream: #f6f1e6;
+  --color-blush: #e9c5be;
+  --color-indigo: #0e1a2d;
+  --color-blue: #1e3a6d;
+  --color-charcoal: #1a1a1a;
+
+  --color-bg: var(--color-cream);
+  --color-bg-dark: var(--color-indigo);
+  --color-text: var(--color-charcoal);
+  --color-text-inverse: var(--color-cream);
+  --color-accent: var(--color-gold);
+  --color-border: #ddd4c6;
+
+  /* Typography — families only; webfont loading belongs to a later gate */
+  --font-display: "Cinzel", "Cinzel Display", "Palatino Linotype", Palatino, serif;
+  --font-body: "Lora", Georgia, "Times New Roman", serif;
+  --font-ui: "Montserrat", "Segoe UI", system-ui, sans-serif;
+
+  --text-step-0: 1rem;
+  --text-step-1: 1.25rem;
+  --text-step-2: 1.75rem;
+  --text-step-3: 2.5rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Containers */
+  --container-narrow: 40rem;
+  --container-default: 64rem;
+  --container-wide: 80rem;
+  --container-padding: var(--space-5);
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Shadows — restrained */
+  --shadow-sm: 0 1px 2px rgba(14, 26, 45, 0.08);
+  --shadow-md: 0 8px 24px rgba(14, 26, 45, 0.12);
+
+  /* Transitions */
+  --ease: ease;
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+}

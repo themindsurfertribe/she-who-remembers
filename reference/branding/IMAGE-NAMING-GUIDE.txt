@@ -1,0 +1,18 @@
+﻿SHE WHO REMEMBERS - BRAND IMAGE FILE NAMES
+
+00-original-favorite.jpg
+Original emotional and symbolic source reference.
+
+01-PRIMARY-TEMP-BRAND-SYSTEM.png
+Primary temporary website brand board.
+
+02-dark-mood-reference.png
+Use for hero sections, dramatic transitions, campaigns, and social inspiration.
+
+03-light-editorial-reference.png
+Use for quieter pages, forms, FAQ, Letters, and editorial layouts.
+
+IMPORTANT:
+Reference files are inspiration/source material.
+Do not automatically publish these files on the live website.
+Final public assets should be intentionally copied into src/assets/images or public/images.
