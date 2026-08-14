@@ -1,9 +1,232 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import FaqList from '../components/FaqList.astro';
+import FaqItem from '../components/FaqItem.astro';
+import SiteCta from '../components/SiteCta.astro';
+import TextLink from '../components/TextLink.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="FAQ | She Who Remembers"
-  description="Placeholder page for frequently asked questions."
-  heading="FAQ"
-/>
+  description="Answers about where to begin, courses, private guidance, the book, and the limits of this work: coaching and education, not therapy or crisis care."
+>
+  <Hero
+    heading="Questions"
+    lede="Direct answers. No performance of mystery."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      If you are looking for a doorway rather than a definition, start at{' '}
+      <TextLink href={withBase('/begin-here')}>Begin Here</TextLink>.
+    </p>
+  </Hero>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Starting">
+        <p>You do not have to arrive already sorted.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="Where should I begin?">
+          <p>
+            If you want to locate the season you are in, start at{' '}
+            <TextLink href={withBase('/begin-here')}>Begin Here</TextLink>. If you already know
+            you want a human conversation,{' '}
+            <TextLink href={withBase('/book-a-conversation')}>Book a Conversation</TextLink>.
+            The map of the work lives on{' '}
+            <TextLink href={withBase('/the-work')}>The Work</TextLink>.
+          </p>
+        </FaqItem>
+        <FaqItem question="Do I need to read the book first?">
+          <p>
+            No. The book can deepen the language. It is not an entrance exam, and participation
+            in a course or conversation does not depend on assigned reading.
+          </p>
+        </FaqItem>
+        <FaqItem question="Do I need to know which course I want?">
+          <p>
+            No. The name of the work can come later. If more than one doorway sounds familiar,
+            choose the sentence that feels most true today. Comparison lives on{' '}
+            <TextLink href={withBase('/courses')}>Courses & Experiences</TextLink>.
+          </p>
+        </FaqItem>
+        <FaqItem question="Do I need to identify as spiritual?">
+          <p>
+            No. Spiritual language may appear. Belief is not required. Curiosity, discernment,
+            and a willingness to examine your own experience are enough.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Courses">
+        <p>Three pathways. Not a ladder.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="How are the three pathways different?">
+          <p>
+            The Sacred No is voice and boundaries. The Remembering is self and embodiment. Legacy
+            in Motion is purpose and transmission. Fuller descriptions are on{' '}
+            <TextLink href={withBase('/courses')}>Courses & Experiences</TextLink>.
+          </p>
+        </FaqItem>
+        <FaqItem question="Do I need to take them in order?">
+          <p>
+            No. They are doors, not levels. Enter where the pressure in your life actually is.
+          </p>
+        </FaqItem>
+        <FaqItem question="Are current dates and prices available?">
+          <p>
+            Not on this website yet. Dates, duration, and fees will be named when an offering is
+            actually open. Until then, a fit conversation is the honest next step rather than a
+            guessed calendar.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if more than one pathway fits?">
+          <p>
+            That is ordinary. Start with the one that matches this season. The others can remain
+            available without becoming homework.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Private guidance">
+        <p>Individualized work when a threshold needs more room.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="What is private guidance?">
+          <p>
+            One-to-one support for a specific season, decision, boundary, or integration. It does
+            not replace inner authority. Its purpose is to make your own discernment more
+            available. See{' '}
+            <TextLink href={withBase('/private-guidance')}>Private Guidance</TextLink>.
+          </p>
+        </FaqItem>
+        <FaqItem question="Do I need to be in crisis?">
+          <p>
+            No. Crisis needs care built for crisis. Private guidance is for a season that wants
+            more room, not for emergency or acute mental health need.
+          </p>
+        </FaqItem>
+        <FaqItem question="Will Lala tell me what to do?">
+          <p>
+            No. You may be asked harder questions than you arrived with. The decisions remain
+            yours.
+          </p>
+        </FaqItem>
+        <FaqItem question="Can I work with Lala while in therapy?">
+          <p>
+            The two may coexist when their roles stay clear. Therapy addresses what belongs in
+            clinical care. This is coaching and educational work. It does not replace treatment.
+          </p>
+        </FaqItem>
+        <FaqItem question="How do I know if private work is right for me?">
+          <p>
+            If the threshold is specific and needs more room than a group container, private work
+            may fit. A{' '}
+            <TextLink href={withBase('/book-a-conversation')}>fit conversation</TextLink> is
+            where that gets sorted without requiring you to already know.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <SectionIntro heading="Scope and safety">
+        <p>What this work can hold, and what it must not pretend to hold.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="Is this therapy?">
+          <p>
+            No. She Who Remembers is coaching and educational work: awareness, embodiment,
+            boundaries, self-trust, and choice. It is not psychotherapy, diagnosis, or a
+            substitute for mental health treatment.
+          </p>
+        </FaqItem>
+        <FaqItem question="Is this medical or psychiatric care?">
+          <p>
+            No. It is not medical advice, psychiatric care, or medication guidance. If those are
+            needed, they remain needed.
+          </p>
+        </FaqItem>
+        <FaqItem question="Can this support relationship questions?">
+          <p>
+            Yes: your patterns, communication, and limits. It is not couples therapy, and it will
+            not instruct you to stay or leave. Those choices, if they come, belong to you.
+          </p>
+        </FaqItem>
+        <FaqItem question="What if I am in an unsafe situation?">
+          <p>
+            This website, the contact form, and a fit conversation are not crisis services. If
+            you are in immediate danger, contact local emergency services or a trusted local
+            resource. Do not use these pages as a substitute for urgent help.
+          </p>
+        </FaqItem>
+        <FaqItem question="Will I have to disclose trauma?">
+          <p>
+            No. There is no requirement to disclose traumatic experience or prove vulnerability.
+            Material that requires trauma treatment belongs with an appropriately qualified
+            professional.
+          </p>
+        </FaqItem>
+        <FaqItem question="Will I have to discuss sex or intimacy?">
+          <p>
+            No. Embodiment and body sovereignty may be discussed conceptually. Personal sexual
+            disclosure is never required.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="The book">
+        <p>The source body of ideas. Not a product page with invented availability.</p>
+      </SectionIntro>
+      <FaqList>
+        <FaqItem question="Is She Who Remembers required reading?">
+          <p>
+            No. The book can stand alone, and the rest of the work can be entered without it.
+          </p>
+        </FaqItem>
+        <FaqItem question="Where can I buy the book?">
+          <p>
+            A purchase link is not listed on this site yet. When a way to obtain the book is
+            ready, it will be named on{' '}
+            <TextLink href={withBase('/book')}>the book page</TextLink>.
+          </p>
+        </FaqItem>
+        <FaqItem question="Is the book available yet?">
+          <p>
+            Publication details are not listed here. This site will not invent a release date,
+            retailer, or ISBN. When those facts are ready, they will appear plainly.
+          </p>
+        </FaqItem>
+      </FaqList>
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If the question is still which door"
+    primary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+    secondary={{ label: 'Book a Conversation', href: withBase('/book-a-conversation') }}
+  >
+    <p>You do not have to collect every answer before you start.</p>
+  </SiteCta>
+</BaseLayout>

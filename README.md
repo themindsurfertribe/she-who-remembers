@@ -6,7 +6,7 @@ Development proceeds gate-by-gate. Marketing page content, copy, and service int
 
 ## Architecture
 
-The site is static HTML, CSS, and assets. There is no unnecessary client-side JavaScript. Integrations (Cal.com, Stripe, email, newsletter, analytics, serverless forms) should be added later as isolated modules, with secrets kept off the frontend.
+The site is static HTML, CSS, and assets. There is no unnecessary client-side JavaScript. Booking uses a public calendar URL. Contact uses an HTML form POST to a public form endpoint. Secrets stay off the frontend. Payments, email APIs, newsletter backends, and analytics remain later, isolated work.
 
 ```text
 src/
@@ -78,7 +78,7 @@ A GitHub remote should be added only after a repository URL is supplied. Do not 
 - Never casually delete or restructure existing project material.
 - Run `npm run build` before checkpoint commits.
 - Keep each gate focused on its stated scope.
-- External services such as Cal.com, Stripe, email providers, and analytics must be integrated deliberately in later gates.
+- External services such as Stripe, email providers, and analytics must be integrated deliberately in later gates. Booking and contact use only frontend-safe public URLs when configured.
 - Reference images are design source material, not automatically production assets.
 
 ## Future GitHub Pages deployment
@@ -111,6 +111,34 @@ Secrets never belong in frontend code.
 - Never commit `.env`, API keys, passwords, payment credentials, or private client records.
 
 See `.env.example` for placeholder variable names only.
+
+## Booking and contact
+
+These features are frontend-safe and optional. The production build succeeds if they are empty.
+
+**Booking (`PUBLIC_CAL_URL`)**
+
+- Public scheduling page URL (for example a Cal.com link).
+- When set, `/book-a-conversation` shows a Choose a Time button that opens the provider in a new tab with `rel="noopener noreferrer"`.
+- When empty, `/book-a-conversation` shows quiet preview copy that online scheduling is not active yet. No environment variable names, rebuild instructions, or broken links appear on the public page.
+- This site does not send booking confirmation email. Phrase any copy as coming from the booking provider.
+- Optional: in the provider dashboard, a redirect to `/booking-confirmed` can be added later. Do not assume that redirect exists until it is configured.
+
+**Contact (`PUBLIC_CONTACT_FORM_ENDPOINT`)**
+
+- Public HTML `POST` endpoint from a static-site form provider.
+- `PUBLIC_FORM_ENDPOINT` is an older alias used only if the contact-specific variable is empty.
+- When set, `/contact` posts Name, Email, Reason, and Message, then should redirect to `/thank-you` (configure `_next` / `redirect` on the provider).
+- When empty, the form remains visible but disabled, with quiet copy that message submission is not active yet. No environment variable names, endpoint language, or rebuild instructions appear on the public page. There is no fake success state.
+- Do not put signing secrets, API keys, or inboxes in `PUBLIC_` variables.
+- The form is not for medical, psychiatric, legal, or crisis information.
+
+Set `PUBLIC_SITE_URL` to the canonical production URL, including protocol. Contact-form thank-you redirects use this so the destination can be absolute.
+
+**Canonical site URL (`PUBLIC_SITE_URL`)**
+
+- Used by Astro `site` and by absolute redirects such as `/thank-you`.
+- Leave empty in local preview if needed. The build still succeeds.
 
 ## Design tokens
 

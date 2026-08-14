@@ -1,10 +1,35 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SiteCta from '../components/SiteCta.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Booking Confirmed | She Who Remembers"
-  description="Placeholder booking confirmation page."
-  heading="Booking Confirmed"
-  note="This is a placeholder confirmation page. Content will be added in a later gate."
-/>
+  description="If you arrived here after scheduling, the calendar you used holds the appointment. This website does not send a separate confirmation email."
+  robots="noindex, nofollow"
+>
+  <Section surface="light">
+    <Container width="narrow">
+      <h1>Booking confirmed</h1>
+      <p>
+        If you arrived here after scheduling, your appointment is held by the calendar you used.
+        Any confirmation email would come from that calendar, not from this website. This page
+        does not send a separate email.
+      </p>
+      <p>
+        If you did not just book a time, you can return to the site. This page is not proof of an
+        appointment on its own.
+      </p>
+    </Container>
+  </Section>
+  <SiteCta
+    heading="While you wait for the conversation"
+    primary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+    secondary={{ label: 'Home', href: withBase('/') }}
+  >
+    <p>You do not need to prepare a perfect story.</p>
+  </SiteCta>
+</BaseLayout>

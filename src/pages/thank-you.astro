@@ -1,10 +1,28 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SiteCta from '../components/SiteCta.astro';
+import { withBase } from '../data/site';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Thank You | She Who Remembers"
-  description="Placeholder thank-you page."
-  heading="Thank You"
-  note="This is a placeholder confirmation page. Content will be added in a later gate."
-/>
+  description="Your message has been received. If a reply is appropriate, it will be sent to the email address you provided."
+  robots="noindex, nofollow"
+>
+  <Section surface="light">
+    <Container width="narrow">
+      <h1>Thank you</h1>
+      <p>Your message has been received.</p>
+      <p>If a reply is appropriate, it will be sent to the email address you provided.</p>
+    </Container>
+  </Section>
+  <SiteCta
+    heading="A quiet way back in"
+    primary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+    secondary={{ label: 'Home', href: withBase('/') }}
+  >
+    <p>No further action is required on this page.</p>
+  </SiteCta>
+</BaseLayout>

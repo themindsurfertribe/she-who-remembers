@@ -215,6 +215,26 @@ select:focus-visible {
   box-shadow: 0 0 0 3px var(--gold-glow);
 }
 
+input:user-invalid,
+textarea:user-invalid,
+select:user-invalid {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 3px rgb(30 58 109 / 0.16);
+}
+
+button:disabled,
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.field-hint {
+  margin: 0 0 var(--space-2xs);
+  max-width: 32rem;
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+}
+
 input::placeholder,
 textarea::placeholder {
   color: var(--text-muted);

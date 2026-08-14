@@ -1,9 +1,69 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import ContactForm from '../components/ContactForm.astro';
+import SiteCta from '../components/SiteCta.astro';
+import TextLink from '../components/TextLink.astro';
+import { withBase } from '../data/site';
+import { hasPublicCalUrl } from '../data/integrations';
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Contact | She Who Remembers"
-  description="Placeholder contact page for She Who Remembers."
-  heading="Contact"
-/>
+  description="General contact for practical questions, collaboration, book inquiries, and website issues. For coaching fit, book a conversation instead."
+>
+  <Hero
+    heading="Contact"
+    lede="For practical messages. Not for coaching intake."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      Use this page for general questions, speaking or collaboration inquiries, book-related
+      questions, website issues, and other ordinary messages.
+    </p>
+    <p>
+      {
+        hasPublicCalUrl ? (
+          <>
+            For coaching fit, use{' '}
+            <TextLink href={withBase('/book-a-conversation')}>Book a Conversation</TextLink>.
+          </>
+        ) : (
+          <>
+            For coaching fit, Book a Conversation is the right route once scheduling is active.
+          </>
+        )
+      }
+    </p>
+  </Hero>
+
+  <Section surface="light">
+    <Container width="narrow">
+      <SectionIntro heading="Send a message">
+        <p>
+          Keep it practical. This form is not a place for medical, psychiatric, legal, or crisis
+          information, and it is not monitored as emergency support.
+        </p>
+      </SectionIntro>
+      <ContactForm />
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If what you need is a fit conversation"
+    primary={{ label: 'Book a Conversation', href: withBase('/book-a-conversation') }}
+    secondary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+  >
+    <p>
+      {
+        hasPublicCalUrl
+          ? 'The form is for messages. The conversation is for discerning the work.'
+          : 'The form is for messages. A fit conversation is the right route once scheduling is active.'
+      }
+    </p>
+  </SiteCta>
+</BaseLayout>

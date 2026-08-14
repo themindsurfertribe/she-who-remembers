@@ -4,6 +4,10 @@ interface Props {
   href?: string;
   type?: 'button' | 'submit' | 'reset';
   class?: string;
+  target?: string;
+  rel?: string;
+  disabled?: boolean;
+  ariaDescribedBy?: string;
 }
 
 const {
@@ -11,18 +15,35 @@ const {
   href,
   type = 'button',
   class: className,
+  target,
+  rel,
+  disabled = false,
+  ariaDescribedBy,
 } = Astro.props;
 
 const classes = ['button', `button--${variant}`, className];
+const linkRel =
+  rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined);
 ---
 
 {
   href ? (
-    <a class:list={classes} href={href}>
+    <a
+      class:list={classes}
+      href={href}
+      target={target}
+      rel={linkRel}
+      aria-describedby={ariaDescribedBy}
+    >
       <slot />
     </a>
   ) : (
-    <button class:list={classes} type={type}>
+    <button
+      class:list={classes}
+      type={type}
+      disabled={disabled}
+      aria-describedby={ariaDescribedBy}
+    >
       <slot />
     </button>
   )
@@ -92,5 +113,11 @@ const classes = ['button', `button--${variant}`, className];
 
   .button--ghost:hover {
     color: var(--button-ghost-hover);
+  }
+
+  .button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
   }
 </style>
