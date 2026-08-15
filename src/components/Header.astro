@@ -14,19 +14,19 @@ const currentPath = Astro.url.pathname;
 const menuId = 'site-menu';
 const onBookingPage = pathIsActive(currentPath, headerCta.href);
 
-const headerAction = onBookingPage
-  ? hasPublicCalUrl
-    ? {
-        label: 'Choose a Time',
-        href: publicCalUrl,
-        external: true,
-      }
-    : null
-  : {
-      label: headerCta.label,
-      href: withBase(headerCta.href),
-      external: false,
-    };
+const headerAction = hasPublicCalUrl
+  ? {
+      label: onBookingPage ? 'Choose a Time' : headerCta.label,
+      href: publicCalUrl,
+      external: true,
+    }
+  : onBookingPage
+    ? null
+    : {
+        label: headerCta.label,
+        href: withBase(headerCta.href),
+        external: false,
+      };
 ---
 
 <header class="site-header" data-site-header>
