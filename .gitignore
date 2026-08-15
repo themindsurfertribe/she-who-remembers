@@ -1,5 +1,9 @@
-# Intentionally tracked: reference/, PROJECT-SOURCE/, src/, public/,
+# Intentionally tracked: reference/branding, PROJECT-SOURCE/, src/, public/,
 # README.md, package.json, package-lock.json, astro.config.mjs, tsconfig.json
+#
+# Photograph binaries under reference/photos/ are a local source library.
+# Do not commit originals. Approved production copies belong in src/assets/images/.
+# Intake notes and folder placeholders under reference/photos/ may be tracked.
 
 # Dependencies
 node_modules/
@@ -37,3 +41,32 @@ $RECYCLE.BIN/
 .idea/
 *.swp
 *.swo
+
+# Source photography library (Lala originals and secondary intake).
+# Branding boards under reference/branding remain tracked.
+reference/photos/**/*.jpg
+reference/photos/**/*.jpeg
+reference/photos/**/*.JPG
+reference/photos/**/*.JPEG
+reference/photos/**/*.png
+reference/photos/**/*.PNG
+reference/photos/**/*.webp
+reference/photos/**/*.WEBP
+reference/photos/**/*.heic
+reference/photos/**/*.HEIC
+reference/photos/**/*.heif
+reference/photos/**/*.HEIF
+reference/photos/**/*.tif
+reference/photos/**/*.tiff
+reference/photos/**/*.TIF
+reference/photos/**/*.TIFF
+reference/photos/**/*.dng
+reference/photos/**/*.DNG
+reference/photos/**/*.raw
+reference/photos/**/*.RAW
+reference/photos/**/*.mov
+reference/photos/**/*.MOV
+reference/photos/**/*.mp4
+reference/photos/**/*.MP4
+reference/photos/**/*.aae
+reference/photos/**/*.AAE

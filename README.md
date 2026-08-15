@@ -29,7 +29,7 @@ reference/           source material; not public website assets
 PROJECT-SOURCE/      copy, outlines, and notes for development
 ```
 
-Astro only publishes files from `src/` (compiled) and `public/` (copied). `/reference` and `/PROJECT-SOURCE` stay in the repository for authors and are **not** included in the website build.
+Astro only publishes files from `src/` (compiled) and `public/` (copied). `/PROJECT-SOURCE` and `/reference/branding` stay in the repository for authors. Photograph binaries under `/reference/photos` are a local source library (gitignored) and are **not** included in the website build.
 
 ## Project TODO
 
@@ -100,6 +100,8 @@ Do not deploy until later gates are complete. When ready:
 `/reference` and `/PROJECT-SOURCE` are source material, not automatically public website assets.
 
 - Do not delete, overwrite, move, rename, or restructure `/reference`, `/reference/photos`, `/reference/branding`, `/reference/inspiration`, `/reference/book`, or `/PROJECT-SOURCE`.
+- The approved exception is `/reference/photos/secondary/`, the intake library for non-portrait source photography. Do not move existing Lala source files out of `/reference/photos`.
+- Photograph binaries under `/reference/photos` (including `/reference/photos/secondary`) are gitignored. Do not `git add` originals. Approved production copies go to `src/assets/images/` after an explicit approval step.
 - Nothing under `/reference` should be exposed publicly unless it is deliberately copied into an approved production location (`src/assets/images/` or `public/images/`).
 - Do not copy branding boards or other reference images into production assets until that is explicitly approved.
 
