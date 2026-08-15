@@ -1,0 +1,84 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Confirm required public build variables
+        env:
+          PUBLIC_CAL_URL: ${{ vars.PUBLIC_CAL_URL }}
+          PUBLIC_CONTACT_FORM_ENDPOINT: ${{ vars.PUBLIC_CONTACT_FORM_ENDPOINT }}
+          PUBLIC_BASE_PATH: ${{ vars.PUBLIC_BASE_PATH }}
+        run: |
+          missing=0
+          if [ -z "$PUBLIC_CAL_URL" ]; then
+            echo "PUBLIC_CAL_URL is not set as a repository variable."
+            missing=1
+          fi
+          if [ -z "$PUBLIC_CONTACT_FORM_ENDPOINT" ]; then
+            echo "PUBLIC_CONTACT_FORM_ENDPOINT is not set as a repository variable."
+            missing=1
+          fi
+          if [ -z "$PUBLIC_BASE_PATH" ]; then
+            echo "PUBLIC_BASE_PATH is not set as a repository variable."
+            missing=1
+          fi
+          if [ "$missing" -ne 0 ]; then
+            echo "Add the missing values under Settings, Secrets and variables, Actions, Variables."
+            echo "Do not set PUBLIC_SITE_URL for this technical deployment."
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          PUBLIC_CAL_URL: ${{ vars.PUBLIC_CAL_URL }}
+          PUBLIC_CONTACT_FORM_ENDPOINT: ${{ vars.PUBLIC_CONTACT_FORM_ENDPOINT }}
+          PUBLIC_BASE_PATH: ${{ vars.PUBLIC_BASE_PATH }}
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -69,7 +69,7 @@ Development should proceed gate-by-gate. Each gate should:
 
 Do not allow unrelated work to accumulate across gates.
 
-A GitHub remote should be added only after a repository URL is supplied. Do not invent one.
+The production remote is the GitHub repository for this project. Push only after a gate is reviewed and accepted.
 
 ## PROJECT SAFETY RULES
 
@@ -83,15 +83,45 @@ A GitHub remote should be added only after a repository URL is supplied. Do not 
 - External services such as Stripe, email providers, and analytics must be integrated deliberately in later gates. Booking and contact use only frontend-safe public URLs when configured.
 - Reference images are design source material, not automatically production assets.
 
-## Future GitHub Pages deployment
+## GitHub Pages deployment
 
-Do not deploy until later gates are complete. When ready:
+The site deploys from `main` through GitHub Actions. The workflow file is `.github/workflows/deploy.yml`.
 
-1. Create a GitHub repository and push this project (excluding ignored files).
-2. Set `PUBLIC_SITE_URL` to the canonical production URL.
-3. If the site will live at `https://<user>.github.io/<repo>/`, set `PUBLIC_BASE_PATH` to `/<repo>`. A custom domain or `username.github.io` user site can leave the base as `/`.
-4. Add a GitHub Actions workflow using the official [Astro GitHub Pages](https://docs.astro.build/en/guides/deploy/github/) action.
-5. In the repository Settings → Pages, choose GitHub Actions as the source.
+That workflow checks out `main`, installs with `npm ci`, builds with `npm run build`, uploads `dist`, and deploys the Pages artifact. If the build fails, the job fails and nothing new is published.
+
+This technical host is a GitHub Pages **project site**. Asset and route URLs use `PUBLIC_BASE_PATH`. Until a lasting public origin is chosen, `PUBLIC_SITE_URL` stays unset on purpose. Canonical tags, sitemap files, the robots Sitemap line, and an absolute contact thank-you URL wait for that later gate. Do not treat the github.io project URL as the permanent canonical origin, and do not request search indexing from this technical deployment.
+
+### Required GitHub repository variables
+
+Frontend-safe public URLs belong in repository **variables**, not Secrets:
+
+| Variable | Gate 13A |
+| --- | --- |
+| `PUBLIC_CAL_URL` | Public booking page URL (same value used locally) |
+| `PUBLIC_CONTACT_FORM_ENDPOINT` | Public HTML form POST endpoint (same value used locally) |
+| `PUBLIC_BASE_PATH` | `/she-who-remembers` |
+
+Do not add Proton credentials, Cal.com logins, Formspree logins, API keys, or webhook secrets. Do not commit `.env`.
+
+Do not set `PUBLIC_SITE_URL` until the lasting public origin is decided.
+
+In the repository: Settings → Pages → Source: GitHub Actions.
+
+Then: Settings → Secrets and variables → Actions → Variables.
+
+### Trigger and re-run
+
+A push to `main` starts a deploy. You can also run **Deploy to GitHub Pages** from the Actions tab (`workflow_dispatch`).
+
+If a run fails because a variable was missing, add the variable, then re-run the workflow from Actions. Do not invent `PUBLIC_SITE_URL` to make the job green.
+
+### Validate a Pages build
+
+1. Confirm the Actions run is green.
+2. Open the Pages URL GitHub reports (project path `/she-who-remembers/`).
+3. Confirm CSS, images, favicon, and navigation load under that base path.
+4. Confirm booking still shows Choose a Time and contact still posts to the live endpoint.
+5. Confirm `/style-guide`, `/reference`, and `/PROJECT-SOURCE` are not on the public host.
 
 `public/.nojekyll` is included so GitHub Pages will serve Astro’s `_astro` assets.
 
@@ -109,7 +139,7 @@ Do not deploy until later gates are complete. When ready:
 
 Secrets never belong in frontend code.
 
-- Put real values only in a local `.env` file (gitignored) or in GitHub Actions secrets.
+- Put real values only in a local `.env` file (gitignored). Frontend-safe `PUBLIC_` values for CI belong in GitHub Actions repository variables. Private credentials, if any are added later, belong in Secrets. This project does not need Secrets for Gate 13A.
 - In Astro, only variables prefixed with `PUBLIC_` are available in browser code. Use that prefix only for values that are safe to expose.
 - Stripe secret keys, webhook secrets, email API keys, form signing secrets, and similar credentials must stay server-side.
 - Never commit `.env`, API keys, passwords, payment credentials, or private client records.

@@ -2,7 +2,9 @@
 
 Use this list before first public deployment. Do not mark an item complete unless the work is actually done. This is not a substitute for counsel, a brand lock, or live integrations.
 
-Last reviewed: August 14, 2026
+Technical GitHub Pages hosting is not the same as permanent-domain launch. Do not mark public launch complete because a github.io project URL is live.
+
+Last reviewed: August 15, 2026
 
 ## CONTENT
 
@@ -80,13 +82,18 @@ Last reviewed: August 14, 2026
 
 ## GITHUB PAGES
 
-- [ ] Confirm the GitHub repository exists and `main` is the deploy branch.
-- [ ] Add the official Astro GitHub Pages workflow.
+Technical public-host deployment (Gate 13A) stays distinct from permanent production-domain launch.
+
+- [x] Confirm the GitHub repository exists and `main` is the deploy branch.
+- [ ] `.github/workflows/deploy.yml` is on `main` and builds with `npm ci` and `npm run build`.
 - [ ] In repository Settings, Pages source is GitHub Actions.
-- [ ] Confirm `public/.nojekyll` is present.
-- [ ] Store secrets in GitHub Actions secrets, never in the repo.
+- [ ] Set repository variables: `PUBLIC_CAL_URL`, `PUBLIC_CONTACT_FORM_ENDPOINT`, and `PUBLIC_BASE_PATH=/she-who-remembers`.
+- [ ] Leave `PUBLIC_SITE_URL` unset until the lasting public origin is chosen.
+- [x] Confirm `public/.nojekyll` is present.
+- [ ] Public integration URLs live in repository variables, not Secrets. Do not store Proton, Cal.com, or Formspree logins in GitHub.
 - [ ] Confirm `/style-guide` is absent from the deployed site.
 - [ ] Confirm `/reference` and `/PROJECT-SOURCE` are not in the deployed site.
+- [ ] After the technical Pages host is live, walk home, routes, booking, and contact there. Do not treat github.io as the canonical origin.
 
 ## MOBILE QA
 
