@@ -137,6 +137,10 @@ a:hover {
   top: var(--space-sm);
 }
 
+#main:focus {
+  outline: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

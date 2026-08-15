@@ -18,7 +18,7 @@ const connected = hasContactFormEndpoint;
       <input type="hidden" name="redirect" value={thankYouUrl} />
       <input type="hidden" name="_subject" value="She Who Remembers contact form" />
 
-      <div class="honeypot" aria-hidden="true">
+      <div class="honeypot" inert>
         <label for="company">Company</label>
         <input id="company" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
       </div>

@@ -90,7 +90,7 @@ const websiteJson = websiteUrl
   <body data-surface="light">
     <a class="skip-link" href="#main">Skip to content</a>
     {showHeader && <Header />}
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     {showFooter && <Footer />}
