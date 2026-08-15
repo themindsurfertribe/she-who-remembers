@@ -8,9 +8,25 @@ import {
   primaryNav,
   withBase,
 } from '../data/site';
+import { hasPublicCalUrl, publicCalUrl } from '../data/integrations';
 
 const currentPath = Astro.url.pathname;
 const menuId = 'site-menu';
+const onBookingPage = pathIsActive(currentPath, headerCta.href);
+
+const headerAction = onBookingPage
+  ? hasPublicCalUrl
+    ? {
+        label: 'Choose a Time',
+        href: publicCalUrl,
+        external: true,
+      }
+    : null
+  : {
+      label: headerCta.label,
+      href: withBase(headerCta.href),
+      external: false,
+    };
 ---
 
 <header class="site-header" data-site-header>
@@ -39,9 +55,21 @@ const menuId = 'site-menu';
     </nav>
 
     <div class="site-header__tools">
-      <Button class="site-header__cta" href={withBase(headerCta.href)}>
-        {headerCta.label}
-      </Button>
+      {
+        headerAction && (
+          <Button
+            class="site-header__cta"
+            href={headerAction.href}
+            target={headerAction.external ? '_blank' : undefined}
+            rel={headerAction.external ? 'noopener noreferrer' : undefined}
+          >
+            {headerAction.label}
+            {headerAction.external && (
+              <span class="visually-hidden"> (opens in a new tab)</span>
+            )}
+          </Button>
+        )
+      }
       <button
         class="site-header__toggle"
         type="button"
@@ -83,9 +111,22 @@ const menuId = 'site-menu';
           }
         </ul>
       </nav>
-      <div class="site-menu__cta">
-        <Button href={withBase(headerCta.href)}>{headerCta.label}</Button>
-      </div>
+      {
+        headerAction && (
+          <div class="site-menu__cta">
+            <Button
+              href={headerAction.href}
+              target={headerAction.external ? '_blank' : undefined}
+              rel={headerAction.external ? 'noopener noreferrer' : undefined}
+            >
+              {headerAction.label}
+              {headerAction.external && (
+                <span class="visually-hidden"> (opens in a new tab)</span>
+              )}
+            </Button>
+          </div>
+        )
+      }
     </div>
   </dialog>
 </header>
