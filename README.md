@@ -167,6 +167,8 @@ These features are frontend-safe and optional. The production build succeeds if 
 - Do not put signing secrets, API keys, or inboxes in `PUBLIC_` variables.
 - The form is not for medical, psychiatric, legal, or crisis information.
 
+Operational handling of new inquiries (classify, reply, fit conversation, follow-up) is documented in `docs/LEAD-OPERATIONS.md`. That file is a manual SOP. Do not commit live lead rows, client names, or inquiry narratives.
+
 Set `PUBLIC_SITE_URL` to the canonical production URL, including protocol. Contact-form thank-you redirects use this so the destination can be absolute.
 
 **Canonical site URL (`PUBLIC_SITE_URL`)**
