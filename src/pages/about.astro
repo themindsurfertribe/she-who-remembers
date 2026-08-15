@@ -7,7 +7,10 @@ import SectionIntro from '../components/SectionIntro.astro';
 import Card from '../components/Card.astro';
 import PullQuote from '../components/PullQuote.astro';
 import SiteCta from '../components/SiteCta.astro';
+import EditorialPhoto from '../components/EditorialPhoto.astro';
 import { withBase } from '../data/site';
+import portraitShawl from '../assets/images/lala/lala-portrait-shawl.jpg';
+import gardenWelcome from '../assets/images/lala/lala-garden-welcome.jpg';
 ---
 
 <BaseLayout
@@ -28,21 +31,30 @@ import { withBase } from '../data/site';
   </Hero>
 
   <Section surface="light">
-    <Container width="narrow">
-      <SectionIntro heading="Why I do this work">
-        <p>Not as a rescue. As a place where lived experience can become usable wisdom.</p>
-      </SectionIntro>
-      <div class="prose">
-        <p>
-          I work with women who are remembering how to consult themselves: body, intuition,
-          discernment, and action in the same room, instead of in separate compartments that
-          never speak.
-        </p>
-        <p>
-          The aim is not to make my voice the one that stays. It is to make a space honest
-          enough that a woman can hear her own, including the parts she learned to keep quiet
-          in order to remain easy to love.
-        </p>
+    <Container>
+      <div class="about-lead">
+        <EditorialPhoto
+          src={portraitShawl}
+          variant="shawl"
+          alt="Lala in a cream wrap, looking toward the camera, holding the fabric at her chest."
+        />
+        <div>
+          <SectionIntro heading="Why I do this work">
+            <p>Not as a rescue. As a place where lived experience can become usable wisdom.</p>
+          </SectionIntro>
+          <div class="prose">
+            <p>
+              I work with women who are remembering how to consult themselves: body, intuition,
+              discernment, and action in the same room, instead of in separate compartments that
+              never speak.
+            </p>
+            <p>
+              The aim is not to make my voice the one that stays. It is to make a space honest
+              enough that a woman can hear her own, including the parts she learned to keep quiet
+              in order to remain easy to love.
+            </p>
+          </div>
+        </div>
       </div>
     </Container>
   </Section>
@@ -126,6 +138,18 @@ import { withBase } from '../data/site';
 
   <Section surface="light" spacing="compact">
     <Container width="narrow">
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={gardenWelcome}
+          variant="garden"
+          alt="Lala sitting outdoors in a garden setting, smiling toward the camera."
+        />
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
       <SectionIntro heading="What I believe">
         <p>Wholeness is not a costume change.</p>
       </SectionIntro>
@@ -189,6 +213,25 @@ import { withBase } from '../data/site';
 <style>
   .prose {
     max-width: var(--measure);
+  }
+
+  .photo-breath {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-lead {
+    display: grid;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .about-lead {
+      grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+      gap: var(--space-xl);
+      max-width: 52rem;
+    }
   }
 
   .fit,

@@ -8,7 +8,9 @@ import PathwayCard from '../components/PathwayCard.astro';
 import PullQuote from '../components/PullQuote.astro';
 import SiteCta from '../components/SiteCta.astro';
 import Button from '../components/Button.astro';
+import EditorialPhoto from '../components/EditorialPhoto.astro';
 import { withBase } from '../data/site';
+import ascentImage from '../assets/images/lala/lala-golden-hour-ascent.jpg';
 ---
 
 <BaseLayout
@@ -62,6 +64,18 @@ import { withBase } from '../data/site';
           with a public yes and call it maturity. She may sense that the life she built is real,
           and also that it is no longer the whole of her.
         </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={ascentImage}
+          variant="ascent"
+          alt="Lala seated in a cream wrap in evening light, eyes closed, hands together."
+        />
       </div>
     </Container>
   </Section>
@@ -223,6 +237,11 @@ import { withBase } from '../data/site';
 <style>
   .prose {
     max-width: var(--measure);
+  }
+
+  .photo-breath {
+    display: flex;
+    justify-content: center;
   }
 
   .rhythm {

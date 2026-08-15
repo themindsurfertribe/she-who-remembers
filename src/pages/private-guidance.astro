@@ -12,6 +12,7 @@ import FaqItem from '../components/FaqItem.astro';
 import SiteCta from '../components/SiteCta.astro';
 import EditorialPhoto from '../components/EditorialPhoto.astro';
 import { withBase } from '../data/site';
+import focusImage from '../assets/images/lala/lala-golden-hour-focus.jpg';
 import emptyChair from '../assets/images/editorial/editorial-empty-chair.png';
 ---
 
@@ -94,6 +95,13 @@ import emptyChair from '../assets/images/editorial/editorial-empty-chair.png';
       <SectionIntro heading="What a session feels like">
         <p>Serious, human, and uninterested in performance.</p>
       </SectionIntro>
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={focusImage}
+          variant="focus"
+          alt="Lala in a cream wrap, eyes closed, hands resting together on a stone ledge."
+        />
+      </div>
       <div class="prose">
         <p>
           The work is conversational. Reflective. Direct when a pattern is hiding in plain sight,

@@ -9,7 +9,9 @@ import Card from '../components/Card.astro';
 import PathwayCard from '../components/PathwayCard.astro';
 import SiteCta from '../components/SiteCta.astro';
 import TextLink from '../components/TextLink.astro';
+import EditorialPhoto from '../components/EditorialPhoto.astro';
 import { withBase } from '../data/site';
+import seekingImage from '../assets/images/lala/lala-golden-hour-seeking.jpg';
 ---
 
 <BaseLayout
@@ -53,6 +55,13 @@ import { withBase } from '../data/site';
           obtain the book is ready, it will be named plainly. Until then, the ideas are already
           at work in the path, the courses, and private guidance.
         </p>
+      </div>
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={seekingImage}
+          variant="seeking"
+          alt="Lala seated in evening light in a cream wrap, looking toward the sky."
+        />
       </div>
     </Container>
   </Section>
@@ -271,6 +280,10 @@ import { withBase } from '../data/site';
   .prose,
   .council {
     max-width: var(--measure);
+  }
+
+  .photo-breath {
+    margin-top: var(--space-lg);
   }
 
   .council {

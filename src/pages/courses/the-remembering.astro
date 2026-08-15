@@ -9,7 +9,9 @@ import FaqList from '../../components/FaqList.astro';
 import FaqItem from '../../components/FaqItem.astro';
 import SiteCta from '../../components/SiteCta.astro';
 import TextLink from '../../components/TextLink.astro';
+import EditorialPhoto from '../../components/EditorialPhoto.astro';
 import { withBase } from '../../data/site';
+import gardenPrayer from '../../assets/images/lala/lala-garden-prayer.jpg';
 ---
 
 <BaseLayout
@@ -52,6 +54,13 @@ import { withBase } from '../../data/site';
           whole of you. The Remembering is for that in-between: not collapsed, not finished,
           unwilling to keep performing a self that has already moved.
         </p>
+      </div>
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={gardenPrayer}
+          variant="garden"
+          alt="Lala sitting outdoors in a garden setting, hands together at her chest."
+        />
       </div>
     </Container>
   </Section>
@@ -277,6 +286,10 @@ import { withBase } from '../../data/site';
 
   .prose {
     max-width: var(--measure);
+  }
+
+  .photo-breath {
+    margin-top: var(--space-lg);
   }
 
   .fit,
