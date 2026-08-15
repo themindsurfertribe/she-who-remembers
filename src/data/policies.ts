@@ -4,7 +4,7 @@
  * Last-updated is a human-set string, not a build timestamp.
  */
 
-export const policyLastUpdated = 'August 14, 2026';
+export const policyLastUpdated = 'August 15, 2026';
 
 export const sitePayments = {
   publicCheckoutActive: false,
