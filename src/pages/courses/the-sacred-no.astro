@@ -9,7 +9,9 @@ import PullQuote from '../../components/PullQuote.astro';
 import FaqList from '../../components/FaqList.astro';
 import FaqItem from '../../components/FaqItem.astro';
 import SiteCta from '../../components/SiteCta.astro';
+import EditorialPhoto from '../../components/EditorialPhoto.astro';
 import { withBase } from '../../data/site';
+import halfOpenDoor from '../../assets/images/editorial/editorial-half-open-door.png';
 ---
 
 <BaseLayout
@@ -112,6 +114,13 @@ import { withBase } from '../../data/site';
           still matters, you repair without erasing the limit you just named. The goal is not to
           win. It is to stop abandoning yourself in the name of being good.
         </p>
+      </div>
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={halfOpenDoor}
+          variant="halfOpen"
+          alt="A wooden door stands slightly open, with a narrow line of warm light falling across the floor."
+        />
       </div>
     </Container>
   </Section>
@@ -231,6 +240,10 @@ import { withBase } from '../../data/site';
 <style>
   .prose {
     max-width: var(--measure);
+  }
+
+  .photo-breath {
+    margin-top: var(--space-lg);
   }
 
   .fit,

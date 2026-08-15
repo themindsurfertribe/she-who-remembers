@@ -1,0 +1,196 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  variant?:
+    | 'shawl'
+    | 'ascent'
+    | 'focus'
+    | 'garden'
+    | 'seeking'
+    | 'doorway'
+    | 'halfOpen'
+    | 'walking'
+    | 'road'
+    | 'chair'
+    | 'candle'
+    | 'gathering';
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  variant = 'focus',
+  loading = 'lazy',
+  fetchpriority,
+  class: className,
+} = Astro.props;
+
+const landscape = ['doorway', 'walking', 'road', 'gathering'].includes(variant);
+---
+
+<figure
+  class:list={[
+    'editorial-photo',
+    `editorial-photo--${variant}`,
+    landscape && 'editorial-photo--landscape',
+    className,
+  ]}
+>
+  <Image
+    src={src}
+    alt={alt}
+    widths={[400, 640, 800, 1024]}
+    sizes={
+      landscape
+        ? '(max-width: 720px) min(100vw - 2.5rem, 36rem), 32rem'
+        : '(max-width: 720px) min(100vw - 2.5rem, 26rem), 22rem'
+    }
+    quality={78}
+    format="webp"
+    loading={loading}
+    decoding="async"
+    fetchpriority={fetchpriority}
+  />
+</figure>
+
+<style>
+  .editorial-photo {
+    margin: 0;
+    max-width: 22rem;
+    overflow: hidden;
+    background: var(--surface-muted);
+  }
+
+  .editorial-photo--landscape {
+    max-width: 32rem;
+    width: 100%;
+  }
+
+  .editorial-photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .editorial-photo--shawl {
+    aspect-ratio: 3 / 4;
+  }
+
+  .editorial-photo--shawl :global(img) {
+    object-position: center 18%;
+  }
+
+  .editorial-photo--ascent {
+    aspect-ratio: 2 / 3;
+  }
+
+  .editorial-photo--ascent :global(img) {
+    object-position: center 58%;
+  }
+
+  .editorial-photo--focus {
+    aspect-ratio: 3 / 4;
+  }
+
+  .editorial-photo--focus :global(img) {
+    object-position: center 32%;
+  }
+
+  .editorial-photo--garden {
+    aspect-ratio: 4 / 5;
+  }
+
+  .editorial-photo--garden :global(img) {
+    object-position: center 16%;
+  }
+
+  .editorial-photo--seeking {
+    aspect-ratio: 4 / 5;
+  }
+
+  .editorial-photo--seeking :global(img) {
+    object-position: center 28%;
+  }
+
+  .editorial-photo--doorway {
+    aspect-ratio: 4 / 5;
+  }
+
+  .editorial-photo--doorway :global(img) {
+    object-position: center 55%;
+  }
+
+  .editorial-photo--halfOpen {
+    aspect-ratio: 4 / 5;
+  }
+
+  .editorial-photo--halfOpen :global(img) {
+    object-position: 70% 50%;
+  }
+
+  .editorial-photo--walking {
+    aspect-ratio: 3 / 4;
+  }
+
+  .editorial-photo--walking :global(img) {
+    object-position: center 45%;
+  }
+
+  .editorial-photo--road {
+    aspect-ratio: 3 / 2;
+  }
+
+  .editorial-photo--road :global(img) {
+    object-position: center 60%;
+  }
+
+  .editorial-photo--chair {
+    aspect-ratio: 4 / 5;
+  }
+
+  .editorial-photo--chair :global(img) {
+    object-position: 45% 50%;
+  }
+
+  .editorial-photo--candle {
+    aspect-ratio: 3 / 2;
+    width: 100%;
+  }
+
+  .editorial-photo--candle :global(img) {
+    object-position: 82% 50%;
+  }
+
+  .editorial-photo--gathering {
+    aspect-ratio: 3 / 2;
+  }
+
+  .editorial-photo--gathering :global(img) {
+    object-position: center 48%;
+  }
+
+  @media (min-width: 768px) {
+    .editorial-photo--garden {
+      aspect-ratio: 3 / 4;
+    }
+
+    .editorial-photo--garden :global(img) {
+      object-position: center 28%;
+    }
+
+    .editorial-photo--doorway {
+      aspect-ratio: 3 / 2;
+    }
+
+    .editorial-photo--walking {
+      aspect-ratio: 3 / 2;
+    }
+  }
+</style>

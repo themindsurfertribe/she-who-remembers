@@ -10,7 +10,9 @@ import PullQuote from '../components/PullQuote.astro';
 import FaqList from '../components/FaqList.astro';
 import FaqItem from '../components/FaqItem.astro';
 import SiteCta from '../components/SiteCta.astro';
+import EditorialPhoto from '../components/EditorialPhoto.astro';
 import { withBase } from '../data/site';
+import emptyChair from '../assets/images/editorial/editorial-empty-chair.png';
 ---
 
 <BaseLayout
@@ -217,6 +219,13 @@ import { withBase } from '../data/site';
           honest next step. There is no prize for forcing a match.
         </p>
       </div>
+      <div class="photo-breath photo-breath--later">
+        <EditorialPhoto
+          src={emptyChair}
+          variant="chair"
+          alt="An empty wooden chair sits beside a sunlit window in a quiet plaster room."
+        />
+      </div>
     </Container>
   </Section>
 
@@ -291,6 +300,17 @@ import { withBase } from '../data/site';
 <style>
   .prose {
     max-width: var(--measure);
+  }
+
+  .photo-breath {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 var(--space-lg);
+  }
+
+  .photo-breath--later {
+    margin-top: var(--space-lg);
+    margin-bottom: 0;
   }
 
   .note {

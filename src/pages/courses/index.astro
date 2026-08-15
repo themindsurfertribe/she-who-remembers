@@ -7,7 +7,9 @@ import SectionIntro from '../../components/SectionIntro.astro';
 import PathwayCard from '../../components/PathwayCard.astro';
 import CourseComparison from '../../components/CourseComparison.astro';
 import SiteCta from '../../components/SiteCta.astro';
+import EditorialPhoto from '../../components/EditorialPhoto.astro';
 import { withBase } from '../../data/site';
+import gatheringTable from '../../assets/images/editorial/editorial-gathering-table.png';
 ---
 
 <BaseLayout
@@ -92,6 +94,13 @@ import { withBase } from '../../data/site';
           { name: 'Legacy in Motion', line: 'Purpose and transmission' },
         ]}
       />
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={gatheringTable}
+          variant="gathering"
+          alt="An empty wooden table with ceramic cups and chairs sits in warm window light."
+        />
+      </div>
     </Container>
   </Section>
 
@@ -108,6 +117,12 @@ import { withBase } from '../../data/site';
 </BaseLayout>
 
 <style>
+  .photo-breath {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-xl);
+  }
+
   .offer-grid {
     display: grid;
     gap: var(--space-xl);

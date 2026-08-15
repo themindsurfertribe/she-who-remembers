@@ -6,7 +6,10 @@ import SectionIntro from '../components/SectionIntro.astro';
 import MovementSection from '../components/MovementSection.astro';
 import Divider from '../components/Divider.astro';
 import SiteCta from '../components/SiteCta.astro';
+import EditorialPhoto from '../components/EditorialPhoto.astro';
 import { withBase } from '../data/site';
+import walkingThreshold from '../assets/images/editorial/editorial-walking-threshold.png';
+import candlePlaster from '../assets/images/editorial/editorial-candle-plaster.png';
 ---
 
 <BaseLayout
@@ -22,6 +25,13 @@ import { withBase } from '../data/site';
           described here so the work has a spine, not so your life has to match a syllabus.
         </p>
       </SectionIntro>
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={walkingThreshold}
+          variant="walking"
+          alt="A woman seen from behind walks through an open doorway into warm daylight."
+        />
+      </div>
     </Container>
   </Section>
 
@@ -68,6 +78,14 @@ import { withBase } from '../data/site';
           live inside the wound. It is a refusal to pretend the exiled parts are gone.
         </p>
       </MovementSection>
+
+      <div class="photo-breath photo-breath--candle">
+        <EditorialPhoto
+          src={candlePlaster}
+          variant="candle"
+          alt="A single candle burns on a plaster ledge in a dark room."
+        />
+      </div>
 
       <Divider />
 
@@ -145,3 +163,14 @@ import { withBase } from '../data/site';
     </p>
   </SiteCta>
 </BaseLayout>
+
+<style>
+  .photo-breath {
+    margin-top: var(--space-lg);
+  }
+
+  .photo-breath--candle {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-lg);
+  }
+</style>

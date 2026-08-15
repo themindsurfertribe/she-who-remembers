@@ -9,7 +9,9 @@ import PullQuote from '../../components/PullQuote.astro';
 import FaqList from '../../components/FaqList.astro';
 import FaqItem from '../../components/FaqItem.astro';
 import SiteCta from '../../components/SiteCta.astro';
+import EditorialPhoto from '../../components/EditorialPhoto.astro';
 import { withBase } from '../../data/site';
+import distantRoad from '../../assets/images/editorial/editorial-distant-road.png';
 ---
 
 <BaseLayout
@@ -52,6 +54,13 @@ import { withBase } from '../../data/site';
           accept another productivity lecture. Contribution here is not a new performance of
           worth. It is what becomes possible when you no longer need the work to justify you.
         </p>
+      </div>
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={distantRoad}
+          variant="road"
+          alt="A dirt road stretches through dry grass toward distant hills in warm evening light."
+        />
       </div>
     </Container>
   </Section>
@@ -277,6 +286,10 @@ import { withBase } from '../../data/site';
 <style>
   .prose {
     max-width: var(--measure);
+  }
+
+  .photo-breath {
+    margin-top: var(--space-lg);
   }
 
   .fit,

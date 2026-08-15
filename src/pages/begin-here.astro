@@ -6,7 +6,9 @@ import SectionIntro from '../components/SectionIntro.astro';
 import ThresholdBlock from '../components/ThresholdBlock.astro';
 import Divider from '../components/Divider.astro';
 import SiteCta from '../components/SiteCta.astro';
+import EditorialPhoto from '../components/EditorialPhoto.astro';
 import { withBase } from '../data/site';
+import openDoorway from '../assets/images/editorial/editorial-open-doorway.png';
 ---
 
 <BaseLayout
@@ -21,6 +23,13 @@ import { withBase } from '../data/site';
           of the work can come later. The texture of this season is enough.
         </p>
       </SectionIntro>
+      <div class="photo-breath">
+        <EditorialPhoto
+          src={openDoorway}
+          variant="doorway"
+          alt="A wooden door stands open in a plaster room, leading onto a sunlit stone terrace and distant trees."
+        />
+      </div>
     </Container>
   </Section>
 
@@ -146,3 +155,9 @@ import { withBase } from '../data/site';
     </p>
   </SiteCta>
 </BaseLayout>
+
+<style>
+  .photo-breath {
+    margin-top: var(--space-lg);
+  }
+</style>
