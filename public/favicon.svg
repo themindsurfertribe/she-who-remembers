@@ -1,10 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="She Who Remembers">
-  <rect width="32" height="32" rx="6" fill="#0E1A2D"/>
-  <g fill="none" stroke="#D4AF37" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="16" cy="16" r="11" stroke-width="0.7" opacity="0.55"/>
-    <circle cx="16" cy="16" r="7.6" stroke-width="0.7"/>
-    <polygon points="16,8.2 22.2,19.6 9.8,19.6" stroke-width="0.75" opacity="0.9"/>
-    <polygon points="16,23.8 9.8,12.4 22.2,12.4" stroke-width="0.75" opacity="0.9"/>
-    <circle cx="16" cy="14.4" r="0.7" fill="#D4AF37" stroke="none"/>
+  <!--
+    Favicon-safe derivative of src/assets/images/brand/she-who-remembers-emblem.png.
+    Fine rings and dotted arcs are omitted so the mark reads at 16 to 32 px.
+  -->
+  <g
+    fill="none"
+    stroke="#d4af37"
+    stroke-width="1.05"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <circle cx="16" cy="16" r="12.2" />
+    <line x1="16" y1="4.4" x2="16" y2="27.6" />
+    <circle cx="16" cy="13.3" r="2.35" />
+    <circle cx="16" cy="22.7" r="3.35" />
+    <path d="M16.15 20.05 C14.35 20.85 14.45 22.15 16 22.7 C17.55 23.25 17.65 24.65 15.9 25.45" stroke-width="1.15" />
+  </g>
+  <g fill="#d4af37">
+    <circle cx="16" cy="3.8" r="0.7" />
+    <circle cx="16" cy="28.2" r="0.7" />
+    <circle cx="3.8" cy="16" r="0.7" />
+    <circle cx="28.2" cy="16" r="0.7" />
+    <circle cx="16" cy="13.3" r="1.35" />
+    <polygon points="16.00,4.80 16.21,5.84 17.10,5.25 16.51,6.14 17.55,6.35 16.51,6.56 17.10,7.45 16.21,6.86 16.00,7.90 15.79,6.86 14.90,7.45 15.49,6.56 14.45,6.35 15.49,6.14 14.90,5.25 15.79,5.84" />
   </g>
 </svg>

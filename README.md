@@ -19,7 +19,7 @@ src/
   styles/            tokens + global CSS
 
 public/              files copied as-is to the build
-  favicon.svg        temporary site favicon (geometric mark)
+  favicon.svg        browser-tab icon (simplified approved emblem)
   favicon/           optional extra icons (apple-touch, ico)
   images/logos/
   images/social/     place `og-default.png` here when a real 1200 x 630 image exists
@@ -160,7 +160,7 @@ Drafts (`draft: true`) do not appear in production. There are no invented essays
 - A minimal WebSite JSON-LD object is emitted only when the site URL is known. Person and Book schema are omitted until facts exist (no invented ISBN, profiles, offers, or ratings).
 - Social image: add `public/images/social/og-default.png` (1200 x 630). Open Graph image tags are emitted only if that file exists and `PUBLIC_SITE_URL` is set.
 
-Favicon: `public/favicon.svg`, derived from the existing geometric emblem. It is a temporary mark, not a final logo.
+Favicon: `public/favicon.svg` is a simplified vector of the approved emblem (`src/assets/images/brand/she-who-remembers-emblem.png`), drawn for 16 to 32 px browser tabs. The header still uses the geometric lockup mark. Do not point the tab icon at the 935 px PNG.
 
 Launch steps live in `LAUNCH-CHECKLIST.md`.
 

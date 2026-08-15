@@ -16,8 +16,8 @@ Last reviewed: August 14, 2026
 ## BRAND
 
 - [ ] Confirm temporary color tokens are still acceptable for launch.
-- [ ] Confirm the geometric emblem is still the temporary site mark (header and favicon).
-- [ ] Replace the emblem and favicon when a final mark is approved. Do not copy `/reference` boards into production.
+- [ ] Confirm the geometric emblem is still the temporary header lockup.
+- [ ] Favicon uses a simplified vector of the approved emblem. Revisit only if a later mark replaces it. Do not copy `/reference` boards into production.
 - [ ] Add `public/images/social/og-default.png` (1200 x 630) with “She Who Remembers” and, if it fits, “Power, Presence, and Remembering Who You Are.” Elegant, not a reference-board screenshot.
 - [ ] Optional: add `public/favicon/apple-touch-icon.png` (180 x 180). The layout will link it automatically when the file exists.
 - [ ] Optional: add `public/favicon.ico` if a platform still requires ICO.
