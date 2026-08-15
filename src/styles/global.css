@@ -190,7 +190,7 @@ select {
   background: var(--surface-raised);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: var(--text-body-sm);
+  font-size: 1rem;
   line-height: var(--leading-ui);
   transition:
     border-color var(--duration-fast) var(--ease),
