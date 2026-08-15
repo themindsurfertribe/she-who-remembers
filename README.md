@@ -12,16 +12,18 @@ The site is static HTML, CSS, and assets. There is no unnecessary client-side Ja
 src/
   assets/images/     processed images (lala, courses, book, backgrounds, editorial)
   components/        reusable UI
+  content/           Letters markdown collection (`src/content/letters/`)
+  data/              site, integrations, policies, letters, SEO helpers
   layouts/           global document shell
   pages/             routes
   styles/            tokens + global CSS
-  content/           future structured content
 
 public/              files copied as-is to the build
+  favicon.svg        temporary site favicon (geometric mark)
+  favicon/           optional extra icons (apple-touch, ico)
   images/logos/
-  images/social/
+  images/social/     place `og-default.png` here when a real 1200 x 630 image exists
   images/misc/
-  favicon/
 
 reference/           source material; not public website assets
 PROJECT-SOURCE/      copy, outlines, and notes for development
@@ -31,7 +33,7 @@ Astro only publishes files from `src/` (compiled) and `public/` (copied). `/refe
 
 ## Project TODO
 
-REMOVE OR EXCLUDE `/style-guide` BEFORE PUBLIC LAUNCH.
+`/style-guide` is for local design review. Production builds remove it from `dist/`. View it with `npm run dev`. Confirm it is absent from the deployed site (see `LAUNCH-CHECKLIST.md`).
 
 ## Local development
 
@@ -137,8 +139,28 @@ Set `PUBLIC_SITE_URL` to the canonical production URL, including protocol. Conta
 
 **Canonical site URL (`PUBLIC_SITE_URL`)**
 
-- Used by Astro `site` and by absolute redirects such as `/thank-you`.
-- Leave empty in local preview if needed. The build still succeeds.
+- Used by Astro `site`, canonical tags, Open Graph URLs, WebSite JSON-LD, absolute thank-you redirects, and sitemap generation.
+- When empty, the production build still succeeds. Canonical, `og:url`, `og:image`, JSON-LD, and sitemap output are omitted rather than pointing at localhost or an invented domain.
+- Set this to the real production URL, including protocol, before launch. Then rebuild.
+
+## Letters
+
+`/letters` is the editorial arm of the site. Published pieces live as Markdown in `src/content/letters/` (Astro content collections). See `src/content/README.md`.
+
+Drafts (`draft: true`) do not appear in production. There are no invented essays in the repository. The listing page shows a quiet empty state until real letters exist.
+
+## SEO, sitemap, and robots
+
+- Unique titles and descriptions are set per route in each page’s `BaseLayout` props.
+- Public informational pages are indexable. `/thank-you`, `/application-received`, `/booking-confirmed`, `/style-guide`, and the 404 page send `noindex, nofollow`.
+- `@astrojs/sitemap` runs only when `PUBLIC_SITE_URL` is set. Confirmation routes and `/style-guide` are filtered out.
+- `src/pages/robots.txt.ts` allows the site, disallows those internal routes, and adds a Sitemap line only when `PUBLIC_SITE_URL` is set.
+- A minimal WebSite JSON-LD object is emitted only when the site URL is known. Person and Book schema are omitted until facts exist (no invented ISBN, profiles, offers, or ratings).
+- Social image: add `public/images/social/og-default.png` (1200 x 630). Open Graph image tags are emitted only if that file exists and `PUBLIC_SITE_URL` is set.
+
+Favicon: `public/favicon.svg`, derived from the existing geometric emblem. It is a temporary mark, not a final logo.
+
+Launch steps live in `LAUNCH-CHECKLIST.md`.
 
 ## Legal and policy pages
 
@@ -156,11 +178,9 @@ Webfonts are loaded from [Google Fonts](https://fonts.google.com) in `src/layout
 - Lora: editorial body
 - Montserrat: UI, labels, and controls
 
-Font families are applied only through CSS tokens. Do not hard-code typefaces in components.
+Font families are applied only through CSS tokens. Do not hard-code typefaces in components. Google Fonts may receive technical information such as IP address; this is disclosed on the Privacy page. Self-hosting is a later option. Do not download or redistribute font files unless that is intentionally approved.
 
-An internal review page lives at `/style-guide`. It is not a public marketing page and is served with `noindex`.
-
-**TODO before public launch:** REMOVE OR EXCLUDE `/style-guide` BEFORE PUBLIC LAUNCH.
+`/style-guide` is an internal review page. It is `noindex` in development and is removed from production `dist/` after `npm run build`. Use `npm run dev` to view it.
 
 Visual balance for later design work:
 

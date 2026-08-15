@@ -1,7 +1,10 @@
 ---
+import { existsSync } from 'node:fs';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { siteName, withBase } from '../data/site';
+import { appleTouchIconPath, defaultOgImagePath } from '../data/seo';
 
 interface Props {
   title?: string;
@@ -16,7 +19,7 @@ interface Props {
 
 const {
   title = 'She Who Remembers',
-  description = 'Official website of She Who Remembers.',
+  description = 'A body of work for women in transition: remembering sovereignty, self-trust, and the life that still belongs to you.',
   robots,
   canonical,
   ogImage,
@@ -25,12 +28,26 @@ const {
   showFooter = true,
 } = Astro.props;
 
-const canonicalHref =
-  canonical ??
-  (Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined);
+const site = Astro.site;
+const faviconHref = withBase('/favicon.svg');
+const hasDefaultOg = existsSync('public/images/social/og-default.png');
+const hasAppleIcon = existsSync('public/favicon/apple-touch-icon.png');
 
-const ogImageHref = ogImage
-  ? new URL(ogImage, Astro.site ?? Astro.url).href
+const canonicalHref = site
+  ? new URL(canonical ?? Astro.url.pathname, site).href
+  : undefined;
+
+const ogSource = ogImage ?? (hasDefaultOg ? defaultOgImagePath : undefined);
+const ogImageHref = ogSource && site ? new URL(withBase(ogSource), site).href : undefined;
+
+const websiteUrl = site ? new URL(import.meta.env.BASE_URL || '/', site).href : undefined;
+const websiteJson = websiteUrl
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: siteName,
+      url: websiteUrl,
+    })
   : undefined;
 ---
 
@@ -43,6 +60,8 @@ const ogImageHref = ogImage
     {robots && <meta name="robots" content={robots} />}
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" href={faviconHref} type="image/svg+xml" />
+    {hasAppleIcon && <link rel="apple-touch-icon" href={withBase(appleTouchIconPath)} />}
     {canonicalHref && <link rel="canonical" href={canonicalHref} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -53,10 +72,13 @@ const ogImageHref = ogImage
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {ogImageHref && <meta name="twitter:image" content={ogImageHref} />}
+    {websiteJson && <script type="application/ld+json" set:html={websiteJson} />}
     <!--
       Webfonts from Google Fonts (https://fonts.google.com):
       Cinzel Display (headings), Lora (body), Montserrat (UI).
       Families are applied only through CSS tokens in src/styles/tokens.css.
+      Privacy implication: Google may receive technical information such as IP address.
+      Self-hosting remains a later option. Do not download font files unless approved.
     -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

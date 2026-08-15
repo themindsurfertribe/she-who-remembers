@@ -1,9 +1,81 @@
 ---
-import PlaceholderPage from '../components/PlaceholderPage.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Container from '../components/Container.astro';
+import LetterCard from '../components/LetterCard.astro';
+import SiteCta from '../components/SiteCta.astro';
+import { withBase } from '../data/site';
+import { getPublishedLetters } from '../data/letters';
+
+const letters = await getPublishedLetters();
 ---
 
-<PlaceholderPage
+<BaseLayout
   title="Letters | She Who Remembers"
-  description="Placeholder page for Letters on She Who Remembers."
-  heading="Letters"
-/>
+  description="Essays, reflections, and field notes from She Who Remembers: observations and questions, not instructions from an authority."
+>
+  <Hero
+    heading="Letters"
+    lede="Observations from the work. Not instructions from an authority."
+    surface="light"
+    spacing="compact"
+  >
+    <p>
+      These pages are for essays, reflections, shorter teachings, field notes, questions worth
+      sitting with, and book-adjacent ideas. They are pieces of lived wisdom, not a curriculum
+      and not a pulpit.
+    </p>
+  </Hero>
+
+  <Section surface="light" spacing="compact">
+    <Container width="narrow">
+      {
+        letters.length > 0 ? (
+          <ul class="letter-list">
+            {letters.map((letter) => (
+              <li>
+                <LetterCard letter={letter} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="empty">
+            <p>
+              No letters are published here yet. When they are, they will appear on this page as
+              dated pieces you can return to, without requiring a blog account or a feed of
+              advice.
+            </p>
+            <p>
+              Until then, the book and the path of the work remain the fuller rooms for this
+              language.
+            </p>
+          </div>
+        )
+      }
+    </Container>
+  </Section>
+
+  <SiteCta
+    heading="If you want a longer room than a letter"
+    primary={{ label: 'The Book', href: withBase('/book') }}
+    secondary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+  >
+    <p>A letter can hold a question. The work is how some women live the answer.</p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .letter-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .empty p {
+    max-width: var(--measure);
+    color: var(--text-muted);
+  }
+</style>

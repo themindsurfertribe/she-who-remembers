@@ -1,0 +1,52 @@
+---
+import Card from './Card.astro';
+import TextLink from './TextLink.astro';
+import { withBase } from '../data/site';
+import {
+  formatLetterDate,
+  letterSlug,
+  type LetterEntry,
+} from '../data/letters';
+
+interface Props {
+  letter: LetterEntry;
+}
+
+const { letter } = Astro.props;
+const slug = letterSlug(letter);
+const href = withBase(`/letters/${slug}`);
+const dateLabel = formatLetterDate(letter.data.pubDate);
+---
+
+<article class="letter-card">
+  <Card>
+    <p class="letter-card__meta">
+      <time datetime={letter.data.pubDate.toISOString()}>{dateLabel}</time>
+      {letter.data.category && <span>{letter.data.category}</span>}
+    </p>
+    <h2 class="letter-card__title">
+      <TextLink href={href}>{letter.data.title}</TextLink>
+    </h2>
+    {letter.data.description && <p>{letter.data.description}</p>}
+  </Card>
+</article>
+
+<style>
+  .letter-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+    margin: 0 0 var(--space-sm);
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+  }
+
+  .letter-card__title {
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-h3);
+    overflow-wrap: break-word;
+  }
+</style>

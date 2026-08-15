@@ -1,19 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Container from '../components/Container.astro';
-import Section from '../components/Section.astro';
-import TextLink from '../components/TextLink.astro';
+import Hero from '../components/Hero.astro';
+import SiteCta from '../components/SiteCta.astro';
 import { withBase } from '../data/site';
 ---
 
-<BaseLayout title="Page not found | She Who Remembers" description="This page could not be found.">
-  <Section surface="light">
-    <Container>
-      <h1>Page not found</h1>
-      <p>
-        The page you requested does not exist.
-        <TextLink href={withBase('/')}>Return home</TextLink>
-      </p>
-    </Container>
-  </Section>
+<BaseLayout
+  title="Wrong doorway | She Who Remembers"
+  description="This page is not a door in She Who Remembers. Begin Here, or return Home."
+  robots="noindex, nofollow"
+>
+  <Hero heading="Wrong doorway." surface="light" spacing="compact">
+    <p>
+      The path you asked for is not on this site. You can locate the threshold you are actually
+      standing on, or return to the beginning of the map.
+    </p>
+  </Hero>
+  <SiteCta
+    heading="Choose a real door"
+    primary={{ label: 'Begin Here', href: withBase('/begin-here') }}
+    secondary={{ label: 'Home', href: withBase('/') }}
+  >
+    <p>Nothing is lost. This was simply not a page.</p>
+  </SiteCta>
 </BaseLayout>

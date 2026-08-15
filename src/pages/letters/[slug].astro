@@ -1,0 +1,97 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Container from '../../components/Container.astro';
+import SiteCta from '../../components/SiteCta.astro';
+import { withBase } from '../../data/site';
+import {
+  formatLetterDate,
+  getPublishedLetters,
+  letterSlug,
+  readingMinutesFromText,
+  type LetterEntry,
+} from '../../data/letters';
+
+export async function getStaticPaths() {
+  const letters = await getPublishedLetters();
+  return letters.map((letter) => ({
+    params: { slug: letterSlug(letter) },
+    props: { letter },
+  }));
+}
+
+interface Props {
+  letter: LetterEntry;
+}
+
+const { letter } = Astro.props;
+const { Content } = await render(letter);
+const dateLabel = formatLetterDate(letter.data.pubDate);
+const source = typeof letter.body === 'string' ? letter.body : '';
+const minutes = readingMinutesFromText(source);
+const description =
+  letter.data.seoDescription ||
+  letter.data.description ||
+  `${letter.data.title} in Letters from She Who Remembers.`;
+---
+
+<BaseLayout title={`${letter.data.title} | Letters`} description={description} ogType="article">
+  <Section surface="light">
+    <Container width="narrow">
+      <article class="letter">
+        <header class="letter__header">
+          <p class="letter__meta">
+            <time datetime={letter.data.pubDate.toISOString()}>{dateLabel}</time>
+            {letter.data.category && <span>{letter.data.category}</span>}
+            {minutes > 0 && <span>{minutes} min read</span>}
+          </p>
+          <h1>{letter.data.title}</h1>
+        </header>
+        <div class="letter__body">
+          <Content />
+        </div>
+      </article>
+    </Container>
+  </Section>
+  <SiteCta
+    heading="More from this room"
+    primary={{ label: 'Letters', href: withBase('/letters') }}
+    secondary={{ label: 'The Book', href: withBase('/book') }}
+  >
+    <p>A letter is one sitting. The rest of the work remains available without rushing it.</p>
+  </SiteCta>
+</BaseLayout>
+
+<style>
+  .letter {
+    max-width: var(--measure);
+    overflow-wrap: break-word;
+  }
+
+  .letter__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+    margin: 0 0 var(--space-md);
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-size: var(--text-ui);
+    letter-spacing: var(--tracking-ui);
+    text-transform: uppercase;
+  }
+
+  .letter__header h1 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .letter__body :global(p),
+  .letter__body :global(ul),
+  .letter__body :global(ol) {
+    max-width: none;
+  }
+
+  .letter__body :global(h2) {
+    margin-top: var(--space-xl);
+  }
+</style>
